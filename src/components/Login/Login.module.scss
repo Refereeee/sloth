@@ -1,0 +1,13 @@
+.wrapper{
+  display: flex;
+  width: 10rem;
+  margin: 10rem auto;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.label{
+  flex-direction: column;
+  display: flex;
+  gap: 1rem;
+}

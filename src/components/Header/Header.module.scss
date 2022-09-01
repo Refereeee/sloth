@@ -1,0 +1,65 @@
+.root{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.imgWrapper{
+  display: flex;
+}
+
+.img{
+  width: 200px;
+}
+
+.nav{
+  display: grid;
+}
+
+.navLink{
+  display: flex;
+  cursor: pointer;
+}
+
+.listLinks{
+  display: flex;
+  gap: 2rem;
+}
+
+.tabs{
+  display: flex;
+  gap: 2rem;
+}
+
+.linkCart{
+  color: var(--clr-black);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.cart{
+  position: relative;
+}
+
+.cartSpan{
+  display: flex;
+  width: 1.2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--clr-primary-3);
+  color: var(--clr-white);
+  position: absolute;
+  left: 1.5rem;
+  top: -0.5rem;
+}
+
+.login{
+  display: flex;
+  gap: 0.5rem;
+}
+
+.register{
+  display: flex;
+  gap: 0.5rem;
+}

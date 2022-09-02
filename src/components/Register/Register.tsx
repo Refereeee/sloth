@@ -1,12 +1,14 @@
 /* eslint-disable */
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from "../Register/Register.module.scss";
 import {useAppDispatch} from "../../redux/hooks";
 import {useSelector} from "react-redux";
 
 import {
-    changeLoginValue,
-    changePasswordValue,
+    changeButtonValue,
+    changeLoginFlagValue,
+    changeLoginValue, changePasswordFlagValue,
+    changePasswordValue, changeRepeatPasswordFlagValue,
     changeRepeatPasswordValue,
     selectReg
 } from "../../redux/slice/registerSlice";
@@ -15,7 +17,15 @@ const Register = () => {
 
     const dispatch = useAppDispatch()
 
-    const {login, password, repeatPassword} = useSelector(selectReg)
+    const {
+        login,
+        password,
+        repeatPassword,
+        loginFlag,
+        passwordFlag,
+        repeatPasswordFlag,
+        buttonValue
+    } = useSelector(selectReg)
     const useControlLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(changeLoginValue(event.target.value))
     }
@@ -25,18 +35,46 @@ const Register = () => {
     const controlRepeatPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(changeRepeatPasswordValue(event.target.value))
     }
+    const checkValidateLogin = () => login.length < 2 ? dispatch(changeLoginFlagValue(true)) : dispatch(changeLoginFlagValue(false))
+    const checkValidatePassword = () => password.length < 2 ? dispatch(changePasswordFlagValue(true)) : dispatch(changePasswordFlagValue(false))
+    const checkValidateRepeatPassword = () => password.length < 2 ? dispatch(changeRepeatPasswordFlagValue(true)) : dispatch(changeRepeatPasswordFlagValue(false))
 
+
+    useEffect(() => {
+        if (login.length > 0) {
+            checkValidateLogin()
+        }
+        if (password.length > 0) {
+            checkValidatePassword()
+        }
+        if (repeatPassword.length > 0) {
+            checkValidateRepeatPassword()
+        }
+        if (login.length >= 2 && password.length >= 2 && password === repeatPassword) {
+            dispatch(changeButtonValue(false))
+        }
+    }, [login, password, repeatPassword])
 
     return (
         <div className={styles.wrapper}>
             <label className={styles.label}>Логин</label>
-            <input className={styles.input} placeholder="Логин" value={login}
-                   onChange={event => useControlLogin(event)}/>
+            {loginFlag && <span className={styles.spanError}>Недостаточное количество символов</span>}
+            <input className={loginFlag ? styles.input + " " + styles.notValid : styles.input} placeholder="Логин"
+                   value={login}
+                   onChange={useControlLogin} onBlur={() => checkValidateLogin()}/>
             <label className={styles.label}>Пароль</label>
-            <input className={styles.input} value={password} onChange={event => controlPassword(event)} placeholder="Пароль"/>
+            {passwordFlag && <span className={styles.spanError}>Недопустимый пароль</span>}
+            <input className={passwordFlag ? styles.input + " " + styles.notValid : styles.input}
+                   onBlur={() => checkValidatePassword()} value={password} type="password"
+                   onChange={event => controlPassword(event)}
+                   placeholder="Пароль"/>
             <label className={styles.label}>Повторите пароль </label>
-            <input className={styles.input} value={repeatPassword} onChange={event => controlRepeatPassword(event)} placeholder="Пароль"/>
-            <input className={styles.btn} type='button' value="Регистрация"/>
+            {repeatPasswordFlag && password !== repeatPassword &&
+                <span className={styles.spanError}>Недостаточное количество символов</span>}
+            <input className={styles.input} value={repeatPassword} type="password"
+                   onBlur={() => checkValidateRepeatPassword()} onChange={event => controlRepeatPassword(event)}
+                   placeholder="Пароль"/>
+            <input className={styles.btn} type='button' value="Регистрация" disabled={buttonValue}/>
         </div>
     );
 };

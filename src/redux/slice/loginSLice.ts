@@ -3,37 +3,40 @@ import type {PayloadAction} from '@reduxjs/toolkit'
 import type {RootState} from '../store'
 import getLocalStorageItems from "./functions/getLocalStorageItems";
 import isValidLog from "./functions/isValidLog";
+import getCurrentUserFind from "./functions/currentUser";
 
 
 interface CounterState {
     login: string,
     password: string,
-    repeatPassword: string,
     loginFlag: boolean,
     passwordFlag: boolean,
-    repeatPasswordFlag: boolean,
     buttonValue: boolean,
     items: any,
-    registerFlag: boolean,
+    loginSuccessFlag: boolean,
+    currentUserFind: any
 }
 
 const getLocalItems = getLocalStorageItems()
+const getLocalUser = getCurrentUserFind()
 
 const initialState: CounterState = {
     login: '',
     password: '',
-    repeatPassword: '',
     loginFlag: false,
     passwordFlag: false,
-    repeatPasswordFlag: false,
     buttonValue: true,
     items: getLocalItems,
-    registerFlag: false,
+    loginSuccessFlag: false,
+    currentUserFind: getLocalUser,
 }
 
+// const checkLoginParams = (stateItems, login, password) => {
+//
+// }
 
-export const registerSlice = createSlice({
-    name: 'register',
+export const loginSlice = createSlice({
+    name: 'login',
     // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
@@ -43,17 +46,11 @@ export const registerSlice = createSlice({
         changePasswordValue: (state, action: PayloadAction<string>) => {
             state.password = action.payload
         },
-        changeRepeatPasswordValue: (state, action: PayloadAction<string>) => {
-            state.repeatPassword = action.payload
-        },
         changeLoginFlagValue: (state, action: PayloadAction<boolean>) => {
             state.loginFlag = action.payload
         },
         changePasswordFlagValue: (state, action: PayloadAction<boolean>) => {
             state.passwordFlag = action.payload
-        },
-        changeRepeatPasswordFlagValue: (state, action: PayloadAction<boolean>) => {
-            state.repeatPasswordFlag = action.payload
         },
         changeButtonValue: (state, action: PayloadAction<boolean>) => {
             state.buttonValue = action.payload
@@ -62,12 +59,12 @@ export const registerSlice = createSlice({
             if (isValidLog(state.items, action.payload)) {
                 state.items.push(action.payload)
                 localStorage.setItem('items', JSON.stringify(state.items))
-                state.registerFlag = true
+                // state.registerFlag = true
             }
         },
-        registerFlagToOff: (state) => {
-            state.registerFlag = false
-        },
+        // registerFlagToOff: (state) => {
+        //     state.registerFlag = false
+        // },
 
         // Use the PayloadAction type to declare the contents of `action.payload`
         // incrementByAmount: (state, action: PayloadAction<number>) => {
@@ -78,17 +75,13 @@ export const registerSlice = createSlice({
 
 export const {
     changeLoginValue,
-    changeRepeatPasswordValue,
     changePasswordValue,
     changeLoginFlagValue,
     changePasswordFlagValue,
-    changeRepeatPasswordFlagValue,
-    changeButtonValue,
-    setLocalStorageItem,
-    registerFlagToOff
-} = registerSlice.actions
+    changeButtonValue
+} = loginSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectReg = (state: RootState) => state.register
+export const selectReg = (state: RootState) => state.login
 
-export default registerSlice.reducer
+export default loginSlice.reducer

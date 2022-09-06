@@ -7,13 +7,15 @@ import {
     changeLoginFlagValue,
     changeLoginValue,
     changePasswordFlagValue,
-    changePasswordValue,
-    selectReg,
-    // setLocalStorageItem
+    changePasswordValue, fetchUserByImage,
+    selectLog,
+    setLocalStorageItem
 } from "../../redux/slice/loginSLice";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const {
         login,
@@ -21,7 +23,8 @@ const Login = () => {
         loginFlag,
         passwordFlag,
         buttonValue,
-    } = useSelector(selectReg)
+        headerImageFlag,
+    } = useSelector(selectLog)
     const useControlLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(changeLoginValue(event.target.value))
     }
@@ -31,9 +34,9 @@ const Login = () => {
     const checkValidateLogin = () => login.length < 2 ? dispatch(changeLoginFlagValue(true)) : dispatch(changeLoginFlagValue(false))
     const checkValidatePassword = () => password.length < 2 ? dispatch(changePasswordFlagValue(true)) : dispatch(changePasswordFlagValue(false))
 
-    const clickLocalStorageData = (event:React.MouseEvent<HTMLInputElement>) => {
+    const clickLocalStorageData = (event: React.MouseEvent<HTMLInputElement>) => {
         event.preventDefault()
-        // dispatch(setLocalStorageItem(`${login} ${password}`))
+        dispatch(setLocalStorageItem(`${login} ${password}`))
     }
 
     useEffect(() => {
@@ -51,7 +54,13 @@ const Login = () => {
                 // dispatch(registerFlagToOff())
             },3000)
         }
-    }, [login, password,loginFlag])
+        if(headerImageFlag) {
+            dispatch(fetchUserByImage());
+            navigate('/')
+        }
+
+    }, [login, password,loginFlag,headerImageFlag])
+
 
     return (
         <form>

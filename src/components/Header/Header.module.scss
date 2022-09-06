@@ -29,6 +29,7 @@
 .tabs{
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .linkCart{
@@ -62,4 +63,18 @@
 .register{
   display: flex;
   gap: 0.5rem;
+}
+.imgLogin{
+  border-radius: 50%;
+}
+
+.loginName{
+  display: block;
+  text-align: center;
+}
+
+.loginOut{
+  position: absolute;
+  left: 67px;
+  top: 23px;
 }

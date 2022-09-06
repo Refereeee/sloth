@@ -5,10 +5,28 @@ import {BsCartFill} from "react-icons/bs";
 import {CgLogIn} from "react-icons/cg";
 import {FaUserPlus} from "react-icons/fa";
 import {Link, useLocation} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {changeImageFlagFalse, changeImageFlagTrue, selectLog} from "../../redux/slice/loginSLice";
+import {FiLogOut} from "react-icons/fi";
+import {useAppDispatch} from "../../redux/hooks";
 
 const Header = () => {
 
-    const { pathname } = useLocation();
+    const dispatch = useAppDispatch()
+
+    const {headerImageFlag, image, login, loadingImgFlag,currentUserFind} = useSelector(selectLog)
+
+    useEffect(()=>{
+        if(image){
+            dispatch(changeImageFlagTrue())
+        }
+    },[])
+
+    const onClickLogOut = () =>{
+        dispatch(changeImageFlagFalse())
+    }
+
+    const {pathname} = useLocation();
 
 
     return (
@@ -24,6 +42,7 @@ const Header = () => {
                 </ul>
             </div>
             <div className={styles.tabs}>
+
                 <a href="#" className={styles.linkCart}>
                     <h4>Cart</h4>
                     <span className={styles.cart}>
@@ -31,17 +50,24 @@ const Header = () => {
                         <span className={styles.cartSpan}>0</span>
                     </span>
                 </a>
-                {pathname!== '/login' &&
+                {pathname !== '/login' && !headerImageFlag &&
                     <Link to='login' className={styles.login}>
                         <h4>Login</h4>
                         <CgLogIn size="2rem"/>
                     </Link>
                 }
-                {pathname !== '/register' &&
+                {pathname !== '/register' && !headerImageFlag &&
                     <Link to='/register' className={styles.register}>
                         <h4>Register</h4>
                         <FaUserPlus size='2rem'/>
                     </Link>
+                }
+                { loadingImgFlag ? <span>Загрузка...</span> :
+                     headerImageFlag && <div style={{position:'relative'}}>
+                        <img src={image} className={styles.imgLogin} alt="loginImg"/>
+                        <span className={styles.loginName}>{currentUserFind}</span>
+                        <FiLogOut className={styles.loginOut} size='2rem' onClick={onClickLogOut}/>
+                    </div>
                 }
             </div>
         </div>
@@ -49,3 +75,7 @@ const Header = () => {
 };
 
 export default Header;
+
+
+//TODO Очистка полей ввода при переходе с Логина на регистрацию и т.д.
+//TODO Уведомление о регистрации и логине

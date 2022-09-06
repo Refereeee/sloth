@@ -1,10 +1,18 @@
-import {createSlice} from '@reduxjs/toolkit'
+import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import type {RootState} from '../store'
 import getLocalStorageItems from "./functions/getLocalStorageItems";
-import isValidLog from "./functions/isValidLog";
-import getCurrentUserFind from "./functions/currentUser";
+import getCurrentUserFind, {getLoginImage, validLogin} from "./functions/currentUser";
 
+
+export const fetchUserByImage = createAsyncThunk(
+    'users/fetchByIdStatus',
+    async () => {
+        const response = await fetch("https://randomuser.me/api")
+        const data = await response.json()
+        return data.results[0].picture.thumbnail
+    }
+)
 
 interface CounterState {
     login: string,
@@ -14,11 +22,15 @@ interface CounterState {
     buttonValue: boolean,
     items: any,
     loginSuccessFlag: boolean,
-    currentUserFind: any
+    currentUserFind: any,
+    image: any,
+    headerImageFlag: boolean,
+    loadingImgFlag: boolean
 }
 
 const getLocalItems = getLocalStorageItems()
 const getLocalUser = getCurrentUserFind()
+const getImageLocalStorage = getLoginImage()
 
 const initialState: CounterState = {
     login: '',
@@ -29,15 +41,13 @@ const initialState: CounterState = {
     items: getLocalItems,
     loginSuccessFlag: false,
     currentUserFind: getLocalUser,
+    image: getImageLocalStorage,
+    headerImageFlag: false,
+    loadingImgFlag: false
 }
-
-// const checkLoginParams = (stateItems, login, password) => {
-//
-// }
 
 export const loginSlice = createSlice({
     name: 'login',
-    // `createSlice` will infer the state type from the `initialState` argument
     initialState,
     reducers: {
         changeLoginValue: (state, action: PayloadAction<string>) => {
@@ -56,20 +66,36 @@ export const loginSlice = createSlice({
             state.buttonValue = action.payload
         },
         setLocalStorageItem: (state, action: PayloadAction<any>) => {
-            if (isValidLog(state.items, action.payload)) {
-                state.items.push(action.payload)
-                localStorage.setItem('items', JSON.stringify(state.items))
-                // state.registerFlag = true
+            if (validLogin(state.items, action.payload)) {
+                state.currentUserFind = action.payload.split(' ').slice(0, 1);
+                localStorage.setItem('currentUser', state.currentUserFind)
+                state.headerImageFlag = true
             }
+        },
+        changeImageFlagTrue: (state)=>{
+            state.headerImageFlag = true;
+        },
+        changeImageFlagFalse: (state)=>{
+            state.headerImageFlag = false;
+            localStorage.removeItem('loginImage');
+            localStorage.removeItem('currentUser');
         },
         // registerFlagToOff: (state) => {
         //     state.registerFlag = false
         // },
 
-        // Use the PayloadAction type to declare the contents of `action.payload`
-        // incrementByAmount: (state, action: PayloadAction<number>) => {
-        //     state.value += action.payload
-        // },
+    },
+    extraReducers: (builder) => {
+        // Add reducers for additional action types here, and handle loading state as needed
+        builder.addCase(fetchUserByImage.pending, (state, action) => {
+            state.loadingImgFlag = true;
+        })
+        builder.addCase(fetchUserByImage.fulfilled, (state, action) => {
+            state.loadingImgFlag = false;
+            state.image = action.payload
+            localStorage.setItem('loginImage', state.image)
+
+        })
     },
 })
 
@@ -78,10 +104,13 @@ export const {
     changePasswordValue,
     changeLoginFlagValue,
     changePasswordFlagValue,
-    changeButtonValue
+    changeButtonValue,
+    setLocalStorageItem,
+    changeImageFlagTrue,
+    changeImageFlagFalse
 } = loginSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectReg = (state: RootState) => state.login
+export const selectLog = (state: RootState) => state.login
 
 export default loginSlice.reducer

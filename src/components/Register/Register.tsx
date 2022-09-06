@@ -39,7 +39,7 @@ const Register = () => {
     const checkValidateLogin = () => login.length < 2 ? dispatch(changeLoginFlagValue(true)) : dispatch(changeLoginFlagValue(false))
     const checkValidatePassword = () => password.length < 2 ? dispatch(changePasswordFlagValue(true)) : dispatch(changePasswordFlagValue(false))
     const checkValidateRepeatPassword = () => password.length < 2 ? dispatch(changeRepeatPasswordFlagValue(true)) : dispatch(changeRepeatPasswordFlagValue(false))
-    const clickEnterLocalStorageData = (event:React.MouseEvent<HTMLInputElement>) => {
+    const clickEnterLocalStorageData = (event: React.MouseEvent<HTMLInputElement>) => {
         event.preventDefault()
         // console.log('123')
         dispatch(setLocalStorageItem(`${login} ${password}`))
@@ -60,17 +60,17 @@ const Register = () => {
         if (login.length >= 2 && password.length >= 2 && password === repeatPassword) {
             dispatch(changeButtonValue(false))
         }
-        if(registerFlag){
-            setInterval(()=>{
+        if (registerFlag) {
+            setInterval(() => {
                 dispatch(registerFlagToOff())
-            },3000)
+            }, 3000)
         }
-    }, [login, password, repeatPassword,registerFlag])
+    }, [login, password, repeatPassword, registerFlag])
 
     return (
         <form>
             <div className={styles.wrapper}>
-                {registerFlag && <div style={{padding:"2rem",backgroundColor:"green"}}>регистрация успешна</div>}
+                {registerFlag && <div style={{padding: "2rem", backgroundColor: "green"}}>регистрация успешна</div>}
                 <label className={styles.label}>Логин</label>
                 {loginFlag && <span className={styles.spanError}>Недостаточное количество символов</span>}
                 <input className={loginFlag ? styles.input + " " + styles.notValid : styles.input} placeholder="Логин"
@@ -88,7 +88,8 @@ const Register = () => {
                 <input className={styles.input} value={repeatPassword} type="password"
                        onBlur={() => checkValidateRepeatPassword()} onChange={event => controlRepeatPassword(event)}
                        placeholder="Пароль"/>
-                <input className={styles.btn} type='submit' value="Регистрация" disabled={buttonValue}  onClick={clickEnterLocalStorageData}/>
+                <input className={styles.btn} type='submit' value="Регистрация" disabled={buttonValue}
+                       onClick={clickEnterLocalStorageData}/>
             </div>
         </form>
     );

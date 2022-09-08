@@ -21,11 +21,12 @@ interface CounterState {
     passwordFlag: boolean,
     buttonValue: boolean,
     items: any,
-    loginSuccessFlag: boolean,
     currentUserFind: any,
     image: any,
     headerImageFlag: boolean,
-    loadingImgFlag: boolean
+    loadingImgFlag: boolean,
+    loginSuccess: boolean,
+    loginFail: boolean
 }
 
 const getLocalItems = getLocalStorageItems()
@@ -39,11 +40,12 @@ const initialState: CounterState = {
     passwordFlag: false,
     buttonValue: true,
     items: getLocalItems,
-    loginSuccessFlag: false,
     currentUserFind: getLocalUser,
     image: getImageLocalStorage,
     headerImageFlag: false,
-    loadingImgFlag: false
+    loadingImgFlag: false,
+    loginSuccess: false,
+    loginFail:false
 }
 
 export const loginSlice = createSlice({
@@ -67,24 +69,37 @@ export const loginSlice = createSlice({
         },
         setLocalStorageItem: (state, action: PayloadAction<any>) => {
             if (validLogin(state.items, action.payload)) {
+                state.loginSuccess = true;
                 state.currentUserFind = action.payload.split(' ').slice(0, 1);
                 localStorage.setItem('currentUser', state.currentUserFind)
-                state.headerImageFlag = true
+                state.headerImageFlag = true;
+                state.login = ''
+                state.password = ''
+            }
+            else{
+                state.loginFail=true
             }
         },
-        changeImageFlagTrue: (state)=>{
+        changeImageFlagTrue: (state) => {
             state.headerImageFlag = true;
         },
-        changeImageFlagFalse: (state)=>{
+        changeImageFlagFalse: (state) => {
             state.headerImageFlag = false;
             localStorage.removeItem('loginImage');
             localStorage.removeItem('currentUser');
+            state.image=''
         },
-        // registerFlagToOff: (state) => {
-        //     state.registerFlag = false
-        // },
-
-    },
+        setLoginSuccessToFalse: (state) => {
+            state.loginSuccess = false
+        },
+        clearInputFields:(state)=>{
+            state.login='';
+            state.password='';
+        },
+        setLoginFailToggle:(state)=>{
+            state.loginFail=!state.loginFail
+        },
+},
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
         builder.addCase(fetchUserByImage.pending, (state, action) => {
@@ -92,9 +107,10 @@ export const loginSlice = createSlice({
         })
         builder.addCase(fetchUserByImage.fulfilled, (state, action) => {
             state.loadingImgFlag = false;
-            state.image = action.payload
+            if(!state.image) {
+                state.image = action.payload
+            }
             localStorage.setItem('loginImage', state.image)
-
         })
     },
 })
@@ -107,7 +123,10 @@ export const {
     changeButtonValue,
     setLocalStorageItem,
     changeImageFlagTrue,
-    changeImageFlagFalse
+    changeImageFlagFalse,
+    setLoginSuccessToFalse,
+    clearInputFields,
+    setLoginFailToggle
 } = loginSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type

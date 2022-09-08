@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styles from "../Register/Register.module.scss";
 import {useAppDispatch} from "../../redux/hooks";
 import {useSelector} from "react-redux";
@@ -9,9 +9,10 @@ import {
     changeLoginFlagValue,
     changeLoginValue, changePasswordFlagValue,
     changePasswordValue, changeRepeatPasswordFlagValue,
-    changeRepeatPasswordValue, registerFlagToOff,
+    changeRepeatPasswordValue, noticeFlagToOff, registerFlagToOff,
     selectReg, setLocalStorageItem,
 } from "../../redux/slice/registerSlice";
+import {useNavigate} from "react-router-dom";
 
 const Register = () => {
 
@@ -25,8 +26,14 @@ const Register = () => {
         passwordFlag,
         repeatPasswordFlag,
         buttonValue,
-        registerFlag
+        registerFlag,
+        noticeFlag
     } = useSelector(selectReg)
+
+    const navigate = useNavigate()
+
+
+
     const useControlLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(changeLoginValue(event.target.value))
     }
@@ -36,14 +43,15 @@ const Register = () => {
     const controlRepeatPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(changeRepeatPasswordValue(event.target.value))
     }
+
     const checkValidateLogin = () => login.length < 2 ? dispatch(changeLoginFlagValue(true)) : dispatch(changeLoginFlagValue(false))
     const checkValidatePassword = () => password.length < 2 ? dispatch(changePasswordFlagValue(true)) : dispatch(changePasswordFlagValue(false))
     const checkValidateRepeatPassword = () => password.length < 2 ? dispatch(changeRepeatPasswordFlagValue(true)) : dispatch(changeRepeatPasswordFlagValue(false))
+
+
     const clickEnterLocalStorageData = (event: React.MouseEvent<HTMLInputElement>) => {
         event.preventDefault()
-        // console.log('123')
         dispatch(setLocalStorageItem(`${login} ${password}`))
-        // console.log(items[0])
     }
 
 
@@ -61,16 +69,34 @@ const Register = () => {
             dispatch(changeButtonValue(false))
         }
         if (registerFlag) {
-            setInterval(() => {
+            setTimeout(() => {
                 dispatch(registerFlagToOff())
+                navigate('/login')
+            }, 5000)
+        }
+        if(noticeFlag){
+            setTimeout(() => {
+                dispatch(noticeFlagToOff())
             }, 3000)
         }
-    }, [login, password, repeatPassword, registerFlag])
+    }, [login, password, repeatPassword, registerFlag,noticeFlag])
+
+
 
     return (
         <form>
+            <h2 style={{textAlign: "center"}}>Регистрация</h2>
             <div className={styles.wrapper}>
-                {registerFlag && <div style={{padding: "2rem", backgroundColor: "green"}}>регистрация успешна</div>}
+                {registerFlag &&
+                    <div style={{padding: "2rem", backgroundColor: "green", borderRadius: "50%"}}>регистрация
+                        успешна</div>}
+                {noticeFlag && <div style={{
+                    padding: "2rem",
+                    backgroundColor: "red",
+                    borderRadius: "50px",
+                    width: "300px",
+                    paddingRight: "2rem"
+                }}>Такой пользователь уже существует</div>}
                 <label className={styles.label}>Логин</label>
                 {loginFlag && <span className={styles.spanError}>Недостаточное количество символов</span>}
                 <input className={loginFlag ? styles.input + " " + styles.notValid : styles.input} placeholder="Логин"
@@ -89,7 +115,7 @@ const Register = () => {
                        onBlur={() => checkValidateRepeatPassword()} onChange={event => controlRepeatPassword(event)}
                        placeholder="Пароль"/>
                 <input className={styles.btn} type='submit' value="Регистрация" disabled={buttonValue}
-                       onClick={clickEnterLocalStorageData}/>
+                       onClick={clickEnterLocalStorageData} />
             </div>
         </form>
     );

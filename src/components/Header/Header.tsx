@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from './Header.module.scss'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/fifa-logo2.png'
 import {BsCartFill} from "react-icons/bs";
 import {CgLogIn} from "react-icons/cg";
 import {FaUserPlus} from "react-icons/fa";
@@ -14,10 +14,10 @@ const Header = () => {
 
     const dispatch = useAppDispatch()
 
-    const {headerImageFlag, image, login, loadingImgFlag,currentUserFind} = useSelector(selectLog)
+    const {headerImageFlag, image, loadingImgFlag,currentUserFind} = useSelector(selectLog)
 
     useEffect(()=>{
-        if(image){
+        if(image) {
             dispatch(changeImageFlagTrue())
         }
     },[])
@@ -31,18 +31,10 @@ const Header = () => {
 
     return (
         <div className={styles.root}>
-            <div className={styles.imgWrapper}>
-                <img src={logo} className={styles.img} alt='comfy'/>
-            </div>
-            <div className={styles.nav}>
-                <ul className={styles.listLinks}>
-                    <li className={styles.navLink}>Home</li>
-                    <li className={styles.navLink}>About</li>
-                    <li className={styles.navLink}>Products</li>
-                </ul>
+            <div>
+                <input type="text" placeholder='Search'/>
             </div>
             <div className={styles.tabs}>
-
                 <a href="#" className={styles.linkCart}>
                     <h4>Cart</h4>
                     <span className={styles.cart}>
@@ -76,6 +68,6 @@ const Header = () => {
 
 export default Header;
 
-
+//TODO В случае неправильного ввода логина и регистрации показывать уведомление
 //TODO Очистка полей ввода при переходе с Логина на регистрацию и т.д.
 //TODO Уведомление о регистрации и логине

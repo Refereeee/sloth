@@ -15,6 +15,7 @@ interface CounterState {
     buttonValue: boolean,
     items: any,
     registerFlag: boolean,
+    noticeFlag:boolean
 }
 
 const getLocalItems = getLocalStorageItems()
@@ -29,6 +30,7 @@ const initialState: CounterState = {
     buttonValue: true,
     items: getLocalItems,
     registerFlag: false,
+    noticeFlag:false
 }
 
 
@@ -64,15 +66,17 @@ export const registerSlice = createSlice({
                 localStorage.setItem('items', JSON.stringify(state.items))
                 state.registerFlag = true
             }
+            else{
+                state.noticeFlag = true
+            }
         },
         registerFlagToOff: (state) => {
             state.registerFlag = false
         },
+        noticeFlagToOff:(state) => {
+            state.noticeFlag = false
+        }
 
-        // Use the PayloadAction type to declare the contents of `action.payload`
-        // incrementByAmount: (state, action: PayloadAction<number>) => {
-        //     state.value += action.payload
-        // },
     },
 })
 
@@ -85,7 +89,8 @@ export const {
     changeRepeatPasswordFlagValue,
     changeButtonValue,
     setLocalStorageItem,
-    registerFlagToOff
+    registerFlagToOff,
+    noticeFlagToOff
 } = registerSlice.actions
 
 // Other code such as selectors can use the imported `RootState` type

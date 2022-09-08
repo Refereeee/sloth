@@ -1,20 +1,13 @@
 .root{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
-}
-
-.imgWrapper{
   display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 5rem 0 2rem;
+  background-color: rgb(14,14,17,0.6);
+  width: 90%;
+  height: 4vw;
 }
 
-.img{
-  width: 200px;
-}
 
-.nav{
-  display: grid;
-}
 
 .navLink{
   display: flex;

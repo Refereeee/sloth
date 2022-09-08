@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import styles from'./Login.module.scss'
+import React, {useEffect, useRef} from 'react';
+import styles from './Login.module.scss'
 import {useAppDispatch} from "../../redux/hooks";
 import {useSelector} from "react-redux";
 import {
@@ -7,15 +7,18 @@ import {
     changeLoginFlagValue,
     changeLoginValue,
     changePasswordFlagValue,
-    changePasswordValue, fetchUserByImage,
+    changePasswordValue, clearInputFields, fetchUserByImage,
     selectLog,
-    setLocalStorageItem
+    setLocalStorageItem, setLoginFailToggle, setLoginSuccessToFalse
 } from "../../redux/slice/loginSLice";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const Login = () => {
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
+
+    const {pathname} = useLocation();
+
 
     const {
         login,
@@ -24,7 +27,12 @@ const Login = () => {
         passwordFlag,
         buttonValue,
         headerImageFlag,
+        loginSuccess,
+        loginFail
     } = useSelector(selectLog)
+
+
+
     const useControlLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(changeLoginValue(event.target.value))
     }
@@ -34,10 +42,13 @@ const Login = () => {
     const checkValidateLogin = () => login.length < 2 ? dispatch(changeLoginFlagValue(true)) : dispatch(changeLoginFlagValue(false))
     const checkValidatePassword = () => password.length < 2 ? dispatch(changePasswordFlagValue(true)) : dispatch(changePasswordFlagValue(false))
 
+
+
     const clickLocalStorageData = (event: React.MouseEvent<HTMLInputElement>) => {
         event.preventDefault()
         dispatch(setLocalStorageItem(`${login} ${password}`))
     }
+
 
     useEffect(() => {
         if (login.length > 0) {
@@ -49,35 +60,43 @@ const Login = () => {
         if (login.length >= 2 && password.length >= 2) {
             dispatch(changeButtonValue(false))
         }
-        if(loginFlag){
-            setInterval(()=>{
-                // dispatch(registerFlagToOff())
+        if (headerImageFlag) {
+            dispatch(fetchUserByImage());
+        }
+        if (loginSuccess) {
+            setTimeout(()=>{
+                navigate('/')
+                dispatch(setLoginSuccessToFalse());
+            },1000)
+        }
+        if(loginFail){
+            console.log(loginFail)
+            setTimeout( ()=>{
+                dispatch(setLoginFailToggle())
             },3000)
         }
-        if(headerImageFlag) {
-            dispatch(fetchUserByImage());
-            navigate('/')
-        }
 
-    }, [login, password,loginFlag,headerImageFlag])
+    }, [login, password, loginFlag, headerImageFlag, loginSuccess,pathname,loginFail])
 
 
     return (
         <form>
+            <h2 style={{textAlign: "center"}}>Login</h2>
             <div className={styles.wrapper}>
-                {/*{registerFlag && <div style={{padding:"2rem",backgroundColor:"green"}}>регистрация успешна</div>}*/}
-                <label className={styles.label}>Логин</label>
+                {loginSuccess && <div style={{padding: "2rem", backgroundColor: "green"}}>Авторизация успешна</div>}
+                {loginFail && <div style={{padding: "2rem", backgroundColor: "green"}}>Неправильный логин или пароль</div>}
                 {loginFlag && <span className={styles.spanError}>Недостаточное количество символов</span>}
-                <input className={loginFlag ? styles.input + " " + styles.notValid : styles.input} placeholder="Логин"
+                <input className={loginFlag ? styles.input + " " + styles.notValid : styles.input}
+                       placeholder="Enter login"
                        value={login}
-                       onChange={useControlLogin} onBlur={() => checkValidateLogin()}/>
-                <label className={styles.label}>Пароль</label>
+                       onChange={useControlLogin} onBlur={() => checkValidateLogin()} />
                 {passwordFlag && <span className={styles.spanError}>Недопустимый пароль</span>}
                 <input className={passwordFlag ? styles.input + " " + styles.notValid : styles.input}
-                       onBlur={() => checkValidatePassword()} value={password} type="password"
+                       onBlur={() => checkValidatePassword()}  value={password} type="password"
                        onChange={event => controlPassword(event)}
-                       placeholder="Пароль"/>
-                <input className={styles.btn} type='submit' value="Войти" disabled={buttonValue}  onClick={clickLocalStorageData}/>
+                       placeholder="Enter password"/>
+                <input className={styles.btn} type='submit' value="Войти" disabled={buttonValue}
+                       onClick={clickLocalStorageData}/>
             </div>
         </form>
     );

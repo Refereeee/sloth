@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from './Header.module.scss'
-import logo from '../../assets/fifa-logo2.png'
+import furniture from '../../assets/furniture.png'
 import {BsCartFill} from "react-icons/bs";
 import {CgLogIn} from "react-icons/cg";
 import {FaUserPlus} from "react-icons/fa";
@@ -31,8 +31,8 @@ const Header = () => {
 
     return (
         <div className={styles.root}>
-            <div>
-                <input type="text" placeholder='Search'/>
+            <div className={styles.imgWrapper}>
+                <img src={furniture} className={styles.img} alt='sloth'/>
             </div>
             <div className={styles.tabs}>
                 <a href="#" className={styles.linkCart}>
@@ -62,6 +62,7 @@ const Header = () => {
                     </div>
                 }
             </div>
+
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from './Header.module.scss'
-import furniture from '../../assets/furniture.png'
+import logo from '../../assets/logo.png'
 import {BsCartFill} from "react-icons/bs";
 import {CgLogIn} from "react-icons/cg";
 import {FaUserPlus} from "react-icons/fa";
@@ -32,7 +32,7 @@ const Header = () => {
     return (
         <div className={styles.root}>
             <div className={styles.imgWrapper}>
-                <img src={furniture} className={styles.img} alt='sloth'/>
+                <img src={logo} className={styles.img} alt='sloth'/>
             </div>
             <div className={styles.tabs}>
                 <a href="#" className={styles.linkCart}>

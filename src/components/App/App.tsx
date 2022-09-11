@@ -11,13 +11,11 @@ function App() {
         <div>
             <div className={styles.wrapper}>
                 <Header/>
-                <div style={{display:'flex'}}>
                     <Routes>
                         <Route path="/" element={<Home/>}/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/register" element={<Register/>}/>
                     </Routes>
-                </div>
             </div>
         </div>
     );

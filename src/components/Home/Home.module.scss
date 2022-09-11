@@ -1,0 +1,68 @@
+.headingWrapper{
+    background: #FFEDDF;
+}
+
+.heading{
+  margin: 0 auto;
+  width: 20%;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.searchFormWrapper{
+  padding: 4rem 0 0 0;
+}
+
+.productForm{
+  display: flex;
+  flex-direction: column;
+}
+
+.productsWrapper{
+  display: flex;
+}
+
+.products{
+  display: flex;
+}
+
+.inputSearch{
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding:12px 0 12px 44px;
+}
+
+.inputWrapper{
+  position: relative;
+}
+
+.inputIcon{
+  position: absolute;
+  left: 20px;
+  top: 12px;
+}
+
+.categories{
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.companies{
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.colors{
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.colorsList{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}

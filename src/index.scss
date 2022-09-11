@@ -57,9 +57,7 @@ body {
   background: var(--clr-white);
   line-height: 1.5;
   font-size: 0.875rem;
-  //width: var(--max-width);
-  margin: 0 auto;
-  color:var(--clr-white)
+  background-image: linear-gradient(to right, rgba(124, 230, 100, 0.58), rgba(180, 21, 82, 0.48)), url(./assets/main-background.jpg);
 }
 ul {
   list-style-type: none;

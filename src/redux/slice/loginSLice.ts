@@ -107,9 +107,9 @@ export const loginSlice = createSlice({
         })
         builder.addCase(fetchUserByImage.fulfilled, (state, action) => {
             state.loadingImgFlag = false;
-            if(!state.image) {
+            // if(!state.image) {
                 state.image = action.payload
-            }
+            // }
             localStorage.setItem('loginImage', state.image)
         })
     },

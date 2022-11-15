@@ -18,7 +18,8 @@ interface filterState {
     categories: string[],
     companies:object[],
     colors:string[],
-    products:any
+    products:any,
+    priceValue:number
 }
 
 
@@ -26,13 +27,17 @@ const initialState: filterState = {
     categories: [],
     companies:[],
     colors:[],
-    products:''
+    products:'',
+    priceValue:0
 }
 
 export const productsFilter = createSlice({
     name: 'productsFilter',
     initialState,
     reducers: {
+        setInputValue:(state,action:PayloadAction<string>)=>{
+            state.priceValue = Number(action.payload)
+        },
         // changeLoginValue: (state, action: PayloadAction<string>) => {
         //     state.login = action.payload
         // },
@@ -61,7 +66,7 @@ export const productsFilter = createSlice({
 
 export const {
     // changeLoginValue,
-
+    setInputValue
 } = productsFilter.actions
 
 // Other code such as selectors can use the imported `RootState` type

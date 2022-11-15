@@ -1,68 +1,95 @@
-.headingWrapper{
-    background: #FFEDDF;
+.headingWrapper {
+  background: #FFEDDF;
 }
 
-.heading{
+.heading {
   margin: 0 auto;
   width: 20%;
   padding: 3rem 0;
   text-align: center;
 }
 
-.searchFormWrapper{
+.searchFormWrapper {
   padding: 4rem 0 0 0;
 }
 
-.productForm{
+.productForm {
   display: flex;
   flex-direction: column;
 }
 
-.productsWrapper{
+.productsWrapper {
   display: flex;
 }
 
-.products{
+.products {
   display: flex;
 }
 
-.inputSearch{
+.inputSearch {
   background: #FFFFFF;
   border: 1px solid #000000;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  padding:12px 0 12px 44px;
+  padding: 12px 0 12px 44px;
 }
 
-.inputWrapper{
+.inputWrapper {
   position: relative;
 }
 
-.inputIcon{
+.inputIcon {
   position: absolute;
   left: 20px;
   top: 12px;
 }
 
-.categories{
+.categories {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  padding: 0 0 1.5rem 1.5rem;
 }
 
-.companies{
+.companies {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  padding: 0 0 1.5rem 1.5rem;
 }
 
-.colors{
+.colors {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  padding: 0 0 1.5rem 1.5rem;
 }
 
-.colorsList{
+.colorsList {
   display: flex;
   gap: 1rem;
   align-items: center;
+}
+
+.price {
+  gap: 0.3rem;
+  padding: 0 0 1.5rem 1.5rem;
+}
+
+.shiping{
+  display: flex;
+  align-items: center;
+}
+
+.shipingName{
+  padding-top: 1rem;
+  padding-right: 2rem;
+  padding-left: 1.5rem;
+}
+
+.filtersBtn{
+ padding-left: 1.5rem;
+}
+
+.productsItemsWrapper{
+  display: flex;
 }

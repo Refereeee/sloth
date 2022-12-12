@@ -80,8 +80,10 @@ const Login = () => {
 
 
     return (
-        <form>
-            <h2 style={{textAlign: "center"}}>Login</h2>
+        <form >
+            <div className={styles.formWrapper}>
+            <h2 style={{textAlign: "center",color:"black"}}>Login</h2>
+            </div>
             <div className={styles.wrapper}>
                 {loginSuccess && <div style={{padding: "2rem", backgroundColor: "green"}}>Авторизация успешна</div>}
                 {loginFail && <div style={{padding: "2rem", backgroundColor: "green"}}>Неправильный логин или пароль</div>}

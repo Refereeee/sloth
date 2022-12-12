@@ -6,20 +6,20 @@ import Login from "../Login/Login";
 import Register from "../Register/Register";
 import Home from "../Home/Home";
 import Sidebar from "../Sidebar/Sidebar";
-import Weekend from "../Weekend/Weekend";
+// import Weekend from "../Weekend/Weekend";
 import Divisions from "../Components/Divisions";
 
 function App() {
   return (
     <div>
       <div className={styles.wrapper}>
-          <Sidebar/>
           <Header/>
+          <Sidebar/>
           <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/login" element={<Login/>}/>
               <Route path="/register" element={<Register/>}/>
-              <Route path="/weekend" element={<Weekend/>}/>
+              {/*<Route path="/weekend" element={<Weekend/>}/>*/}
               <Route path="/divisions" element={<Divisions/>}/>
           </Routes>
       </div>

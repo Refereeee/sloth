@@ -1,10 +1,19 @@
-.root{
+.root {
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 5rem 0 2rem;
-  background-color: rgb(14,14,17,0.6);
-  width: 90%;
-  height: 4vw;
+  background-color: #0E0E11;
+  height: 6.37vw;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.imgWrapper{
+  display: flex;
+}
+
+.img{
+  width: 288px;
+  height: 111px;
 }
 
 
@@ -23,6 +32,7 @@
   display: flex;
   gap: 2rem;
   align-items: center;
+  padding-right: 4rem;
 }
 
 .linkCart{
@@ -33,6 +43,13 @@
 
 .cart{
   position: relative;
+  padding: 10px;
+  transition-duration: .2s;
+}
+
+.cart:hover{
+  background-color: #1E1E27;
+  border-radius: 5px;
 }
 
 .cartSpan{
@@ -44,19 +61,41 @@
   background-color: var(--clr-primary-3);
   color: var(--clr-white);
   position: absolute;
-  left: 1.5rem;
-  top: -0.5rem;
+  left: 1.9rem;
+  top: -0.1rem;
 }
 
 .login{
+  border:0.1px solid #87879E;
+  border-radius: 5px;
+  padding: 10px 10px 1px 10px;
+  justify-content: center;
+  display: flex;
+  gap: 0.5rem;
+  transition-duration: 0.2s;
+}
+
+.login:hover{
+  background-color: #1E1E27;
+  border: 1px solid #87879E;
+  border-radius: 5px;
+}
+
+.register{
+  border: 1px solid #87879E;
+  border-radius: 5px;
+  padding: 10px 10px 1px 10px;
+  justify-content: center;
   display: flex;
   gap: 0.5rem;
 }
 
-.register{
-  display: flex;
-  gap: 0.5rem;
+.register:hover{
+  background-color: #1E1E27;
+  border: 1px solid #87879E;
+  border-radius: 5px;
 }
+
 .imgLogin{
   border-radius: 50%;
 }

@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import styles from "./Sidebar.module.scss"
 import {SiFifa} from "react-icons/si";
 import {GiCagedBall, GiThunderball} from "react-icons/gi";
-import {Link} from "react-router-dom";
-import logo from "../../assets/fifa-logo2.png";
+import {Link, NavLink, useLocation} from "react-router-dom";
 
 
 const Sidebar = () => {
@@ -28,21 +27,27 @@ const Sidebar = () => {
         },
     ]
 
+    const [activate, setActivate] = useState(false)
+    const location = useLocation();
+
+    const clickActive = () => {
+        setActivate(true)
+    }
+
     return (
         <div className={styles.sidebarWrapper}>
-            <div className={styles.imgWrapper}>
-                <img src={logo} className={styles.img} alt='comfy'/>
-            </div>
+
             <div className={styles.nav}>
                 <div><h3 className={styles.heading}>Boost</h3>
                     <ul className={styles.listLinks}>
                         <>
-                            {objectForLinks.map(({img, linkName, linkTo}) => (
-                                <li className={styles.link}>
-                                    <Link to={linkTo} className={styles.weekend}>
-                                        <span>{img}</span>
+                            {objectForLinks.map(({img, linkName, linkTo, id}) => (
+                                <li className={styles.link}
+                                    onClick={() => clickActive()}>
+                                    <NavLink to={linkTo} key = {id} className={({isActive})=> isActive? styles.weekend && styles.activate : styles.weekend}>
+                                        <span className={styles.changeColor}>{img}</span>
                                         <span>{linkName}</span>
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             ))
                             }

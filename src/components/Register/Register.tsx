@@ -33,7 +33,6 @@ const Register = () => {
     const navigate = useNavigate()
 
 
-
     const useControlLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
         dispatch(changeLoginValue(event.target.value))
     }
@@ -74,18 +73,19 @@ const Register = () => {
                 navigate('/login')
             }, 5000)
         }
-        if(noticeFlag){
+        if (noticeFlag) {
             setTimeout(() => {
                 dispatch(noticeFlagToOff())
             }, 3000)
         }
-    }, [login, password, repeatPassword, registerFlag,noticeFlag])
-
+    }, [login, password, repeatPassword, registerFlag, noticeFlag])
 
 
     return (
         <form>
-            <h2 style={{textAlign: "center"}}>Регистрация</h2>
+            <div className={styles.formWrapper}>
+                <h2 style={{textAlign: "center", color: "black"}}>Регистрация</h2>
+            </div>
             <div className={styles.wrapper}>
                 {registerFlag &&
                     <div style={{padding: "2rem", backgroundColor: "green", borderRadius: "50%"}}>регистрация
@@ -115,7 +115,7 @@ const Register = () => {
                        onBlur={() => checkValidateRepeatPassword()} onChange={event => controlRepeatPassword(event)}
                        placeholder="Пароль"/>
                 <input className={styles.btn} type='submit' value="Регистрация" disabled={buttonValue}
-                       onClick={clickEnterLocalStorageData} />
+                       onClick={clickEnterLocalStorageData}/>
             </div>
         </form>
     );

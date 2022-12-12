@@ -9,7 +9,6 @@
 .navLink{
   display: flex;
   cursor: pointer;
-
 }
 
 .listLinks{
@@ -24,6 +23,12 @@
   display: flex;
   color:#FFFFDC;
   gap: 1rem;
+  padding: 1.5rem;
+}
+
+.weekend:hover{
+  outline: 0;
+  outline-offset: 0;
 }
 
 .heading{
@@ -32,23 +37,59 @@
 }
 
 
-.imgWrapper{
+.link {
+  border: 1px solid transparent;
+
+}
+
+.weekend span {
+  color:var(--clr-primary-11);
+
+}
+
+
+
+.weekend:hover{
+  background-color: #1E1E27;
+  //border: 1px solid black;
+  border-radius: 10px;
+  outline: 0;
+  outline-offset: 0;
+}
+
+.weekend:hover span:last-of-type{
+  color: var(--clr-white);
+}
+
+.weekend:hover .changeColor{
+  color:#FADFC3;
+}
+
+.activate span:last-of-type{
+  color: var(--clr-white);
+}
+
+.activate .changeColor{
+  color:gold;
+
+}
+
+.changeColor{
+  align-self: center;
   display: flex;
 }
 
-.img{
-  width: 260px;
-  height: 111px;
-  border-radius: 50%;
-}
-
-.link{
-  padding:1.5rem;
-  color:#FFFFDC;
-}
-
-.link:hover{
+.activate{
   background-color: #1E1E27;
   border: 1px solid black;
   border-radius: 10px;
+  outline: 0;
+  outline-offset: 0;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
 }
+
+//.link:hover span:last-of-type:hover{
+//  color: var(--clr-white);
+//}

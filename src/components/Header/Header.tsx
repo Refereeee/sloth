@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from './Header.module.scss'
-import logo from '../../assets/fifa-logo2.png'
+import logo from '../../assets/logo.png'
 import {BsCartFill} from "react-icons/bs";
 import {CgLogIn} from "react-icons/cg";
 import {FaUserPlus} from "react-icons/fa";
@@ -31,27 +31,29 @@ const Header = () => {
 
     return (
         <div className={styles.root}>
-            <div>
-                <input type="text" placeholder='Search'/>
+            <div className={styles.imgWrapper}>
+                <img src={logo} className={styles.img} alt='comfy'/>
             </div>
+            {/*<div>*/}
+            {/*    <input type="text" placeholder='Search'/>*/}
+            {/*</div>*/}
             <div className={styles.tabs}>
                 <a href="#" className={styles.linkCart}>
-                    <h4>Cart</h4>
                     <span className={styles.cart}>
-                        <BsCartFill size='2rem'/>
+                        <BsCartFill style={{color:"white"}} size='2rem'/>
                         <span className={styles.cartSpan}>0</span>
                     </span>
                 </a>
                 {pathname !== '/login' && !headerImageFlag &&
                     <Link to='login' className={styles.login}>
-                        <h4>Login</h4>
-                        <CgLogIn size="2rem"/>
+                        <h5 style={{color:"white"}}>Login</h5>
+                        <CgLogIn  color="white" size="1.5rem"/>
                     </Link>
                 }
                 {pathname !== '/register' && !headerImageFlag &&
                     <Link to='/register' className={styles.register}>
-                        <h4>Register</h4>
-                        <FaUserPlus size='2rem'/>
+                        <h5 style={{color:"white"}}>Register</h5>
+                        <FaUserPlus color="white" size="1.5rem" />
                     </Link>
                 }
                 { loadingImgFlag ? <span>Загрузка...</span> :

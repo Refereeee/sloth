@@ -7,7 +7,8 @@ import {Link, NavLink, useLocation} from "react-router-dom";
 
 const Sidebar = () => {
 
-    const objectForLinks = [{
+    const objectForLinks = [
+        {
         id: 1,
         img: <GiCagedBall/>,
         linkName: "Weekend League",
@@ -42,9 +43,9 @@ const Sidebar = () => {
                     <ul className={styles.listLinks}>
                         <>
                             {objectForLinks.map(({img, linkName, linkTo, id}) => (
-                                <li className={styles.link}
+                                <li  key = {id}
                                     onClick={() => clickActive()}>
-                                    <NavLink to={linkTo} key = {id} className={({isActive})=> isActive? styles.weekend && styles.activate : styles.weekend}>
+                                    <NavLink to={linkTo}  className={({isActive})=> isActive? styles.weekend && styles.activate : styles.weekend}>
                                         <span className={styles.changeColor}>{img}</span>
                                         <span>{linkName}</span>
                                     </NavLink>

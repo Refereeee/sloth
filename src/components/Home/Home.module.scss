@@ -1,0 +1,122 @@
+.mainPageWrapper {
+  background-image: linear-gradient(to right, rgba(124, 230, 100, 0.58), rgba(180, 21, 82, 0.48)), url(../../assets/home-background-2.jpg);
+  background-size: 100% 200%;
+  width: 83.5vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  animation: slide 30s infinite;
+}
+
+.mainPage {
+  max-width: 1280px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.swiperWrapper {
+  overflow: hidden;
+  width: 1260px;
+}
+
+.swiperArrows {
+  display: flex;
+  gap: 10px;
+  width: 100px;
+  margin: 0 auto;
+}
+
+.swiperBlocks {
+  display: flex;
+  gap: 20px;
+  position: relative;
+  //right: 760px;
+  transition: all .5s ease-out;
+}
+
+.swiperBlock {
+
+}
+
+.swiperRight {
+  transform: translate3d(-1260px, 0px, 0px);
+  display: flex;
+  gap: 20px;
+  position: relative;
+  transition: all .5s ease-out;
+}
+
+.swiperImage {
+  width: 400px;
+  height: 300px;
+}
+
+.swiperDescription{
+  position: absolute;
+  bottom: 74%;
+  padding: 0 0 0 20px;
+}
+
+.swiperBlock{
+  //position: absolute;
+}
+
+@keyframes slider-move-left {
+  from {
+    right: 760px;
+  }
+  to {
+    right: 0
+  }
+}
+
+@keyframes slider-move-right {
+  from {
+    right: 0;
+  }
+  to {
+    right: 760px
+  }
+}
+
+@keyframes slide {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  50% {
+    background-position: 0% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+.titleBlock {
+  padding: 40px 0px 0px 24px;
+}
+
+.title {
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 54px;
+}
+
+
+.description {
+  padding: 32px 0 0 24px;
+}
+
+.descriptionContent {
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  color: var(--clr-white);
+}
+
+.descriptionText {
+  display: block;
+}
+
+.contentWrapper {
+
+}
+

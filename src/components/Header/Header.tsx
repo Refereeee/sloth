@@ -14,15 +14,15 @@ const Header = () => {
 
     const dispatch = useAppDispatch()
 
-    const {headerImageFlag, image, loadingImgFlag,currentUserFind} = useSelector(selectLog)
+    const {headerImageFlag, image, loadingImgFlag, currentUserFind} = useSelector(selectLog)
 
-    useEffect(()=>{
-        if(image) {
+    useEffect(() => {
+        if (image) {
             dispatch(changeImageFlagTrue())
         }
-    },[])
+    }, [])
 
-    const onClickLogOut = () =>{
+    const onClickLogOut = () => {
         dispatch(changeImageFlagFalse())
     }
 
@@ -32,7 +32,9 @@ const Header = () => {
     return (
         <div className={styles.root}>
             <div className={styles.imgWrapper}>
-                <img src={logo} className={styles.img} alt='comfy'/>
+                <Link to=''>
+                    <img src={logo} className={styles.img} alt='comfy'/>
+                </Link>
             </div>
             {/*<div>*/}
             {/*    <input type="text" placeholder='Search'/>*/}
@@ -40,24 +42,24 @@ const Header = () => {
             <div className={styles.tabs}>
                 <a href="#" className={styles.linkCart}>
                     <span className={styles.cart}>
-                        <BsCartFill style={{color:"white"}} size='2rem'/>
+                        <BsCartFill style={{color: "white"}} size='2rem'/>
                         <span className={styles.cartSpan}>0</span>
                     </span>
                 </a>
                 {pathname !== '/login' && !headerImageFlag &&
                     <Link to='login' className={styles.login}>
-                        <h5 style={{color:"white"}}>Login</h5>
-                        <CgLogIn  color="white" size="1.5rem"/>
+                        <h5 style={{color: "white"}}>Login</h5>
+                        <CgLogIn color="white" size="1.5rem"/>
                     </Link>
                 }
                 {pathname !== '/register' && !headerImageFlag &&
                     <Link to='/register' className={styles.register}>
-                        <h5 style={{color:"white"}}>Register</h5>
-                        <FaUserPlus color="white" size="1.5rem" />
+                        <h5 style={{color: "white"}}>Register</h5>
+                        <FaUserPlus color="white" size="1.5rem"/>
                     </Link>
                 }
-                { loadingImgFlag ? <span>Загрузка...</span> :
-                     headerImageFlag && <div style={{position:'relative'}}>
+                {loadingImgFlag ? <span>Загрузка...</span> :
+                    headerImageFlag && <div style={{position: 'relative'}}>
                         <img src={image} className={styles.imgLogin} alt="loginImg"/>
                         <span className={styles.loginName}>{currentUserFind}</span>
                         <FiLogOut className={styles.loginOut} size='2rem' onClick={onClickLogOut}/>

@@ -128,16 +128,18 @@ const Home = () => {
                                 objectForLinks.map(({id, img, linkName, linkTo, price, firstLine, boughtLine}) =>
                                     (
                                         <div className={styles.swiperBlock}>
-                                            <Link to={linkTo}>
+                                            <Link to={linkTo} className={styles.swiperLink}>
                                                 <img className={styles.swiperImage} alt={linkName} src={img}/>
-                                                <div className={styles.swiperDescription}>
-                                                    <p className={styles.swiperName}>{linkName}</p>
-                                                    <p className={styles.swiperFirst}>{firstLine}</p>
-                                                    <p className={styles.swiperBought}>{boughtLine}</p>
-                                                </div>
-                                                <div className={styles.swiperSubDiscription}>
-                                                    <p className={styles.swiperPrice}>{price}</p>
-                                                    <button><Link to={linkTo}><BiRightArrowAlt/></Link></button>
+                                                <div className={styles.swiperContent}>
+                                                    <ul className={styles.swiperDescription}>
+                                                        <li className={styles.swiperName}>{linkName}</li>
+                                                        <li className={styles.swiperFirst}>{firstLine}</li>
+                                                        <li className={styles.swiperBought}>{boughtLine}</li>
+                                                    </ul>
+                                                    <div className={styles.swiperSubDiscription}>
+                                                        <button><Link to={linkTo}><BiRightArrowAlt/></Link></button>
+                                                        <p className={styles.swiperPrice}>{price}</p>
+                                                    </div>
                                                 </div>
                                             </Link>
                                         </div>

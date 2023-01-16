@@ -77,7 +77,8 @@ const Home = () => {
 
     const {
         sliderRight,
-        sliderLeft
+        leftDisabled,
+        rightDisabled
     } = useSelector(homeOptions)
 
     const slide = React.useRef<HTMLDivElement>(null)
@@ -117,10 +118,18 @@ const Home = () => {
                 </div>
                 <div className={styles.swiperWrapper}>
                     <div className={styles.swiperArrows}>
-                        <div className={styles.leftArrow} onClick={() => changeSlidePositionLeft()}><AiFillLeftCircle/>
-                        </div>
-                        <div className={styles.rightArrow} onClick={() => changeSlidePositionRight()}>
-                            <AiFillRightCircle/></div>
+                        <button className={styles.leftArrow} onClick={() => changeSlidePositionLeft()} disabled={leftDisabled}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="h-5 w-5 text-nl-2">
+                                <path fill="currentColor"
+                                      d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"></path>
+                            </svg>
+                        </button>
+                        <button className={styles.rightArrow} onClick={() => changeSlidePositionRight()} disabled={rightDisabled}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="h-5 w-5 text-nl-2">
+                                <path fill="currentColor"
+                                      d="M96 480c-8.188 0-16.38-3.125-22.62-9.375-12.5-12.5-12.5-32.75 0-45.25L242.8 256 73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path>
+                            </svg>
+                        </button>
                     </div>
                     <div className={sliderRight ? styles.swiperRight : styles.swiperBlocks} ref={slide}>
                         <>
@@ -146,19 +155,6 @@ const Home = () => {
                                     )
                                 )
                             }
-                            {/*<div className={styles.swiperBlock}><img className={styles.swiperImage} alt="first"*/}
-                            {/*                                         src={firstImg}/></div>*/}
-                            {/*<div className={styles.swiperBlock}><img className={styles.swiperImage} alt="first"*/}
-                            {/*                                         src={boughtImg}/></div>*/}
-                            {/*<div className={styles.swiperBlock}><img className={styles.swiperImage} alt="first"*/}
-                            {/*                                         src={thirdImg}/></div>*/}
-                            {/*<div className={styles.swiperBlock}><img className={styles.swiperImage} alt="first"*/}
-                            {/*                                         src={fourthImg}/></div>*/}
-                            {/*<div className={styles.swiperBlock}><img className={styles.swiperImage} alt="first"*/}
-                            {/*                                         src={fiveImg}/></div>*/}
-                            {/*<div className={styles.swiperBlock}><img className={styles.swiperImage} alt="first"*/}
-                            {/*
-                                                              src={sixImg}/></div>*/}
                         </>
                     </div>
 

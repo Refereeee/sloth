@@ -5,14 +5,16 @@ interface HomeState {
     sliderRight: boolean,
     sliderLeft: boolean,
     leftDisabled: boolean,
-    rightDisabled: boolean
+    rightDisabled: boolean,
+    showAll: boolean
 }
 
 const initialState: HomeState = {
     sliderRight: false,
     sliderLeft: true,
     leftDisabled:true,
-    rightDisabled:false
+    rightDisabled:false,
+    showAll: false
 }
 
 export const homeSlice = createSlice({
@@ -30,6 +32,9 @@ export const homeSlice = createSlice({
                 state.sliderRight = false
                 state.leftDisabled = true
                 state.rightDisabled = false
+            },
+            changeShowAll: (state,action:PayloadAction<boolean>) =>{
+                state.showAll = action.payload
             }
         }
     }
@@ -37,7 +42,8 @@ export const homeSlice = createSlice({
 
 export const {
     changeHomeSliderRight,
-    changeHomeSliderLeft
+    changeHomeSliderLeft,
+    changeShowAll
 } = homeSlice.actions
 
 export const homeOptions = (state: RootState) => state.home

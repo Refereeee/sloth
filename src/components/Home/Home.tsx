@@ -9,7 +9,7 @@ import sixImg from '../../assets/home/six.jpg'
 import {AiFillLeftCircle, AiFillRightCircle} from "react-icons/ai";
 import {useAppDispatch} from "../../redux/hooks";
 import {useSelector} from "react-redux";
-import {changeHomeSliderLeft, changeHomeSliderRight, homeOptions} from "../../redux/slice/homeSlice";
+import {changeHomeSliderLeft, changeHomeSliderRight, changeShowAll, homeOptions} from "../../redux/slice/homeSlice";
 import {Link} from "react-router-dom";
 import {BiRightArrowAlt} from "react-icons/bi";
 
@@ -78,7 +78,8 @@ const Home = () => {
     const {
         sliderRight,
         leftDisabled,
-        rightDisabled
+        rightDisabled,
+        showAll
     } = useSelector(homeOptions)
 
     const slide = React.useRef<HTMLDivElement>(null)
@@ -92,6 +93,11 @@ const Home = () => {
         dispatch(changeHomeSliderRight(true))
     }
 
+    const changeShowAllImages = () => {
+        dispatch(changeShowAll(true))
+    }
+
+
     // useEffect(() => {
     //     if (sliderLeft && slide.current) {
     //         console.log(sliderLeft)
@@ -102,6 +108,7 @@ const Home = () => {
     //         console.log(sliderRight)
     //     }
     // }, [sliderRight, sliderLeft])
+
 
     return (
         <div className={styles.mainPageWrapper}>
@@ -117,27 +124,36 @@ const Home = () => {
                     </p>
                 </div>
                 <div className={styles.swiperWrapper}>
-                    <div className={styles.swiperArrows}>
-                        <button className={styles.leftArrow} onClick={() => changeSlidePositionLeft()} disabled={leftDisabled}>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="h-5 w-5 text-nl-2">
-                                <path fill="currentColor"
-                                      d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"></path>
-                            </svg>
-                        </button>
-                        <button className={styles.rightArrow} onClick={() => changeSlidePositionRight()} disabled={rightDisabled}>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="h-5 w-5 text-nl-2">
-                                <path fill="currentColor"
-                                      d="M96 480c-8.188 0-16.38-3.125-22.62-9.375-12.5-12.5-12.5-32.75 0-45.25L242.8 256 73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path>
-                            </svg>
-                        </button>
+                    <div className={styles.changeImages}>
+                        <div className={showAll ? styles.hiddenItem : styles.swiperAllGames}
+                             onClick={() => changeShowAllImages()}>Show All
+                        </div>
+                        <div className={showAll? styles.hiddenItem : styles.swiperArrows}>
+                            <button className={styles.leftArrow} onClick={() => changeSlidePositionLeft()}
+                                    disabled={leftDisabled}>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+                                     className="h-5 w-5 text-nl-2">
+                                    <path fill="currentColor"
+                                          d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"></path>
+                                </svg>
+                            </button>
+                            <button className={styles.rightArrow} onClick={() => changeSlidePositionRight()}
+                                    disabled={rightDisabled}>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
+                                     className="h-5 w-5 text-nl-2">
+                                    <path fill="currentColor"
+                                          d="M96 480c-8.188 0-16.38-3.125-22.62-9.375-12.5-12.5-12.5-32.75 0-45.25L242.8 256 73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
-                    <div className={sliderRight ? styles.swiperRight : styles.swiperBlocks} ref={slide}>
-                        <>
+                    <div className={sliderRight ? (showAll ? styles.showAll : styles.swiperRight) : styles.swiperBlocks} ref={slide}>
+                        <div className={showAll ? styles.showAll : styles.swiperBlocks}>
                             {
                                 objectForLinks.map(({id, img, linkName, linkTo, price, firstLine, boughtLine}) =>
                                     (
-                                        <div className={styles.swiperBlock}>
-                                            <Link to={linkTo} className={styles.swiperLink}>
+                                        <Link to={linkTo} className={styles.swiperBlock}>
+                                            <div className={styles.swiperLink}>
                                                 <img className={styles.swiperImage} alt={linkName} src={img}/>
                                                 <div className={styles.swiperContent}>
                                                     <ul className={styles.swiperDescription}>
@@ -145,19 +161,21 @@ const Home = () => {
                                                         <li className={styles.swiperFirst}>{firstLine}</li>
                                                         <li className={styles.swiperBought}>{boughtLine}</li>
                                                     </ul>
-                                                    <div className={styles.swiperSubDiscription}>
-                                                        <button><Link to={linkTo}><BiRightArrowAlt/></Link></button>
-                                                        <p className={styles.swiperPrice}>{price}</p>
+                                                    <div className={styles.swiperSubDescription}>
+                                                        <button className={styles.subDescriptionButton}><Link
+                                                            to={linkTo}
+                                                            className={styles.subDescriptionButtonLink}><BiRightArrowAlt
+                                                            style={{height: "20px", width: "24px"}}/></Link></button>
+                                                        <span className={styles.swiperPrice}>{price}</span>
                                                     </div>
                                                 </div>
-                                            </Link>
-                                        </div>
+                                            </div>
+                                        </Link>
                                     )
                                 )
                             }
-                        </>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>

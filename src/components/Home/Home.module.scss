@@ -22,7 +22,14 @@
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  margin: 0 24px 16px 0 ;
+  margin: 0 24px 0;
+}
+
+
+.changeImages{
+  display: flex;
+  justify-content: flex-end;
+  transform: translate3d(0, 0px, 0px);
 }
 
 .leftArrow{
@@ -83,24 +90,64 @@
 }
 
 .swiperImage {
-  //width: 400px;
-  //height: 300px;
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  transition: all .5s ease-out;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: auto;
+  transition: .3s ease;
+  width: auto;
+  z-index: 1;
+  min-width: 100%;
 }
 
 .swiperDescription{
-  position: absolute;
-  bottom: 74%;
-  padding: 0 0 0 20px;
   list-style-image: url(../../assets/home/list-bullet.svg);
   z-index: 3;
 }
 
-.swiperContent{
+.swiperSubDescription{
+  display: flex;
+  padding: 16px 0 0 0;
+  justify-content: space-between;
+  gap: 240px;
+  white-space: nowrap;
+}
 
+.swiperContent{
+  position: absolute;
+  bottom: 5%;
+  z-index: 3;
+  margin: 0 0 0 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.showAll{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.subDescriptionButton{
+  background: #FCD78F;
+  border-radius: 10px;
+  transition-duration: .2s;
+  border: none;
+  cursor: pointer;
+  padding: 7px;
+}
+
+.subDescriptionButton:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 208 116/var(--tw-bg-opacity));
+  transition-property: color,background-color,border-color,text-decoration-color,fill,stroke;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  //border-radius: 10px;
+}
+
+.subDescriptionButtonLink{
+  display: flex;
+  justify-content: center;
 }
 
 .swiperDescription li::marker{
@@ -121,14 +168,15 @@
 }
 
 
-
-
-.swiperLink{
-  position: relative;
-}
-
 .swiperFirst{
   color: #96D473;
+}
+
+.swiperPrice{
+  margin: 0;
+  background: white;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .swiperBought{
@@ -196,6 +244,10 @@
 
 .descriptionText {
   display: block;
+}
+
+.hiddenItem{
+  display: none;
 }
 
 .contentWrapper {

@@ -6,7 +6,9 @@ import thirdImg from '../../assets/home/third.jpg'
 import fourthImg from '../../assets/home/four.jpg'
 import fiveImg from '../../assets/home/five.jpg'
 import sixImg from '../../assets/home/six.jpg'
-import {AiFillLeftCircle, AiFillRightCircle} from "react-icons/ai";
+import benefitFirstSvg from "../../assets/home/svgs/firstBenefit.svg"
+import benefitBoughtSvg from "../../assets/home/svgs/benefitBought.svg"
+import benefitThirdSvg from "../../assets/home/svgs/benefitThird.svg"
 import {useAppDispatch} from "../../redux/hooks";
 import {useSelector} from "react-redux";
 import {changeHomeSliderLeft, changeHomeSliderRight, changeShowAll, homeOptions} from "../../redux/slice/homeSlice";
@@ -73,6 +75,30 @@ const Home = () => {
         },
     ]
 
+    const objectForBenefitItems = [
+        {
+            id: 1,
+            img: benefitFirstSvg,
+            alt:"one",
+            heading: "Best value for your money",
+            text: "We carefully monitor the market every day to get you the best deals from the top level professional suppliers",
+        },
+        {
+            id: 2,
+            img: benefitBoughtSvg,
+            alt:"bought",
+            heading: "100% Moneyback Guarantee",
+            text: "Our deals protection guarantees that you you will get the currency, item, service you paid for or your money back!",
+        },
+        {
+            id: 3,
+            alt:"third",
+            img: benefitThirdSvg,
+            heading: "One-stop shop for all your gaming needs",
+            text: "Whether you seek top quality services or to bargain with sellers on the marketplace - we got you covered",
+        },
+    ]
+
     const dispatch = useAppDispatch()
 
     const {
@@ -98,18 +124,6 @@ const Home = () => {
     }
 
 
-    // useEffect(() => {
-    //     if (sliderLeft && slide.current) {
-    //         console.log(sliderLeft)
-    //         // slide.current.style.transform = "translate3d(0px, 0px, 0px)"
-    //     }
-    //     if (sliderRight && slide.current) {
-    //         // slide.current.style.transform = "translate3d(-1260px, 0px, 0px)"
-    //         console.log(sliderRight)
-    //     }
-    // }, [sliderRight, sliderLeft])
-
-
     return (
         <div className={styles.mainPageWrapper}>
             <div className={styles.mainPage}>
@@ -128,7 +142,7 @@ const Home = () => {
                         <div className={showAll ? styles.hiddenItem : styles.swiperAllGames}
                              onClick={() => changeShowAllImages()}>Show All
                         </div>
-                        <div className={showAll? styles.hiddenItem : styles.swiperArrows}>
+                        <div className={showAll ? styles.hiddenItem : styles.swiperArrows}>
                             <button className={styles.leftArrow} onClick={() => changeSlidePositionLeft()}
                                     disabled={leftDisabled}>
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
@@ -147,7 +161,8 @@ const Home = () => {
                             </button>
                         </div>
                     </div>
-                    <div className={sliderRight ? (showAll ? styles.showAll : styles.swiperRight) : styles.swiperBlocks} ref={slide}>
+                    <div className={sliderRight ? (showAll ? styles.showAll : styles.swiperRight) : styles.swiperBlocks}
+                         ref={slide}>
                         <div className={showAll ? styles.showAll : styles.swiperBlocks}>
                             {
                                 objectForLinks.map(({id, img, linkName, linkTo, price, firstLine, boughtLine}) =>
@@ -177,8 +192,26 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+                <div className={styles.benefitBlocks}>
+                    {
+                        objectForBenefitItems.map(({id, img, heading, text,alt}) =>
+                            (
+                                <div key={id} className={styles.benefitBlockWrapper}>
+                                    <div className={styles.benefitBlock}>
+                                        <div className={styles.benefitSvgWrapper}>
+                                            <img src={img} alt={alt}/>
+                                        </div>
+                                        <h4 className={styles.benefitHeading}>{heading}</h4>
+                                        <span className={styles.benefitText}>{text}</span>
+                                    </div>
+                                </div>
+                            )
+                        )
+                    }
+                </div>
             </div>
         </div>
+
     );
 };
 

@@ -17,7 +17,7 @@ const Sidebar = () => {
         {
             id: 2,
             img: <SiFifa/>,
-            linkName: "Divisions Rivals",
+            linkName: "Index Rivals",
             linkTo: "/divisions"
         },
         {

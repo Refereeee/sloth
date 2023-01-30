@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Divisions.scss'
+import styles from './Divisions.module.scss'
 
 const Divisions = () => {
     return (

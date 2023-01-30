@@ -1,0 +1,21 @@
+.wrapper{
+  display: flex;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  background-color: #0E0E11;
+}
+
+.content{
+  width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text{
+  color: rgba(103, 107, 139, 0.56);
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+}

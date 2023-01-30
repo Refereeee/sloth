@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import styles from './Header.module.scss'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.svg'
 import {BsCartFill} from "react-icons/bs";
 import {CgLogIn} from "react-icons/cg";
 import {FaUserPlus} from "react-icons/fa";

@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from './App.module.scss';
-import Header from "../Header/Header";
+import Header from "../Header";
 import {Route, Routes} from "react-router-dom";
-import Login from "../Login/Login";
-import Register from "../Register/Register";
-import Home from "../Home/Home";
-import Sidebar from "../Sidebar/Sidebar";
+import Login from "../Login";
+import Register from "../Register";
+import Home from "../Home";
+import Sidebar from "../Sidebar";
 // import Weekend from "../Weekend/Weekend";
-import Divisions from "../Components/Divisions";
+import Divisions from "../Divisions";
+import Footer from "../Footer";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
               {/*<Route path="/weekend" element={<Weekend/>}/>*/}
               <Route path="/divisions" element={<Divisions/>}/>
           </Routes>
+          <Footer/>
       </div>
     </div>
   );

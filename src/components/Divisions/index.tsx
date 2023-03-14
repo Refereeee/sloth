@@ -1,12 +1,7 @@
 import React from 'react';
-import styles from './Divisions.module.scss'
 
-const Divisions = () => {
-    return (
-        <div>
-
-        </div>
+const Divisions = () => (
+        <div />
     );
-};
 
 export default Divisions;

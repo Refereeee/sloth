@@ -1,6 +1,6 @@
 const getCurrentUserFind = () => {
     const data = localStorage.getItem('currentUser');
-    return data ? data : ''
+    return data || ''
 };
 
 export const getLoginImage = () => {

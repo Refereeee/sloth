@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit'
 import type {PayloadAction} from '@reduxjs/toolkit'
 import type {RootState} from '../store'
@@ -102,7 +103,7 @@ export const loginSlice = createSlice({
 },
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
-        builder.addCase(fetchUserByImage.pending, (state, action) => {
+        builder.addCase(fetchUserByImage.pending, (state) => {
             state.loadingImgFlag = true;
         })
         builder.addCase(fetchUserByImage.fulfilled, (state, action) => {

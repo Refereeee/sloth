@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import register from "../redux/slice/registerSlice";
-import login from "../redux/slice/loginSLice";
-import home from "../redux/slice/homeSlice";
+import register from "./slice/registerSlice";
+import login from "./slice/loginSLice";
+// eslint-disable-next-line import/no-cycle
+import home from "./slice/homeSlice";
 
 export const store = configureStore({
     reducer: {

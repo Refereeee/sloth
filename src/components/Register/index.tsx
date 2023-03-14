@@ -1,8 +1,8 @@
-/* eslint-disable */
-import React, {useEffect, useRef} from 'react';
-import styles from "../Register/Register.module.scss";
-import {useAppDispatch} from "../../redux/hooks";
+import {useEffect} from 'react';
 import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import styles from "./Register.module.scss";
+import {useAppDispatch} from "../../redux/hooks";
 
 import {
     changeButtonValue,
@@ -12,7 +12,6 @@ import {
     changeRepeatPasswordValue, noticeFlagToOff, registerFlagToOff,
     selectReg, setLocalStorageItem,
 } from "../../redux/slice/registerSlice";
-import {useNavigate} from "react-router-dom";
 
 const Register = () => {
 
@@ -80,7 +79,6 @@ const Register = () => {
         }
     }, [login, password, repeatPassword, registerFlag, noticeFlag])
 
-
     return (
         <form>
             <div className={styles.formWrapper}>
@@ -97,23 +95,28 @@ const Register = () => {
                     width: "300px",
                     paddingRight: "2rem"
                 }}>Такой пользователь уже существует</div>}
-                <label className={styles.label}>Логин</label>
+                <label className={styles.label} htmlFor='regLogin'>Логин
                 {loginFlag && <span className={styles.spanError}>Недостаточное количество символов</span>}
-                <input className={loginFlag ? styles.input + " " + styles.notValid : styles.input} placeholder="Логин"
+                <input className={loginFlag ? `${styles.input} + " " + ${styles.notValid}` : styles.input} placeholder="Логин"
                        value={login}
+                       id='regLogin'
                        onChange={useControlLogin} onBlur={() => checkValidateLogin()}/>
-                <label className={styles.label}>Пароль</label>
+                </label>
+                <label className={styles.label} htmlFor='regPass'>Пароль
                 {passwordFlag && <span className={styles.spanError}>Недопустимый пароль</span>}
-                <input className={passwordFlag ? styles.input + " " + styles.notValid : styles.input}
+                <input className={passwordFlag ? `${styles.input  } ${  styles.notValid}` : styles.input}
                        onBlur={() => checkValidatePassword()} value={password} type="password"
                        onChange={event => controlPassword(event)}
-                       placeholder="Пароль"/>
-                <label className={styles.label}>Повторите пароль </label>
+                       placeholder="Пароль"
+                       id='regPass' />
+                </label>
+                <label className={styles.label} htmlFor='repPass'>Повторите пароль
                 {repeatPasswordFlag && password !== repeatPassword &&
                     <span className={styles.spanError}>Недостаточное количество символов</span>}
                 <input className={styles.input} value={repeatPassword} type="password"
                        onBlur={() => checkValidateRepeatPassword()} onChange={event => controlRepeatPassword(event)}
-                       placeholder="Пароль"/>
+                       placeholder="Пароль" id='repPass'/>
+                </label>
                 <input className={styles.btn} type='submit' value="Регистрация" disabled={buttonValue}
                        onClick={clickEnterLocalStorageData}/>
             </div>

@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add touch slide">
+      <change afterPath="$PROJECT_DIR$/src/components/Home/HomeSwiper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/components/Home/index.tsx" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2E81yJzYsUdti06XGduKMBJV9Vj" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "G:/JS/react/react-smilga/react-projects/01-birthday-reminder",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "G:\\JS\\react\\sloth\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\JS\react\sloth\src\types" />
+      <recent name="G:\JS\react\sloth" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\JS\react\sloth\src" />
+      <recent name="G:\JS\react\sloth\src\components\App" />
+      <recent name="G:\JS\react\sloth\src\components" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="" />
+      <created>1661962653065</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1661962653065</updated>
+      <workItem from="1661962654565" duration="5680000" />
+      <workItem from="1662018822825" duration="8079000" />
+      <workItem from="1662029671837" duration="18284000" />
+      <workItem from="1662109795258" duration="15041000" />
+      <workItem from="1662288045744" duration="5207000" />
+      <workItem from="1662293513614" duration="12286000" />
+      <workItem from="1662374067885" duration="658000" />
+      <workItem from="1662391840720" duration="1112000" />
+      <workItem from="1662393754517" duration="8792000" />
+      <workItem from="1662480041086" duration="12627000" />
+      <workItem from="1662495598706" duration="656000" />
+      <workItem from="1662502136956" duration="209000" />
+      <workItem from="1662556946940" duration="17031000" />
+      <workItem from="1662637599275" duration="615000" />
+      <workItem from="1662641974853" duration="1052000" />
+      <workItem from="1662643523819" duration="15327000" />
+      <workItem from="1662675369457" duration="1423000" />
+      <workItem from="1662715996559" duration="14375000" />
+      <workItem from="1662806426387" duration="21160000" />
+      <workItem from="1662892348577" duration="135000" />
+      <workItem from="1662916332015" duration="7229000" />
+      <workItem from="1662983934432" duration="34000" />
+      <workItem from="1664474060754" duration="1564000" />
+      <workItem from="1666751773373" duration="1343000" />
+      <workItem from="1668468610981" duration="605000" />
+      <workItem from="1668520532765" duration="3161000" />
+      <workItem from="1668527869369" duration="4301000" />
+      <workItem from="1668554350625" duration="5497000" />
+      <workItem from="1668625587604" duration="4605000" />
+      <workItem from="1668699466390" duration="2689000" />
+      <workItem from="1669075969167" duration="3035000" />
+      <workItem from="1669712056718" duration="1690000" />
+      <workItem from="1669722226985" duration="7432000" />
+      <workItem from="1669771195817" duration="623000" />
+      <workItem from="1669785195934" duration="1400000" />
+      <workItem from="1669970562607" duration="600000" />
+      <workItem from="1670402413460" duration="1247000" />
+      <workItem from="1670583971541" duration="601000" />
+      <workItem from="1670602594885" duration="4524000" />
+      <workItem from="1670860007644" duration="2655000" />
+      <workItem from="1670878886513" duration="3000" />
+      <workItem from="1670921997432" duration="868000" />
+      <workItem from="1671481814664" duration="1194000" />
+      <workItem from="1671544568007" duration="6880000" />
+      <workItem from="1671638730837" duration="10338000" />
+      <workItem from="1672149698666" duration="2910000" />
+      <workItem from="1672252896910" duration="7000" />
+      <workItem from="1672271158359" duration="7272000" />
+      <workItem from="1672420319227" duration="7000" />
+      <workItem from="1672420651941" duration="1503000" />
+      <workItem from="1672695358822" duration="10965000" />
+      <workItem from="1672765457080" duration="5333000" />
+      <workItem from="1672961466685" duration="1491000" />
+      <workItem from="1673033899122" duration="10911000" />
+      <workItem from="1673287996187" duration="87000" />
+      <workItem from="1673295553768" duration="13009000" />
+      <workItem from="1673372069221" duration="20600000" />
+      <workItem from="1673442430955" duration="3526000" />
+      <workItem from="1673499203544" duration="4328000" />
+      <workItem from="1673557007350" duration="7050000" />
+      <workItem from="1673631674609" duration="595000" />
+      <workItem from="1673845621117" duration="10007000" />
+      <workItem from="1673885895402" duration="8625000" />
+      <workItem from="1673972777682" duration="14000" />
+      <workItem from="1673972793060" duration="66000" />
+      <workItem from="1673972925709" duration="6560000" />
+      <workItem from="1674019720894" duration="2341000" />
+      <workItem from="1674028725137" duration="3155000" />
+      <workItem from="1674097293406" duration="5322000" />
+      <workItem from="1674188874495" duration="597000" />
+      <workItem from="1674189481900" duration="2010000" />
+      <workItem from="1674196768744" duration="646000" />
+      <workItem from="1674199064161" duration="597000" />
+      <workItem from="1674562192924" duration="339000" />
+      <workItem from="1674631220027" duration="2794000" />
+      <workItem from="1674710830839" duration="761000" />
+      <workItem from="1675079036133" duration="1190000" />
+      <workItem from="1675092795561" duration="1207000" />
+      <workItem from="1675096957068" duration="5877000" />
+      <workItem from="1675108245630" duration="6914000" />
+      <workItem from="1675183249650" duration="2064000" />
+      <workItem from="1675188094707" duration="1334000" />
+      <workItem from="1675282161939" duration="6602000" />
+      <workItem from="1675415051730" duration="6566000" />
+      <workItem from="1675434856537" duration="33000" />
+      <workItem from="1675715316363" duration="1384000" />
+      <workItem from="1675790566910" duration="600000" />
+      <workItem from="1675976739715" duration="1300000" />
+      <workItem from="1676059631728" duration="1211000" />
+      <workItem from="1676322126020" duration="25000" />
+      <workItem from="1676987686811" duration="601000" />
+      <workItem from="1676995938119" duration="20000" />
+      <workItem from="1677109581767" duration="2004000" />
+      <workItem from="1678774081951" duration="8473000" />
+      <workItem from="1678793574697" duration="7934000" />
+      <workItem from="1678809729225" duration="286000" />
+      <workItem from="1678965082425" duration="758000" />
+      <workItem from="1679307020035" duration="11795000" />
+      <workItem from="1679372520266" duration="13129000" />
+      <workItem from="1679398909526" duration="12646000" />
+    </task>
+    <task id="LOCAL-00001" summary="init: start sloth">
+      <created>1662059144287</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1662059144287</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: add register">
+      <created>1662307872145</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662307872145</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: add login">
+      <created>1662492014420</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662492014420</updated>
+    </task>
+    <task id="LOCAL-00004" summary="feat: add sidebar">
+      <created>1662665257492</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1662665257492</updated>
+    </task>
+    <task id="LOCAL-00005" summary="feat: delete sidebar">
+      <created>1662756895756</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1662756895756</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: add productsPage and filter Redux">
+      <created>1662892374762</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1662892374762</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: change styles">
+      <created>1670860116906</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670860116906</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: add slider">
+      <created>1673402861441</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1673402861441</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: add styles for slider">
+      <created>1673503573219</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1673503573219</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: add styles for slider 2">
+      <created>1673846069661</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1673846069661</updated>
+    </task>
+    <task id="LOCAL-00011" summary="feat: add styles for slider 3">
+      <created>1673973135266</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1673973135266</updated>
+    </task>
+    <task id="LOCAL-00012" summary="feat: add footer">
+      <created>1675113963201</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1675113963201</updated>
+    </task>
+    <task id="LOCAL-00013" summary="feat: add eslint">
+      <created>1678809660488</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1678809660488</updated>
+    </task>
+    <task id="LOCAL-00014" summary="feat: add touch slide">
+      <created>1679406578747</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1679406578747</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init: start sloth" />
+    <MESSAGE value="feat: add register" />
+    <MESSAGE value="feat: add login" />
+    <MESSAGE value="feat: add sidebar" />
+    <MESSAGE value="feat: delete sidebar" />
+    <MESSAGE value="feat: add productsPage and filter Redux" />
+    <MESSAGE value="feat: change styles" />
+    <MESSAGE value="feat: add slider" />
+    <MESSAGE value="feat: add styles for slider" />
+    <MESSAGE value="feat: add styles for slider 2" />
+    <MESSAGE value="feat: add styles for slider 3" />
+    <MESSAGE value="feat: add footer" />
+    <MESSAGE value="feat: add eslint" />
+    <MESSAGE value="feat: add touch slide" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add touch slide" />
+  </component>
+</project>

@@ -26,7 +26,6 @@
 .swiperWrapper {
   overflow: hidden;
   width: 1260px;
-
 }
 
 .swiperArrows {
@@ -69,7 +68,6 @@
 }
 
 .swiperBlocks {
-  display: flex;
   gap: 20px;
   position: relative;
   transition: all .5s ease-out;
@@ -106,9 +104,8 @@
 }
 
 
-.swiperRight {
+.swiperRight .mySwiper.swiper-wrapper {
   transform: translate3d(-1260px, 0px, 0px);
-  display: flex;
   gap: 20px;
   position: relative;
   transition: all .5s ease-out;

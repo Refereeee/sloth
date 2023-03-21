@@ -1,11 +1,9 @@
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import "swiper/css";
+
+import 'swiper/css';
 
 // import "swiper/css/free-mode";
-// import "swiper/css/pagination";
-import { BiRightArrowAlt } from 'react-icons/bi';
+import 'swiper/css/pagination';
 import { useRef } from 'react';
 import styles from './Home.module.scss';
 import { useAppDispatch } from '../../redux/hooks';
@@ -16,6 +14,7 @@ import {
   homeOptions,
 } from '../../redux/slice/homeSlice';
 import { LeftArrow, RightArrow } from '../../assets/home/svgs/arrows';
+import { HomeAllLinks ,LinkSwiper } from './HomeSwiper';
 
 const Home = () => {
 
@@ -26,7 +25,6 @@ const Home = () => {
     leftDisabled,
     rightDisabled,
     showAll,
-    objectLinks,
     objectBenefitItems
   } = useSelector(homeOptions);
 
@@ -90,50 +88,7 @@ const Home = () => {
             ref={slide}
           >
             <div className={showAll ? styles.showAll : styles.swiperBlocks}>
-              <Swiper watchSlidesProgress slidesPerView={3} className="mySwiper">
-                {
-                  objectLinks.map(({
-                    id,
-                    img,
-                    linkName,
-                    linkTo,
-                    price,
-                    firstLine,
-                    boughtLine,
-                  }) => (
-                    <SwiperSlide>
-                      <Link to={linkTo} className={styles.swiperBlock} key={id}>
-                        <div>
-                          <img className={styles.swiperImage} alt={linkName} src={img}/>
-                          <div className={styles.swiperContent}>
-                            <ul className={styles.swiperDescription}>
-                              <li className={styles.swiperName}>{linkName}</li>
-                              <li className={styles.swiperFirst}>{firstLine}</li>
-                              <li className={styles.swiperBought}>{boughtLine}</li>
-                            </ul>
-                            <div className={styles.swiperSubDescription}>
-                              <button className={styles.subDescriptionButton}>
-                                <Link
-                                  to={linkTo}
-                                  className={styles.subDescriptionButtonLink}
-                                >
-                                  <BiRightArrowAlt
-                                    style={{
-                                      height: '20px',
-                                      width: '24px',
-                                    }}
-                                  />
-                                </Link>
-                              </button>
-                              <span className={styles.swiperPrice}>{price}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    </SwiperSlide>
-                  ))
-                }
-              </Swiper>
+              {showAll ? <HomeAllLinks/> : <LinkSwiper/>}
             </div>
           </div>
         </div>

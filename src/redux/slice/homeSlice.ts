@@ -2,13 +2,20 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 // eslint-disable-next-line import/no-cycle
 import {RootState} from "../store";
+import { objectForBenefitItems, objectForLinks } from '../../data/homeData';
+import { ObjBenefitsType, ObjLinksType } from '../../types/homeDataTypes';
+
+
+
 
 interface HomeState {
     sliderRight: boolean,
     sliderLeft: boolean,
     leftDisabled: boolean,
     rightDisabled: boolean,
-    showAll: boolean
+    showAll: boolean,
+    objectLinks: ObjLinksType[],
+    objectBenefitItems: ObjBenefitsType[]
 }
 
 const initialState: HomeState = {
@@ -16,7 +23,9 @@ const initialState: HomeState = {
     sliderLeft: true,
     leftDisabled:true,
     rightDisabled:false,
-    showAll: false
+    showAll: false,
+    objectLinks: objectForLinks,
+    objectBenefitItems: objectForBenefitItems,
 }
 
 export const homeSlice = createSlice({

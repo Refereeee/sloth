@@ -1,7 +1,8 @@
+import Sidebar from '../Sidebar';
 
 const Finals = () => {
     return (
-        <div/>
+      <Sidebar/>
     );
 };
 

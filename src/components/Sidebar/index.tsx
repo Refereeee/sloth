@@ -1,9 +1,8 @@
-import React, {useState} from 'react';
-import {SiFifa} from "react-icons/si";
-import {GiCagedBall, GiThunderball} from "react-icons/gi";
-import { NavLink} from "react-router-dom";
-import styles from "./Sidebar.module.scss"
-
+import React, { useState } from 'react';
+import { SiFifa } from 'react-icons/si';
+import { GiCagedBall, GiThunderball } from 'react-icons/gi';
+import { NavLink } from 'react-router-dom';
+import styles from './Sidebar.module.scss';
 
 const Sidebar = () => {
 

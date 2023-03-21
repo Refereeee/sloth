@@ -5,7 +5,7 @@ import Header from '../Header';
 import Login from '../Login';
 import Register from '../Register';
 import Home from '../Home';
-import Sidebar from '../Sidebar';
+// import Sidebar from '../Sidebar';
 import Divisions from '../Divisions';
 import Footer from '../Footer';
 import Weekend from '../Finals';
@@ -16,14 +16,13 @@ const App = () => {
     <div>
       <div className={styles.wrapper}>
         <Header/>
-        <Sidebar/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>
           <Route path="/register" element={<Register/>}/>
           <Route path="/weekend" element={<Weekend/>}/>
           <Route path="/divisions" element={<Divisions/>}/>
-          <Route path="/playoffs" element={<Playoff/>}/>
+          <Route path="/fut-champions-playoffs" element={<Playoff/>}/>
         </Routes>
         <Footer/>
       </div>

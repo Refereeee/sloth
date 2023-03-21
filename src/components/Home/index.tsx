@@ -1,17 +1,13 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import "swiper/css";
+
+// import "swiper/css/free-mode";
+// import "swiper/css/pagination";
 import { BiRightArrowAlt } from 'react-icons/bi';
 import { useRef } from 'react';
 import styles from './Home.module.scss';
-import firstImg from '../../assets/home/first.jpg';
-import boughtImg from '../../assets/home/bought.jpg';
-import thirdImg from '../../assets/home/third.jpg';
-import fourthImg from '../../assets/home/four.jpg';
-import fiveImg from '../../assets/home/five.jpg';
-import sixImg from '../../assets/home/six.jpg';
-import benefitFirstSvg from '../../assets/home/svgs/firstBenefit.svg';
-import benefitBoughtSvg from '../../assets/home/svgs/benefitBought.svg';
-import benefitThirdSvg from '../../assets/home/svgs/benefitThird.svg';
 import { useAppDispatch } from '../../redux/hooks';
 import {
   changeHomeSliderLeft,
@@ -19,88 +15,9 @@ import {
   changeShowAll,
   homeOptions,
 } from '../../redux/slice/homeSlice';
+import { LeftArrow, RightArrow } from '../../assets/home/svgs/arrows';
 
 const Home = () => {
-  const objectForLinks = [
-    {
-      id: 1,
-      img: firstImg,
-      linkName: 'Fut Champions Playoffs',
-      linkTo: '/fut-champions-playoffs',
-      price: 'From $3.00',
-      firstLine: 'Get any number of wins in Index',
-      boughtLine: 'Get FUT Champions rewards',
-    },
-    {
-      id: 2,
-      img: boughtImg,
-      linkName: 'Fut Champions finals',
-      linkTo: '/fut-champions-finals',
-      price: 'From $3.00',
-      firstLine: 'Get any number of wins in Index',
-      boughtLine: 'Unlock FUT Champions rewards',
-    },
-    {
-      id: 3,
-      img: thirdImg,
-      linkName: 'Division Rivals',
-      linkTo: '/divisions',
-      price: 'From $3.00',
-      firstLine: 'Get desired rank with ease',
-      boughtLine: 'Obtain unique rewards',
-    },
-    {
-      id: 4,
-      img: fourthImg,
-      linkName: 'Squad Battles',
-      linkTo: '/squad-battles',
-      price: 'From $3.00',
-      firstLine: '4 daily wins',
-      boughtLine: 'Gold and players as rewards',
-    },
-    {
-      id: 5,
-      img: fiveImg,
-      linkName: 'Draft',
-      linkTo: '/draft',
-      price: 'From $3.00',
-      firstLine: 'Get desired rank with ease',
-      boughtLine: 'Obtain unique rewards',
-    },
-    {
-      id: 6,
-      img: sixImg,
-      linkName: 'Tasks',
-      linkTo: '/tasks',
-      price: 'From $3.00',
-      firstLine: 'Get another task with ease',
-      boughtLine: 'Obtain rewards',
-    },
-  ];
-
-  const objectForBenefitItems = [
-    {
-      id: 1,
-      img: benefitFirstSvg,
-      alt: 'one',
-      heading: 'Best value for your money',
-      text: 'We carefully monitor the market every day to get you the best deals from the top level professional suppliers',
-    },
-    {
-      id: 2,
-      img: benefitBoughtSvg,
-      alt: 'bought',
-      heading: '100% Moneyback Guarantee',
-      text: 'Our deals protection guarantees that you you will get the currency, item, service you paid for or your money back!',
-    },
-    {
-      id: 3,
-      alt: 'third',
-      img: benefitThirdSvg,
-      heading: 'One-stop shop for all your gaming needs',
-      text: 'Whether you seek top quality services or to bargain with sellers on the marketplace - we got you covered',
-    },
-  ];
 
   const dispatch = useAppDispatch();
 
@@ -109,6 +26,8 @@ const Home = () => {
     leftDisabled,
     rightDisabled,
     showAll,
+    objectLinks,
+    objectBenefitItems
   } = useSelector(homeOptions);
 
   const slide = useRef<HTMLDivElement>(null);
@@ -155,32 +74,14 @@ const Home = () => {
                 onClick={() => changeSlidePositionLeft()}
                 disabled={leftDisabled}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 320 512"
-                  className="h-5 w-5 text-nl-2"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M224 480c-8.188 0-16.38-3.125-22.62-9.375l-192-192c-12.5-12.5-12.5-32.75 0-45.25l192-192c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L77.25 256l169.4 169.4c12.5 12.5 12.5 32.75 0 45.25C240.4 476.9 232.2 480 224 480z"
-                  />
-                </svg>
+                <LeftArrow/>
               </button>
               <button
                 className={styles.rightArrow}
                 onClick={() => changeSlidePositionRight()}
                 disabled={rightDisabled}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 320 512"
-                  className="h-5 w-5 text-nl-2"
-                >
-                  <path
-                    fill="currentColor"
-                    d="M96 480c-8.188 0-16.38-3.125-22.62-9.375-12.5-12.5-12.5-32.75 0-45.25L242.8 256 73.38 86.63c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l192 192c12.5 12.5 12.5 32.75 0 45.25l-192 192C112.4 476.9 104.2 480 96 480z"
-                  />
-                </svg>
+                <RightArrow/>
               </button>
             </div>
           </div>
@@ -189,52 +90,56 @@ const Home = () => {
             ref={slide}
           >
             <div className={showAll ? styles.showAll : styles.swiperBlocks}>
-              {
-                objectForLinks.map(({
-                  id,
-                  img,
-                  linkName,
-                  linkTo,
-                  price,
-                  firstLine,
-                  boughtLine,
-                }) => (
-                  <Link to={linkTo} className={styles.swiperBlock} key={id}>
-                    <div>
-                      <img className={styles.swiperImage} alt={linkName} src={img}/>
-                      <div className={styles.swiperContent}>
-                        <ul className={styles.swiperDescription}>
-                          <li className={styles.swiperName}>{linkName}</li>
-                          <li className={styles.swiperFirst}>{firstLine}</li>
-                          <li className={styles.swiperBought}>{boughtLine}</li>
-                        </ul>
-                        <div className={styles.swiperSubDescription}>
-                          <button className={styles.subDescriptionButton}>
-                            <Link
-                              to={linkTo}
-                              className={styles.subDescriptionButtonLink}
-                            >
-                              <BiRightArrowAlt
-                                style={{
-                                  height: '20px',
-                                  width: '24px',
-                                }}
-                              />
-                            </Link>
-                          </button>
-                          <span className={styles.swiperPrice}>{price}</span>
+              <Swiper watchSlidesProgress slidesPerView={3} className="mySwiper">
+                {
+                  objectLinks.map(({
+                    id,
+                    img,
+                    linkName,
+                    linkTo,
+                    price,
+                    firstLine,
+                    boughtLine,
+                  }) => (
+                    <SwiperSlide>
+                      <Link to={linkTo} className={styles.swiperBlock} key={id}>
+                        <div>
+                          <img className={styles.swiperImage} alt={linkName} src={img}/>
+                          <div className={styles.swiperContent}>
+                            <ul className={styles.swiperDescription}>
+                              <li className={styles.swiperName}>{linkName}</li>
+                              <li className={styles.swiperFirst}>{firstLine}</li>
+                              <li className={styles.swiperBought}>{boughtLine}</li>
+                            </ul>
+                            <div className={styles.swiperSubDescription}>
+                              <button className={styles.subDescriptionButton}>
+                                <Link
+                                  to={linkTo}
+                                  className={styles.subDescriptionButtonLink}
+                                >
+                                  <BiRightArrowAlt
+                                    style={{
+                                      height: '20px',
+                                      width: '24px',
+                                    }}
+                                  />
+                                </Link>
+                              </button>
+                              <span className={styles.swiperPrice}>{price}</span>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))
-              }
+                      </Link>
+                    </SwiperSlide>
+                  ))
+                }
+              </Swiper>
             </div>
           </div>
         </div>
         <div className={styles.benefitBlocks}>
           {
-            objectForBenefitItems.map(({
+            objectBenefitItems.map(({
               id,
               img,
               heading,

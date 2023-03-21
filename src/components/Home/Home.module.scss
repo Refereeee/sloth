@@ -26,6 +26,7 @@
 .swiperWrapper {
   overflow: hidden;
   width: 1260px;
+
 }
 
 .swiperArrows {
@@ -46,10 +47,19 @@
   transform: translate3d(0, 0px, 0px);
 }
 
-.leftArrow{
+.leftArrow,.rightArrow{
   background: none;
   width: 10px;
   border: none;
+}
+
+.leftArrow:disabled>.svgArrows,
+.rightArrow:disabled>.svgArrows {
+  opacity: .5;
+}
+
+.svgArrows{
+  color: white;
 }
 
 .rightArrow{
@@ -75,6 +85,7 @@
   height: 300px;
   overflow: hidden;
   transition: all .5s ease-out;
+  display: block;
 }
 
 

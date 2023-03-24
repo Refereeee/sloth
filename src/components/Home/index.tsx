@@ -1,9 +1,8 @@
 import { useSelector } from 'react-redux';
-
-import 'swiper/css';
-
-// import "swiper/css/free-mode";
-import 'swiper/css/pagination';
+import "swiper/scss";
+import "swiper/scss/scrollbar";
+import "swiper/scss/navigation";
+import "swiper/scss/pagination";
 import { useRef } from 'react';
 import styles from './Home.module.scss';
 import { useAppDispatch } from '../../redux/hooks';

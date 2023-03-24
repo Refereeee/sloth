@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Pagination } from 'swiper';
+import {  Pagination,  } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import { BiRightArrowAlt } from 'react-icons/bi';
@@ -8,15 +8,8 @@ import styles from './Home.module.scss';
 import { homeOptions } from '../../redux/slice/homeSlice';
 import { ObjLinksType } from '../../types/homeDataTypes';
 
-const MainLink = (objectLink:ObjLinksType) =>{
-  const {id,
-    img,
-    linkName,
-    linkTo,
-    price,
-    firstLine,
-    boughtLine
-  } = objectLink
+const MainLink = ({id, img, linkName, linkTo, price, firstLine, boughtLine } :ObjLinksType) =>{
+
   return (
     <Link to={linkTo} className={styles.swiperBlock} key={id}>
       <div>
@@ -57,12 +50,32 @@ export const LinkSwiper = () => {
    } = useSelector(homeOptions);
 
   return (
-    <Swiper watchSlidesProgress slidesPerView={3} className={styles.mySwiper} pagination={{
-      clickable: true,
-    }}  modules={[Pagination]}>
+    <Swiper
+      slidesPerView={3}
+      spaceBetween={10}
+      pagination={{
+        clickable: true,
+      }}
+      // breakpoints={{
+      //   640: {
+      //     slidesPerView: 2,
+      //     spaceBetween: 20,
+      //   },
+      //   768: {
+      //     slidesPerView: 4,
+      //     spaceBetween: 40,
+      //   },
+      //   1024: {
+      //     slidesPerView: 5,
+      //     spaceBetween: 50,
+      //   },
+      // }}
+      modules={[Pagination]}
+      className="mySwiper"
+    >
       {
         objectLinks.map((objectLink) => (
-          <SwiperSlide>
+          <SwiperSlide >
            <MainLink {...objectLink} />
           </SwiperSlide>
         ))

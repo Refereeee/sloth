@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add touch slide">
-      <change afterPath="$PROJECT_DIR$/src/components/Home/HomeSwiper.tsx" afterDir="false" />
+    <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add slider styles">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/App.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Home/HomeSwiper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/HomeSwiper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
     </list>
@@ -40,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/JS/react/react-smilga/react-projects/01-birthday-reminder",
+    "last_opened_file_path": "G:/JS/rsZopa/online-zoo/src/sass",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -170,6 +173,12 @@
       <workItem from="1679307020035" duration="11795000" />
       <workItem from="1679372520266" duration="13129000" />
       <workItem from="1679398909526" duration="12646000" />
+      <workItem from="1679418169924" duration="120000" />
+      <workItem from="1679496061563" duration="3837000" />
+      <workItem from="1679501817506" duration="2075000" />
+      <workItem from="1679508819128" duration="1411000" />
+      <workItem from="1679557065917" duration="69000" />
+      <workItem from="1679646474346" duration="15177000" />
     </task>
     <task id="LOCAL-00001" summary="init: start sloth">
       <created>1662059144287</created>
@@ -269,7 +278,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679406578747</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="feat: add touch slider">
+      <created>1679418221953</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1679418221953</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,6 +317,9 @@
     <MESSAGE value="feat: add footer" />
     <MESSAGE value="feat: add eslint" />
     <MESSAGE value="feat: add touch slide" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add touch slide" />
+    <MESSAGE value="feat: add touch slideк" />
+    <MESSAGE value="feat: add touch slider" />
+    <MESSAGE value="feat: add slider styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add slider styles" />
   </component>
 </project>

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import {  Pagination,  } from 'swiper';
+import { Navigation, Pagination, } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import { BiRightArrowAlt } from 'react-icons/bi';
@@ -56,30 +56,19 @@ export const LinkSwiper = () => {
       pagination={{
         clickable: true,
       }}
-      // breakpoints={{
-      //   640: {
-      //     slidesPerView: 2,
-      //     spaceBetween: 20,
-      //   },
-      //   768: {
-      //     slidesPerView: 4,
-      //     spaceBetween: 40,
-      //   },
-      //   1024: {
-      //     slidesPerView: 5,
-      //     spaceBetween: 50,
-      //   },
-      // }}
-      modules={[Pagination]}
+      navigation
+      modules={[Pagination,Navigation]}
       className="mySwiper"
+
     >
       {
         objectLinks.map((objectLink) => (
           <SwiperSlide >
-           <MainLink {...objectLink} />
+           <MainLink {...objectLink}  />
           </SwiperSlide>
         ))
       }
+      {/* <div className="swiper-button-next">next</div> */}
     </Swiper>
   );
 };

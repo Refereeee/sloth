@@ -28,6 +28,7 @@ interface CounterState {
     loadingImgFlag: boolean,
     loginSuccess: boolean,
     loginFail: boolean
+    burgerOpen: boolean
 }
 
 const getLocalItems = getLocalStorageItems()
@@ -46,7 +47,8 @@ const initialState: CounterState = {
     headerImageFlag: false,
     loadingImgFlag: false,
     loginSuccess: false,
-    loginFail:false
+    loginFail:false,
+    burgerOpen: false
 }
 
 export const loginSlice = createSlice({
@@ -100,6 +102,9 @@ export const loginSlice = createSlice({
         setLoginFailToggle:(state)=>{
             state.loginFail=!state.loginFail
         },
+        changeBurgerOpenFlag: (state,action) =>{
+            state.burgerOpen = action.payload
+        }
 },
     extraReducers: (builder) => {
         // Add reducers for additional action types here, and handle loading state as needed
@@ -127,6 +132,7 @@ export const {
     changeImageFlagFalse,
     setLoginSuccessToFalse,
     clearInputFields,
+    changeBurgerOpenFlag,
     setLoginFailToggle
 } = loginSlice.actions
 

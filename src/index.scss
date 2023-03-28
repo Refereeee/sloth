@@ -145,9 +145,42 @@ p {
   }
 }
 
-//.swiper-slide img {
-//  display: block;
-//  width: 100%;
-//  height: 100%;
-//  object-fit: cover;
-//}
+
+
+.mySwiper{
+  overflow: visible;
+}
+
+.swiper-button-prev{
+  left: 94%;
+}
+
+.swiper-button-next{
+  right: 1.5%;
+}
+
+.swiper-button-prev,.swiper-button-next{
+  color: white;
+  top: 1%;
+  width: 10px;
+  height: 15px;
+
+  &:after{
+    font-size: 15px;
+  }
+}
+
+.swiper-pagination-bullet{
+  background: white;
+  &-active{
+    background: blue;
+  }
+}
+
+.overflowOff{
+  overflow: hidden;
+}
+
+
+
+

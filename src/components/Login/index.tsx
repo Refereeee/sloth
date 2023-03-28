@@ -72,7 +72,6 @@ const Login = () => {
             },1000)
         }
         if(loginFail){
-            console.log(loginFail)
             setTimeout( ()=>{
                 dispatch(setLoginFailToggle())
             },3000)

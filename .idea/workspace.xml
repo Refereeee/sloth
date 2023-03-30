@@ -1,14 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add slider styles">
+    <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add burger styles">
+      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/discord.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App/App.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/App.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/home/svgs/arrows.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/home/svgs/arrows.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/home/svgs/littleIcon.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/home/svgs/littleIcon.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/App/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Divisions/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Divisions/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Finals/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Finals/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/HomeSwiper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/HomeSwiper.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Playoff/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Playoff/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/homeData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/homeData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/hooks.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/hooks.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slice/functions/currentUser.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/functions/currentUser.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slice/functions/getLocalStorageItems.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/functions/getLocalStorageItems.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slice/functions/isValidLog.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/functions/isValidLog.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slice/homeSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/homeSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slice/loginSLice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/loginSLice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/assets.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/assets.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/homeDataTypes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/homeDataTypes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,25 +57,30 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2E81yJzYsUdti06XGduKMBJV9Vj" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/JS/rsZopa/online-zoo/src/sass",
+    "last_opened_file_path": "G:/JS/react/sloth",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "actions.on.save",
     "ts.external.directory.path": "G:\\JS\\react\\sloth\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -178,7 +209,15 @@
       <workItem from="1679501817506" duration="2075000" />
       <workItem from="1679508819128" duration="1411000" />
       <workItem from="1679557065917" duration="69000" />
-      <workItem from="1679646474346" duration="15177000" />
+      <workItem from="1679646474346" duration="16380000" />
+      <workItem from="1679738785197" duration="4245000" />
+      <workItem from="1679918995263" duration="8913000" />
+      <workItem from="1679989324563" duration="25284000" />
+      <workItem from="1680076425054" duration="937000" />
+      <workItem from="1680077898700" duration="129000" />
+      <workItem from="1680080105250" duration="1335000" />
+      <workItem from="1680163899231" duration="831000" />
+      <workItem from="1680165626095" duration="798000" />
     </task>
     <task id="LOCAL-00001" summary="init: start sloth">
       <created>1662059144287</created>
@@ -285,7 +324,21 @@
       <option name="project" value="LOCAL" />
       <updated>1679418221953</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="feat: add slider styles">
+      <created>1679668812365</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1679668812365</updated>
+    </task>
+    <task id="LOCAL-00017" summary="feat: add burger styles">
+      <created>1680026153029</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1680026153029</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,6 +356,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="init: start sloth" />
     <MESSAGE value="feat: add register" />
     <MESSAGE value="feat: add login" />
@@ -320,6 +374,11 @@
     <MESSAGE value="feat: add touch slideк" />
     <MESSAGE value="feat: add touch slider" />
     <MESSAGE value="feat: add slider styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add slider styles" />
+    <MESSAGE value="feat: add burger styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add burger styles" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Navigation, Pagination, } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Link } from 'react-router-dom';
 import { BiRightArrowAlt } from 'react-icons/bi';
@@ -8,12 +8,13 @@ import styles from './Home.module.scss';
 import { homeOptions } from '../../redux/slice/homeSlice';
 import { ObjLinksType } from '../../types/homeDataTypes';
 
-const MainLink = ({id, img, linkName, linkTo, price, firstLine, boughtLine } :ObjLinksType) =>{
-
+const MainLink = ({
+  id, img, linkName, linkTo, price, firstLine, boughtLine,
+} :ObjLinksType) => {
   return (
     <Link to={linkTo} className={styles.swiperBlock} key={id}>
       <div>
-        <img className={styles.swiperImage} alt={linkName} src={img}/>
+        <img className={styles.swiperImage} alt={linkName} src={img} />
         <div className={styles.swiperContent}>
           <ul className={styles.swiperDescription}>
             <li className={styles.swiperName}>{linkName}</li>
@@ -39,15 +40,13 @@ const MainLink = ({id, img, linkName, linkTo, price, firstLine, boughtLine } :Ob
         </div>
       </div>
     </Link>
-  )
-}
-
+  );
+};
 
 export const LinkSwiper = () => {
-
-   const {
-     objectLinks,
-   } = useSelector(homeOptions);
+  const {
+    objectLinks,
+  } = useSelector(homeOptions);
 
   return (
     <Swiper
@@ -57,14 +56,14 @@ export const LinkSwiper = () => {
         clickable: true,
       }}
       navigation
-      modules={[Pagination,Navigation]}
+      modules={[Pagination, Navigation]}
       className="mySwiper"
 
     >
       {
         objectLinks.map((objectLink) => (
-          <SwiperSlide >
-           <MainLink {...objectLink}  />
+          <SwiperSlide>
+            <MainLink {...objectLink} />
           </SwiperSlide>
         ))
       }
@@ -73,11 +72,7 @@ export const LinkSwiper = () => {
   );
 };
 
-
-
-
 export const HomeAllLinks = () => {
-
   const {
     objectLinks,
   } = useSelector(homeOptions);
@@ -92,8 +87,4 @@ export const HomeAllLinks = () => {
       }
     </>
   );
-
 };
-
-
-

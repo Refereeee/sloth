@@ -15,19 +15,19 @@ const App = () => {
   return (
     <div>
       <div className={styles.wrapper}>
-        <Header/>
+        <Header />
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/weekend" element={<Weekend/>}/>
-          <Route path="/divisions" element={<Divisions/>}/>
-          <Route path="/fut-champions-playoffs" element={<Playoff/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/weekend" element={<Weekend />} />
+          <Route path="/divisions" element={<Divisions />} />
+          <Route path="/fut-champions-playoffs" element={<Playoff />} />
         </Routes>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   );
-}
+};
 
 export default App;

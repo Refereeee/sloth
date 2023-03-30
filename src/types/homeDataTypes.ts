@@ -1,4 +1,4 @@
-export type ObjLinksType  = {
+export type ObjLinksType = {
   id: number,
   img: string,
   linkName: string,
@@ -8,7 +8,7 @@ export type ObjLinksType  = {
   boughtLine: string,
 }
 
-export type ObjBenefitsType  = {
+export type ObjBenefitsType = {
   id: number,
   img: string,
   alt: string,

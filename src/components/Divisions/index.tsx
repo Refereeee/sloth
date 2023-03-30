@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Divisions = () => (
-        <div />
-    );
+  <div />
+);
 
 export default Divisions;

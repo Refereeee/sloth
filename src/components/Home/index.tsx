@@ -6,17 +6,16 @@ import 'swiper/scss/pagination';
 import { useRef } from 'react';
 import styles from './Home.module.scss';
 import { useAppDispatch } from '../../redux/hooks';
-import { changeShowAll, homeOptions, } from '../../redux/slice/homeSlice';
+import { changeShowAll, homeOptions } from '../../redux/slice/homeSlice';
 
 import { HomeAllLinks, LinkSwiper } from './HomeSwiper';
 
 const Home = () => {
-
   const dispatch = useAppDispatch();
 
   const {
     showAll,
-    objectBenefitItems
+    objectBenefitItems,
   } = useSelector(homeOptions);
 
   const slide = useRef<HTMLDivElement>(null);
@@ -45,8 +44,10 @@ const Home = () => {
         </div>
         <div>
           <div className={styles.changeImages}>
-            <div className={showAll ? styles.hiddenItem : styles.swiperAllGames}
-                 onClick={() => changeShowAllImages()}>
+            <div
+              className={showAll ? styles.hiddenItem : styles.swiperAllGames}
+              onClick={() => changeShowAllImages()}
+            >
               Show All
             </div>
 
@@ -56,7 +57,7 @@ const Home = () => {
             ref={slide}
           >
             <div className={showAll ? styles.showAll : styles.swiperBlocks}>
-              {showAll ? <HomeAllLinks/> : <LinkSwiper/>}
+              {showAll ? <HomeAllLinks /> : <LinkSwiper />}
             </div>
           </div>
         </div>
@@ -72,7 +73,7 @@ const Home = () => {
               <div key={id} className={styles.benefitBlockWrapper}>
                 <div className={styles.benefitBlock}>
                   <div>
-                    <img src={img} alt={alt}/>
+                    <img src={img} alt={alt} />
                   </div>
                   <h4 className={styles.benefitHeading}>{heading}</h4>
                   <span className={styles.benefitText}>{text}</span>

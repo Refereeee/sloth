@@ -8,8 +8,6 @@ import benefitFirstSvg from '../assets/home/svgs/firstBenefit.svg';
 import benefitBoughtSvg from '../assets/home/svgs/benefitBought.svg';
 import benefitThirdSvg from '../assets/home/svgs/benefitThird.svg';
 
-
-
 export const objectForLinks = [
   {
     id: 1,

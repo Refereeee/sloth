@@ -1,11 +1,55 @@
+
 .backgroundImg{
   background-image: linear-gradient(to right, rgba(124, 230, 100, 0.58), rgba(180, 21, 82, 0.48)), url(../../assets/home-background-3.jpg);
+  width: 100%;
 }
 
-.wrapper{
-  display: block;
+.main{
+  display: flex;
+}
+
+.wrapperContent{
+  max-width: 1290px;
+  width: 100%;
+  margin: 64px auto 0;
+}
+
+.titleWrapper{
+
 }
 
 .textBlock{
   display: block;
+}
+
+.titleWrapper{
+  margin: 20px 0;
+}
+
+.getString:before,.listParam:before,.optionsParam:before{
+  display: inline-block;
+  min-width: 24px;
+  //content: counter(list-item) ".";
+  font-weight: 600;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  letter-spacing: -0.2px;
+  color: rgb(103, 107, 139);
+  font-size: 16px;
+  line-height: 24px;
+  content: url("../../assets/playoffs/ulDot.svg");
+}
+
+.dn{
+  opacity:0;
+  max-height: 0px;
+  overflow: hidden;
+}
+
+.addOptionsBlock{
+  margin: 24px 0 0 0;
+}
+
+.linksWrapper{
+
 }

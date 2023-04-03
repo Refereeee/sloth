@@ -97,6 +97,7 @@ h5 {
 }
 h1 {
   font-size: 2.5rem;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
 h2 {
   font-size: 2rem;
@@ -115,12 +116,17 @@ label{
   font-size: 1.1rem;
 }
 p {
-  margin-bottom: 1.25rem;
-  color: var(--clr-grey-3);
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  letter-spacing: -0.2px;
+  color: var(--clr-white);
+  margin-bottom: 24px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
 }
 @media screen and (min-width: 800px) {
   h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
   }
   h2 {
     font-size: 2.5rem;

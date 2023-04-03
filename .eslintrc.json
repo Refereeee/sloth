@@ -37,6 +37,7 @@
         "max-len": "off",
         "import/extensions": "off",
         "react/jsx-filename-extension": "off",
-        "import/no-unresolved": "off"
+        "import/no-unresolved": "off",
+        "no-param-reassign": "off"
     }
 }

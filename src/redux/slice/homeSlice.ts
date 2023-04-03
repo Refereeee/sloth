@@ -1,6 +1,4 @@
-/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-// eslint-disable-next-line import/no-cycle
 import { RootState } from '../store';
 import { objectForBenefitItems, objectForLinks } from '../../data/homeData';
 import { ObjBenefitsType, ObjLinksType } from '../../types/homeDataTypes';

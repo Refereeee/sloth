@@ -103,6 +103,9 @@ export const loginSlice = createSlice({
     changeBurgerOpenFlag: (state, action) => {
       state.burgerOpen = action.payload;
     },
+    refreshItems: (state) => {
+      state.items = getLocalStorageItems();
+    },
   },
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
@@ -132,6 +135,7 @@ export const {
   clearInputFields,
   changeBurgerOpenFlag,
   setLoginFailToggle,
+  refreshItems,
 } = loginSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type

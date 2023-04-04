@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add fix eslint">
-      <change afterPath="$PROJECT_DIR$/src/assets/playoffs/ulDot.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/slice/playoffSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+    <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add playoff component">
+      <change afterPath="$PROJECT_DIR$/src/assets/playoffs/fut-qualy.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/Home.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/Home.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Home/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Home/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/playoffs/fut-qualy.webp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Playoff/Playoff.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Playoff/Playoff.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Playoff/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Playoff/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slice/homeSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/homeSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slice/functions/getLocalStorageItems.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/functions/getLocalStorageItems.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slice/loginSLice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/loginSLice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slice/playoffSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/playoffSlice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +60,7 @@
     "node.js.selected.package.standard": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "actions.on.save",
+    "settings.editor.selected.configurable": "editing.templates",
     "ts.external.directory.path": "G:\\JS\\react\\sloth\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -202,7 +201,9 @@
       <workItem from="1680165626095" duration="1651000" />
       <workItem from="1680195430018" duration="227000" />
       <workItem from="1680344407915" duration="611000" />
-      <workItem from="1680513999975" duration="17182000" />
+      <workItem from="1680513999975" duration="23993000" />
+      <workItem from="1680609615930" duration="1659000" />
+      <workItem from="1680629168006" duration="3812000" />
     </task>
     <task id="LOCAL-00001" summary="init: start sloth">
       <created>1662059144287</created>
@@ -330,7 +331,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680166636575</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat: add playoff component">
+      <created>1680536881926</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1680536881926</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +376,8 @@
     <MESSAGE value="feat: add slider styles" />
     <MESSAGE value="feat: add burger styles" />
     <MESSAGE value="feat: add fix eslint" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add fix eslint" />
+    <MESSAGE value="feat: add playoff component" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add playoff component" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

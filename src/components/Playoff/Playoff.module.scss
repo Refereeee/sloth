@@ -8,10 +8,15 @@
   display: flex;
 }
 
+//.mainContent{
+//  max-width: ;
+//}
+
 .wrapperContent{
   max-width: 1290px;
   width: 100%;
   margin: 64px auto 0;
+  display: flex;
 }
 
 .titleWrapper{
@@ -26,7 +31,7 @@
   margin: 20px 0;
 }
 
-.getString:before,.listParam:before,.optionsParam:before{
+.getString:before,.listParam:before,.optionsParam:before,.howParam:before{
   display: inline-block;
   min-width: 24px;
   //content: counter(list-item) ".";
@@ -40,16 +45,68 @@
   content: url("../../assets/playoffs/ulDot.svg");
 }
 
-.dn{
-  opacity:0;
-  max-height: 0px;
+.requirementsList{
+  max-height: 128px;
+  opacity: 1;
+  padding: 0px 16px 16px;
   overflow: hidden;
+  transition: max-height 0.3s ease 0s, opacity 0.3s ease 0s, padding-bottom 0.3s ease 0s;
+}
+
+.requirementsBlock, .howBlock{
+  border-radius: 5px;
+  background-color: rgba(41, 48, 84, 0.5);
+  cursor: pointer;
+  margin: 16px 0
+}
+
+.dn{
+  max-height: 0px;
+  opacity: 0;
+  padding: 0px 16px;
+  overflow: hidden;
+  transition: max-height 0.3s ease 0s, opacity 0.3s ease 0s, padding-bottom 0.3s ease 0s;
 }
 
 .addOptionsBlock{
   margin: 24px 0 0 0;
 }
 
-.linksWrapper{
-
+.requirementsTitle, .howTitle {
+  padding: 16px 0 0 16px;
 }
+
+.requirementsTitle h5, .howTitle h5{
+  text-transform: uppercase;
+}
+
+.formWrapper{
+  padding: 0 16px 0 0;
+}
+
+.form{
+  position: relative;
+  width: 300px;
+  border-top: 6px solid rgb(121, 50, 255);
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.03) 0px 3px 23px;
+}
+
+.formImageBlock{
+  position: absolute;
+}
+
+.formImage{
+  width: 100%;
+  display: block;
+  transform: translate(0px, -40px);
+}
+
+.formImageGradient{
+  background: linear-gradient(230.03deg, rgba(0, 0, 0, 0) 21.01%, rgba(8, 13, 38, 0.6) 32.08%, rgb(8, 13, 38) 52.08%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+

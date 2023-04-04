@@ -12,6 +12,7 @@ import {
   changeRepeatPasswordValue, noticeFlagToOff, registerFlagToOff,
   selectReg, setLocalStorageItem,
 } from '../../redux/slice/registerSlice';
+import { refreshItems } from '../../redux/slice/loginSLice';
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -66,6 +67,7 @@ const Register = () => {
     if (registerFlag) {
       setTimeout(() => {
         dispatch(registerFlagToOff());
+        dispatch(refreshItems());
         navigate('/login');
       }, 5000);
     }

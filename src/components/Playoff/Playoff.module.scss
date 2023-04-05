@@ -94,19 +94,23 @@
 
 .formImageBlock{
   position: absolute;
+  overflow: hidden;
 }
 
 .formImage{
   width: 100%;
   display: block;
   transform: translate(0px, -40px);
+  background: var(--clr-black);
 }
 
 .formImageGradient{
-  background: linear-gradient(230.03deg, rgba(0, 0, 0, 0) 21.01%, rgba(8, 13, 38, 0.6) 32.08%, rgb(8, 13, 38) 52.08%);
+  background: linear-gradient(230.03deg, rgba(0, 0, 0, 0) 21.01%, rgba(8, 13, 38, 0.6) 71.08%, rgb(8, 13, 38) 85.08%);
   position: absolute;
   top: 0;
   left: 0;
+  height: 80%;
+  width: 100%;
 }
 
 

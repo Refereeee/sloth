@@ -8,6 +8,7 @@ import {
   changeRequirementFlag,
   selectPlayoff,
 } from '../../redux/slice/playoffSlice';
+import platformData from '../../data/playoffData';
 
 const Playoff = () => {
   const dispatch = useAppDispatch();
@@ -73,7 +74,19 @@ const Playoff = () => {
                 <img src={playoffImg} alt="playoff" className={styles.formImage} />
                 <div className={styles.formImageGradient} />
               </div>
-              {/* <div className={styles.formImageGradient} /> */}
+              <div className={styles.selectChapters}>
+                <div className={styles.selectPlatforms}>
+                  {
+                    platformData.map(({ id, platform }) => {
+                      return (
+                        <label className={styles.platformLabel} key={id} htmlFor={platform}>
+                          <input type="radio" id={platform} className={styles.platformRadio} />
+                        </label>
+                      );
+                    })
+                  }
+                </div>
+              </div>
             </form>
           </div>
         </div>

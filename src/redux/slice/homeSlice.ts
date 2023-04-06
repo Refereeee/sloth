@@ -46,8 +46,6 @@ export const homeSlice = createSlice({
 });
 
 export const {
-  changeHomeSliderRight,
-  changeHomeSliderLeft,
   changeShowAll,
 } = homeSlice.actions;
 

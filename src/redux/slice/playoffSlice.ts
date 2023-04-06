@@ -1,15 +1,17 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 
 export interface PlayoffState{
   requirementFlag:boolean,
-  howWorkFlag:boolean
+  howWorkFlag:boolean,
+  platformValue:string
 }
 
 const initialState: PlayoffState = {
   requirementFlag: false,
   howWorkFlag: false,
+  platformValue: 'pc',
 };
 
 export const playoffSlice = createSlice({
@@ -24,12 +26,16 @@ export const playoffSlice = createSlice({
       if (state.howWorkFlag) state.howWorkFlag = false;
       else state.howWorkFlag = true;
     },
+    changePlatformValue: (state, action: PayloadAction<string>) => {
+      state.platformValue = action.payload;
+    },
   },
 });
 
 export const {
   changeRequirementFlag,
   changeHowWorkFlag,
+  changePlatformValue,
 } = playoffSlice.actions;
 
 export const selectPlayoff = (state: RootState) => state.playoff;

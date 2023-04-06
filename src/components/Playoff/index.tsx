@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
+import { ChangeEvent } from 'react';
 import styles from './Playoff.module.scss';
 import Sidebar from '../Sidebar';
 import { useAppDispatch } from '../../redux/hooks';
 import playoffImg from '../../assets/playoffs/fut-qualy.jpg';
 import {
-  changeHowWorkFlag,
+  changeHowWorkFlag, changePlatformValue,
   changeRequirementFlag,
   selectPlayoff,
 } from '../../redux/slice/playoffSlice';
@@ -12,7 +13,11 @@ import platformData from '../../data/playoffData';
 
 const Playoff = () => {
   const dispatch = useAppDispatch();
-  const { requirementFlag, howWorkFlag } = useSelector(selectPlayoff);
+  const { requirementFlag, howWorkFlag, platformValue } = useSelector(selectPlayoff);
+
+  const radioHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    dispatch(changePlatformValue(event.target.value));
+  };
   const changeRequirementsValue = () => {
     dispatch(changeRequirementFlag());
   };
@@ -75,16 +80,24 @@ const Playoff = () => {
                 <div className={styles.formImageGradient} />
               </div>
               <div className={styles.selectChapters}>
+                <h6>Platforms</h6>
                 <div className={styles.selectPlatforms}>
                   {
-                    platformData.map(({ id, platform }) => {
-                      return (
-                        <label className={styles.platformLabel} key={id} htmlFor={platform}>
-                          <input type="radio" id={platform} className={styles.platformRadio} />
-                        </label>
-                      );
-                    })
-                  }
+                      platformData.map(({ id, platform }) => {
+                        return (
+                          <div className={styles.platformBlock}>
+                            <label className={styles.platformLabel} key={id} htmlFor={platform}>
+                              <input type="radio" value={platform} id={platform} checked={platformValue === platform} className={styles.platformRadio} onChange={radioHandler} name="PlatformName" />
+                              <div className={platformValue === platform ? styles.platformOption : styles.platformOptionNotActive}>
+                                <span className={styles.platformText}>
+                                  { platform }
+                                </span>
+                              </div>
+                            </label>
+                          </div>
+                        );
+                      })
+                    }
                 </div>
               </div>
             </form>

@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add playoff styles">
-      <change afterPath="$PROJECT_DIR$/src/data/playoffData.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Playoff/Playoff.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Playoff/Playoff.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Playoff/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Playoff/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/slice/playoffSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/playoffSlice.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +46,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/JS/react/movie-mern/backend",
+    "last_opened_file_path": "G:/JS/react/movie-mern",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -199,6 +199,8 @@
       <workItem from="1680609615930" duration="1659000" />
       <workItem from="1680629168006" duration="6544000" />
       <workItem from="1680689749334" duration="42000" />
+      <workItem from="1680727902962" duration="8718000" />
+      <workItem from="1680780834370" duration="815000" />
     </task>
     <task id="LOCAL-00001" summary="init: start sloth">
       <created>1662059144287</created>
@@ -340,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680638023557</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="feat: add playoff styles">
+      <created>1680728036355</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1680728036355</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

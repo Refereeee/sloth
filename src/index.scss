@@ -70,7 +70,7 @@ body {
 :active, :hover, :focus {
   outline: 0;
   outline-offset: 0;
-  border: 0 solid;
+  //border: 0 solid;
   box-sizing: border-box;
 }
 
@@ -96,6 +96,15 @@ h5 {
   line-height: 1.25;
   margin-bottom: 0.75rem;
 }
+h6{
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  color: rgb(103, 107, 139);
+  line-height: 16px;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 h1 {
   font-size: 2.5rem;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
@@ -111,6 +120,10 @@ h4 {
 }
 h5 {
   font-size: 0.875rem;
+}
+
+h6{
+  font-size: 0.75rem;
 }
 
 label{
@@ -186,6 +199,18 @@ p {
 
 .overflowOff{
   overflow: hidden;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 

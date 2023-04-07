@@ -1,3 +1,5 @@
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import { useSelector } from 'react-redux';
 import React, { ChangeEvent } from 'react';
 import { AiOutlineDown } from 'react-icons/ai';
@@ -29,10 +31,8 @@ const Playoff = () => {
   const radioHandler = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(changePlatformValue(event.target.value));
   };
-  const rangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    // if (+event.target.value > 0 && +event.target.value <= 10) {
-    dispatch(changeRangeValue(+(sliceStringRange(event.target.value))));
-    // }
+  const rangeHandler = (value:string) => {
+    dispatch(changeRangeValue(+(sliceStringRange(value))));
   };
   const checkBoxStream = () => {
     dispatch(changeStreamValue());
@@ -164,12 +164,18 @@ const Playoff = () => {
                     <div className={styles.formAdditionOptionsParam}>
                       <label htmlFor="stream">
                         <input
+                          className={styles.streamInput}
                           type="checkbox"
                           id="stream"
                           checked={streamCheckboxValue}
                           onChange={checkBoxStream}
                         />
-                        Stream
+                        <div className={streamCheckboxValue ? styles.customCheckbox : styles.customCheckboxNone}>
+                          <svg width="12" height="11" viewBox="0 0 12 11" fill="none" xmlns="http://www.w3.org/2000/svg" color="#fff">
+                            <path d="m4.72 6.622-2.671-2.67A1.2 1.2 0 1 0 .35 5.648l4.53 4.529 6.84-8.21A1.2 1.2 0 1 0 9.879.432L4.72 6.622Z" fill="#fff" />
+                          </svg>
+                        </div>
+                        <span>Stream</span>
                       </label>
                     </div>
                   </div>
@@ -179,7 +185,7 @@ const Playoff = () => {
                       <div className={styles.playoffTitleAfter} />
                     </div>
                     <div className={styles.formWinsInputs}>
-                      <label htmlFor="wins">
+                      <div>
                         <input
                           type="number"
                           id="tentacles"
@@ -187,16 +193,63 @@ const Playoff = () => {
                           min="1"
                           max="100"
                           value={rangeValue}
-                          onChange={rangeHandler}
+                          onChange={(e:any) => rangeHandler(e.target.value)}
                         />
-                        <input
-                          type="range"
-                          min="1"
-                          max="10"
-                          onChange={rangeHandler}
-                          value={rangeValue}
+                      </div>
+                      <div>
+                        {/* <input */}
+                        {/*   type="range" */}
+                        {/*   min="1" */}
+                        {/*   max="10" */}
+                        {/*   onChange={rangeHandler} */}
+                        {/*   value={rangeValue} */}
+                        {/* /> */}
+                        <Slider
+                          handleStyle={{
+                            backgroundColor: '#fff',
+                            border: 'none',
+                            borderRadius: 7,
+                            height: 26,
+                            marginLeft: 0,
+                            marginTop: -5,
+                            transition: 'box-shadow .3s ease',
+                            width: 26,
+                          }}
+                          railStyle={{
+                            background: 'linear-gradient(270deg,#a97bff -14.29%,#7422f9 72.02%,#564fff)',
+                            height: 16,
+                          }}
+                          trackStyle={{
+                            background: '#293054',
+                            height: 16,
+                            position: 'absolute',
+                            right: '0%',
+                            left: 'auto',
+                            width: '0%',
+                          }}
+                          // count={2}
+                          // disabled={disabled}
+                          // reverse={reverse}
+                          // vertical={vertical}
+                          // range={range}
+                          // defaultValue={[30, 50]}
+                          // dots
+                          // step={5}
+                          // draggableTrack
+                          // pushable={5}
+                          // allowCross={false}
+                          onChange={(nextValues) => {
+                            // console.log('Change:', nextValues);
+                            rangeHandler(String(nextValues));
+                            //   setValue(nextValues as any);
+                          }}
+                          // value={value}
+                          min={1}
+                          max={10}
+                          defaultValue={rangeValue}
+                          step={1}
                         />
-                      </label>
+                      </div>
                     </div>
                   </div>
                 </div>

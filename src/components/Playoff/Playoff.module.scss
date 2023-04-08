@@ -268,3 +268,65 @@
   cursor: pointer;
 }
 
+.formWinsInputs{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formInputNumberWrapper{
+  position: relative;
+  color: rgb(255, 255, 255);
+  height: 44px;
+  display: flex;
+  flex-wrap: nowrap;
+  -webkit-box-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px;
+  background-color: rgb(27, 33, 73);
+  border-color: rgba(102, 100, 165, 0.5);
+}
+
+.formInputNumberWrapper:hover{
+  border-color: rgb(148, 146, 204);
+}
+
+.formInputNumberWrapper:focus{
+  outline: 0;
+}
+
+.formInputNumber{
+  color: rgb(255, 255, 255);
+  height: 34px;
+  width: 100%;
+  position: relative;
+  border: none;
+  padding: 0px;
+  margin: 5px 16px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1;
+  background-color: transparent;
+  font-size: 14px;
+}
+
+
+.playoffPrice{
+  margin-top: 16px;
+}
+
+.playoffPriceText{
+  color: rgb(255, 255, 255);
+  text-shadow: rgba(11, 9, 62, 0.2) 0px 1px 3px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 20px;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-style: normal;
+}
+

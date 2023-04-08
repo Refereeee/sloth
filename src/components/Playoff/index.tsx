@@ -28,6 +28,8 @@ const Playoff = () => {
     rangeValue,
   } = useSelector(selectPlayoff);
 
+  const priceValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(rangeValue * 7);
+
   const radioHandler = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(changePlatformValue(event.target.value));
   };
@@ -185,7 +187,7 @@ const Playoff = () => {
                       <div className={styles.playoffTitleAfter} />
                     </div>
                     <div className={styles.formWinsInputs}>
-                      <div>
+                      <div className={styles.formInputNumberWrapper}>
                         <input
                           type="number"
                           id="tentacles"
@@ -194,16 +196,10 @@ const Playoff = () => {
                           max="100"
                           value={rangeValue}
                           onChange={(e:any) => rangeHandler(e.target.value)}
+                          className={styles.formInputNumber}
                         />
                       </div>
                       <div>
-                        {/* <input */}
-                        {/*   type="range" */}
-                        {/*   min="1" */}
-                        {/*   max="10" */}
-                        {/*   onChange={rangeHandler} */}
-                        {/*   value={rangeValue} */}
-                        {/* /> */}
                         <Slider
                           handleStyle={{
                             backgroundColor: '#fff',
@@ -216,41 +212,30 @@ const Playoff = () => {
                             width: 26,
                           }}
                           railStyle={{
-                            background: 'linear-gradient(270deg,#a97bff -14.29%,#7422f9 72.02%,#564fff)',
+                            background: '#293054',
                             height: 16,
                           }}
                           trackStyle={{
-                            background: '#293054',
+                            background: 'linear-gradient(270deg,#a97bff -14.29%,#7422f9 72.02%,#564fff)',
                             height: 16,
                             position: 'absolute',
-                            right: '0%',
-                            left: 'auto',
-                            width: '0%',
                           }}
-                          // count={2}
-                          // disabled={disabled}
-                          // reverse={reverse}
-                          // vertical={vertical}
-                          // range={range}
-                          // defaultValue={[30, 50]}
-                          // dots
-                          // step={5}
-                          // draggableTrack
-                          // pushable={5}
-                          // allowCross={false}
+                          activeDotStyle={{
+                          }}
                           onChange={(nextValues) => {
-                            // console.log('Change:', nextValues);
                             rangeHandler(String(nextValues));
-                            //   setValue(nextValues as any);
                           }}
-                          // value={value}
                           min={1}
                           max={10}
+                          value={rangeValue}
                           defaultValue={rangeValue}
                           step={1}
                         />
                       </div>
                     </div>
+                  </div>
+                  <div className={styles.playoffPrice}>
+                    <span className={styles.playoffPriceText}>{priceValue}</span>
                   </div>
                 </div>
               </div>

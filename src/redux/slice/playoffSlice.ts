@@ -7,7 +7,7 @@ export interface PlayoffState{
   howWorkFlag:boolean,
   platformValue:string,
   streamCheckboxValue:boolean,
-  rangeValue: number
+  rangeValue: number,
 }
 
 const initialState: PlayoffState = {

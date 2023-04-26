@@ -9,13 +9,12 @@ import {
   changeLoginValue,
   changePasswordFlagValue,
   changePasswordValue,
-  fetchUserByImage,
   selectLog,
-  setLocalStorageItem,
   setLoginFailToggle,
   setLoginSuccessToFalse,
 // eslint-disable-next-line import/extensions
 } from '../../redux/slice/loginSLice';
+import { authOptions, loginUser } from '../../redux/slice/authSlice';
 
 const Login = () => {
   const dispatch = useAppDispatch();
@@ -23,13 +22,15 @@ const Login = () => {
 
   const { pathname } = useLocation();
 
+  const { isAuth } = useSelector(authOptions);
+
   const {
     login,
     password,
     loginFlag,
     passwordFlag,
     buttonValue,
-    headerImageFlag,
+    headerImageFlagLogin,
     loginSuccess,
     loginFail,
   } = useSelector(selectLog);
@@ -45,7 +46,7 @@ const Login = () => {
 
   const clickLocalStorageData = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
-    dispatch(setLocalStorageItem(`${login} ${password}`));
+    dispatch(loginUser({ login, password }));
   };
 
   useEffect(() => {
@@ -58,9 +59,6 @@ const Login = () => {
     if (login.length >= 2 && password.length >= 2) {
       dispatch(changeButtonValue(false));
     }
-    if (headerImageFlag) {
-      dispatch(fetchUserByImage());
-    }
     if (loginSuccess) {
       setTimeout(() => {
         navigate('/');
@@ -72,10 +70,14 @@ const Login = () => {
         dispatch(setLoginFailToggle());
       }, 3000);
     }
-  }, [login, password, loginFlag, headerImageFlag, loginSuccess, pathname, loginFail]);
+    if (isAuth) {
+      setTimeout(() => {
+        navigate('/');
+      }, 500);
+    }
+  }, [login, password, loginFlag, headerImageFlagLogin, loginSuccess, pathname, loginFail, isAuth]);
 
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
     <form>
       <div className={styles.formWrapper}>
         <h2 style={{ textAlign: 'center', color: 'black' }}>Login</h2>

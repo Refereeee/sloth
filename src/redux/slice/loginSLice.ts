@@ -1,18 +1,18 @@
 /* eslint-disable no-param-reassign */
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import getLocalStorageItems from './functions/getLocalStorageItems';
 import getCurrentUserFind, { getLoginImage, validLogin } from './functions/currentUser';
 
-export const fetchUserByImage = createAsyncThunk(
-  'users/fetchByIdStatus',
-  async () => {
-    const response = await fetch('https://randomuser.me/api');
-    const data = await response.json();
-    return data.results[0].picture.thumbnail;
-  },
-);
+// export const fetchUserByImage = createAsyncThunk(
+//   'users/fetchByIdStatus',
+//   async () => {
+//     const { data } = await axios.get('https://randomuser.me/api');
+//     console.log(data);
+//     return data.results[0].picture.thumbnail;
+//   },
+// );
 
 interface CounterState {
     login: string,
@@ -23,11 +23,11 @@ interface CounterState {
     items: any,
     currentUserFind: any,
     image: any,
-    headerImageFlag: boolean,
+    headerImageFlagLogin: boolean,
     loadingImgFlag: boolean,
     loginSuccess: boolean,
-    loginFail: boolean
-    burgerOpen: boolean
+    loginFail: boolean,
+    burgerOpen: boolean,
 }
 
 const getLocalItems = getLocalStorageItems();
@@ -43,7 +43,7 @@ const initialState: CounterState = {
   items: getLocalItems,
   currentUserFind: getLocalUser,
   image: getImageLocalStorage,
-  headerImageFlag: false,
+  headerImageFlagLogin: false,
   loadingImgFlag: false,
   loginSuccess: false,
   loginFail: false,
@@ -74,7 +74,7 @@ export const loginSlice = createSlice({
         state.loginSuccess = true;
         state.currentUserFind = action.payload.split(' ').slice(0, 1);
         localStorage.setItem('currentUser', state.currentUserFind);
-        state.headerImageFlag = true;
+        state.headerImageFlagLogin = true;
         state.login = '';
         state.password = '';
       } else {
@@ -82,10 +82,10 @@ export const loginSlice = createSlice({
       }
     },
     changeImageFlagTrue: (state) => {
-      state.headerImageFlag = true;
+      state.headerImageFlagLogin = true;
     },
     changeImageFlagFalse: (state) => {
-      state.headerImageFlag = false;
+      state.headerImageFlagLogin = false;
       localStorage.removeItem('loginImage');
       localStorage.removeItem('currentUser');
       state.image = '';
@@ -107,19 +107,19 @@ export const loginSlice = createSlice({
       state.items = getLocalStorageItems();
     },
   },
-  extraReducers: (builder) => {
-    // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(fetchUserByImage.pending, (state) => {
-      state.loadingImgFlag = true;
-    });
-    builder.addCase(fetchUserByImage.fulfilled, (state, action) => {
-      state.loadingImgFlag = false;
-      if (!state.image) {
-        state.image = action.payload;
-      }
-      localStorage.setItem('loginImage', state.image);
-    });
-  },
+  // extraReducers: (builder) => {
+  //   // Add reducers for additional action types here, and handle loading state as needed
+  //   builder.addCase(fetchUserByImage.pending, (state) => {
+  //     state.loadingImgFlag = true;
+  //   });
+  //   builder.addCase(fetchUserByImage.fulfilled, (state, action) => {
+  //     state.loadingImgFlag = false;
+  //     if (!state.image) {
+  //       state.image = action.payload;
+  //     }
+  //     localStorage.setItem('loginImage', state.image);
+  //   });
+  // },
 });
 
 export const {

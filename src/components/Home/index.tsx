@@ -3,19 +3,20 @@ import 'swiper/scss';
 import 'swiper/scss/scrollbar';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import styles from './Home.module.scss';
 import { useAppDispatch } from '../../redux/hooks';
 import { changeShowAll, homeOptions } from '../../redux/slice/homeSlice';
 
 import { HomeAllLinks, LinkSwiper } from './HomeSwiper';
+import { authOptions } from '../../redux/slice/authSlice';
 
 const Home = () => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    fetch('./');
-  });
+  const {
+    isAuth,
+  } = useSelector(authOptions);
 
   const {
     showAll,

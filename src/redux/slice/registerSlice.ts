@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import getLocalStorageItems from './functions/getLocalStorageItems';
-import isValidLog from './functions/isValidLog';
+// import isValidLog from './functions/isValidLog';
 
 interface CounterState {
   login: string,
@@ -15,7 +15,9 @@ interface CounterState {
   buttonValue: boolean,
   items: any,
   registerFlag: boolean,
-  noticeFlag:boolean
+  noticeFlag:boolean,
+  isAuth:boolean,
+  headerImageFlagReg: boolean
 }
 
 const getLocalItems = getLocalStorageItems();
@@ -31,6 +33,8 @@ const initialState: CounterState = {
   items: getLocalItems,
   registerFlag: false,
   noticeFlag: false,
+  isAuth: false,
+  headerImageFlagReg: false,
 };
 
 export const registerSlice = createSlice({
@@ -59,15 +63,15 @@ export const registerSlice = createSlice({
     changeButtonValue: (state, action: PayloadAction<boolean>) => {
       state.buttonValue = action.payload;
     },
-    setLocalStorageItem: (state, action: PayloadAction<any>) => {
-      if (isValidLog(state.items, action.payload)) {
-        state.items.push(action.payload);
-        localStorage.setItem('items', JSON.stringify(state.items));
-        state.registerFlag = true;
-      } else {
-        state.noticeFlag = true;
-      }
-    },
+    // setLocalStorageItem: (state, action: PayloadAction<any>) => {
+    //   if (isValidLog(state.items, action.payload)) {
+    //     state.items.push(action.payload);
+    //     localStorage.setItem('items', JSON.stringify(state.items));
+    //     state.registerFlag = true;
+    //   } else {
+    //     state.noticeFlag = true;
+    //   }
+    // },
     registerFlagToOff: (state) => {
       state.registerFlag = false;
     },
@@ -86,7 +90,7 @@ export const {
   changePasswordFlagValue,
   changeRepeatPasswordFlagValue,
   changeButtonValue,
-  setLocalStorageItem,
+  // setLocalStorageItem,
   registerFlagToOff,
   noticeFlagToOff,
 } = registerSlice.actions;

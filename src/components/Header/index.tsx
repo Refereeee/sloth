@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 import { FiLogOut } from 'react-icons/fi';
 import {
   changeBurgerOpenFlag,
-  changeImageFlagFalse,
   changeImageFlagTrue,
   selectLog,
 } from '../../redux/slice/loginSLice';
@@ -18,13 +17,17 @@ import {
   BurgerIcon, CloseIcon, LittleIcon, ProfileIcon,
 } from '../../assets/home/svgs/littleIcon';
 import { objectForLinks } from '../../data/homeData';
+import image from '../../assets/header/user.jpg';
+import { authOptions, logout, refresh } from '../../redux/slice/authSlice';
 
 const Header = () => {
   const dispatch = useAppDispatch();
 
   const {
-    headerImageFlag,
-    image,
+    imageFlag,
+  } = useSelector(authOptions);
+
+  const {
     loadingImgFlag,
     currentUserFind,
     burgerOpen,
@@ -35,6 +38,11 @@ const Header = () => {
   const onBurgerOpenFlag = (act: boolean) => {
     dispatch(changeBurgerOpenFlag(act));
   };
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      dispatch(refresh());
+    }
+  }, []);
 
   useEffect(() => {
     if (image) {
@@ -60,7 +68,7 @@ const Header = () => {
   }, []);
 
   const onClickLogOut = () => {
-    dispatch(changeImageFlagFalse());
+    dispatch(logout());
   };
 
   const { pathname } = useLocation();
@@ -77,26 +85,25 @@ const Header = () => {
           </div>
           <div className={styles.burgerMenu}>
             {
-                          objectForLinks.map(({
-                            linkName,
-                            id,
-                            linkTo,
-                          }) => {
-                            return (
-                              <div className={styles.burgerMenuBlock} key={id}>
-                                <Link
-                                  to={linkTo}
-                                  className={styles.burgerMenuLink}
-                                  onClick={() => onBurgerOpenFlag(false)}
-                                >
-                                  {' '}
-                                  {linkName}
-                                  {' '}
-
-                                </Link>
-                              </div>
-                            );
-                          })
+               objectForLinks.map(({
+                 linkName,
+                 id,
+                 linkTo,
+               }) => {
+                 return (
+                   <div className={styles.burgerMenuBlock} key={id}>
+                     <Link
+                       to={linkTo}
+                       className={styles.burgerMenuLink}
+                       onClick={() => onBurgerOpenFlag(false)}
+                     >
+                       {' '}
+                       {linkName}
+                       {' '}
+                     </Link>
+                   </div>
+                 );
+               })
                       }
           </div>
         </div>
@@ -125,14 +132,14 @@ const Header = () => {
               <span className={styles.cartSpan}>0</span>
             </span>
           </a>
-          {pathname !== '/login' && !headerImageFlag
+          {pathname !== '/login' && (!imageFlag)
                     && (
                     <Link to="login" className={styles.login}>
                       <h5 style={{ color: 'white' }}>Login</h5>
                       <CgLogIn color="white" size="1.5rem" />
                     </Link>
                     )}
-          {pathname !== '/register' && !headerImageFlag
+          {pathname !== '/register' && (!imageFlag)
                     && (
                     <Link to="/register" className={styles.register}>
                       <h5 style={{ color: 'white' }}>Register</h5>
@@ -140,7 +147,7 @@ const Header = () => {
                     </Link>
                     )}
           {loadingImgFlag ? <span>Загрузка...</span>
-            : headerImageFlag && (
+            : (imageFlag) && (
             <div style={{ position: 'relative' }}>
               <img src={image} className={styles.imgLogin} alt="loginImg" />
               <span className={styles.loginName}>{currentUserFind}</span>

@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add playoff styles">
+    <list default="true" id="708d973b-0307-47dc-9758-3fc21a3e9036" name="Changes" comment="feat: add playoff styles in price styles">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Playoff/Playoff.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Playoff/Playoff.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Playoff/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Playoff/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/redux/slice/playoffSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/slice/playoffSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +20,19 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="2dcefbe9-7f0d-4675-8ee7-02eb1b88f95d" />
+        <option name="url" value="https://github.com/NedoJunioRr/sloth.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/components/Home/index.tsx" root0="FORCE_HIGHLIGHTING" />
@@ -46,7 +59,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "G:/JS/react/movie-mern",
+    "last_opened_file_path": "G:/JS/react/fifa-app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -55,7 +68,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "editing.templates",
-    "ts.external.directory.path": "G:\\JS\\react\\sloth\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "G:\\JS\\react\\fifa-app\\client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -70,6 +83,21 @@
       <recent name="G:\JS\react\sloth\src\components\App" />
       <recent name="G:\JS\react\sloth\src\components" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.tsx" type="NodeJSConfigurationType" nameIsGenerated="true" path-to-js-file="src/index.tsx" working-dir="$PROJECT_DIR$">
+      <method v="2">
+        <option name="NpmBeforeRunTask" enabled="true">
+          <package-json value="$PROJECT_DIR$/package.json" />
+          <command value="run" />
+          <scripts>
+            <script value="start" />
+          </scripts>
+          <node-interpreter value="project" />
+          <envs />
+        </option>
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -201,6 +229,20 @@
       <workItem from="1680689749334" duration="42000" />
       <workItem from="1680727902962" duration="8718000" />
       <workItem from="1680780834370" duration="815000" />
+      <workItem from="1680806100682" duration="13993000" />
+      <workItem from="1680854403905" duration="1320000" />
+      <workItem from="1680873288031" duration="5000" />
+      <workItem from="1680873294421" duration="9392000" />
+      <workItem from="1680950324225" duration="9867000" />
+      <workItem from="1681422491736" duration="670000" />
+      <workItem from="1681774703114" duration="388000" />
+      <workItem from="1682171252824" duration="241000" />
+      <workItem from="1682171563875" duration="268000" />
+      <workItem from="1682171843780" duration="8000" />
+      <workItem from="1682173064047" duration="605000" />
+      <workItem from="1682329895053" duration="114000" />
+      <workItem from="1682347929615" duration="1072000" />
+      <workItem from="1682378260241" duration="1350000" />
     </task>
     <task id="LOCAL-00001" summary="init: start sloth">
       <created>1662059144287</created>
@@ -349,7 +391,35 @@
       <option name="project" value="LOCAL" />
       <updated>1680728036355</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="feat: add playoff styles">
+      <created>1680806150638</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1680806150638</updated>
+    </task>
+    <task id="LOCAL-00023" summary="feat: add playoff styles and radio">
+      <created>1680806458302</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1680806458302</updated>
+    </task>
+    <task id="LOCAL-00024" summary="feat: add playoff styles and range input">
+      <created>1680820388713</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1680820388713</updated>
+    </task>
+    <task id="LOCAL-00025" summary="feat: add playoff styles in price styles">
+      <created>1680964954932</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1680964954932</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +459,10 @@
     <MESSAGE value="feat: add fix eslint" />
     <MESSAGE value="feat: add playoff component" />
     <MESSAGE value="feat: add playoff styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add playoff styles" />
+    <MESSAGE value="feat: add playoff styles and radio" />
+    <MESSAGE value="feat: add playoff styles and range input" />
+    <MESSAGE value="feat: add playoff styles in price styles" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: add playoff styles in price styles" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

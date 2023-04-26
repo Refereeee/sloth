@@ -38,6 +38,8 @@
         "import/extensions": "off",
         "react/jsx-filename-extension": "off",
         "import/no-unresolved": "off",
-        "no-param-reassign": "off"
+        "no-param-reassign": "off",
+        "import/no-extraneous-dependencies": "off",
+        "consistent-return": "off"
     }
 }

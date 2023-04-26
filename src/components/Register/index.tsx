@@ -10,9 +10,10 @@ import {
   changeLoginValue, changePasswordFlagValue,
   changePasswordValue, changeRepeatPasswordFlagValue,
   changeRepeatPasswordValue, noticeFlagToOff, registerFlagToOff,
-  selectReg, setLocalStorageItem,
+  selectReg,
 } from '../../redux/slice/registerSlice';
 import { refreshItems } from '../../redux/slice/loginSLice';
+import { authOptions, createUser } from '../../redux/slice/authSlice';
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +28,12 @@ const Register = () => {
     buttonValue,
     registerFlag,
     noticeFlag,
+    headerImageFlagReg,
   } = useSelector(selectReg);
+
+  const {
+    isAuth,
+  } = useSelector(authOptions);
 
   const navigate = useNavigate();
 
@@ -41,14 +47,16 @@ const Register = () => {
     dispatch(changeRepeatPasswordValue(event.target.value));
   };
 
-  // eslint-disable-next-line max-len
-  const checkValidateLogin = () => (login.length < 2 ? dispatch(changeLoginFlagValue(true)) : dispatch(changeLoginFlagValue(false)));
-  const checkValidatePassword = () => (password.length < 2 ? dispatch(changePasswordFlagValue(true)) : dispatch(changePasswordFlagValue(false)));
-  const checkValidateRepeatPassword = () => (password.length < 2 ? dispatch(changeRepeatPasswordFlagValue(true)) : dispatch(changeRepeatPasswordFlagValue(false)));
+  const checkValidateLogin = () => (login.length < 2 ? dispatch(changeLoginFlagValue(true))
+    : dispatch(changeLoginFlagValue(false)));
+  const checkValidatePassword = () => (password.length < 2 ? dispatch(changePasswordFlagValue(true))
+    : dispatch(changePasswordFlagValue(false)));
+  const checkValidateRepeatPassword = () => (password.length < 2 ? dispatch(changeRepeatPasswordFlagValue(true))
+    : dispatch(changeRepeatPasswordFlagValue(false)));
 
-  const clickEnterLocalStorageData = (event: React.MouseEvent<HTMLInputElement>) => {
+  const clickCreateUser = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
-    dispatch(setLocalStorageItem(`${login} ${password}`));
+    dispatch(createUser({ login, password }));
   };
 
   useEffect(() => {
@@ -76,7 +84,12 @@ const Register = () => {
         dispatch(noticeFlagToOff());
       }, 3000);
     }
-  }, [login, password, repeatPassword, registerFlag, noticeFlag]);
+    if (isAuth) {
+      setTimeout(() => {
+        navigate('/');
+      }, 2000);
+    }
+  }, [login, password, repeatPassword, registerFlag, noticeFlag, headerImageFlagReg, isAuth]);
 
   return (
     <form>
@@ -147,7 +160,7 @@ const Register = () => {
           type="submit"
           value="Регистрация"
           disabled={buttonValue}
-          onClick={clickEnterLocalStorageData}
+          onClick={clickCreateUser}
         />
       </div>
     </form>

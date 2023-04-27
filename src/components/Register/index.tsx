@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import React, {
+  ChangeEvent, FocusEvent, useEffect, useState,
+} from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import styles from './Register.module.scss';
@@ -19,17 +21,85 @@ const Register = () => {
   const dispatch = useAppDispatch();
 
   const {
-    login,
-    password,
-    repeatPassword,
     loginFlag,
     passwordFlag,
-    repeatPasswordFlag,
     buttonValue,
     registerFlag,
     noticeFlag,
     headerImageFlagReg,
   } = useSelector(selectReg);
+
+  interface Validations {
+    isEmpty: boolean,
+    minLength: number,
+    maxLength: number,
+    isEmail: boolean
+  }
+
+  const useValidation = (value:string, validations:Validations) => {
+    const [isEmpty, setEmpty] = useState(true);
+    const [minLengthError, setMinLengthError] = useState(false);
+    const [maxLengthError, setMaxLengthError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+
+    useEffect(() => {
+      // eslint-disable-next-line guard-for-in
+      for (const validation in validations) {
+        switch (validation) {
+          case 'minLength':
+            value.length < validations[validation] ? setMinLengthError(true) : setMinLengthError(false);
+            break;
+          case 'isEmpty':
+            value ? setEmpty(false) : setEmpty(true);
+            break;
+          case 'maxLength':
+            value.length > validations[validation] ? setMaxLengthError(true) : setMaxLengthError(false);
+            break;
+          case 'isEmail':
+            // eslint-disable-next-line no-case-declarations
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // eslint-disable-next-line no-unused-expressions
+            re.test(String(value).toLowerCase()) ? setEmailError(false) : setEmailError(true);
+            break;
+          default:
+        }
+      }
+    }, [value]);
+    return {
+      isEmpty,
+      minLengthError,
+      maxLengthError,
+      emailError,
+    };
+  };
+
+  const useInput = (initialValue:string, validations:Validations) => {
+    const [value, setValue] = useState<string>(initialValue);
+    const [isDirty, setDirty] = useState<boolean>(false);
+    const valid = useValidation(value, validations);
+
+    const onChange = (event: ChangeEvent<HTMLInputElement>) => {
+      setValue(event.target.value);
+    };
+
+    const onBlur = (event: FocusEvent<HTMLInputElement>) => {
+      setDirty(true);
+    };
+
+    return {
+      value,
+      onChange,
+      onBlur,
+      ...valid,
+      isDirty,
+    };
+  };
+
+  const email = useInput('', { isEmpty: true, minLength: 3 });
+  const password = useInput('', { isEmpty: true, minLength: 3 });
+
+  const [loginError, setLoginError] = useState<string>('Email не может быть пустым');
+  const [passwordError, setPasswordError] = useState<string>('Password не может быть пустым');
 
   const {
     isAuth,
@@ -37,22 +107,28 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const useControlLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const useControlLogin = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(changeLoginValue(event.target.value));
   };
-  const controlPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const controlPassword = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(changePasswordValue(event.target.value));
   };
-  const controlRepeatPassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const controlRepeatPassword = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(changeRepeatPasswordValue(event.target.value));
   };
 
-  const checkValidateLogin = () => (login.length < 2 ? dispatch(changeLoginFlagValue(true))
+  // const blurHandler = (event:any) =>{
+  //   switch (event.target.name){
+  //     case
+  //   }
+  // }
+  const checkValidateLogin = () => (login.length < 2
+    ? dispatch(changeLoginFlagValue(true))
     : dispatch(changeLoginFlagValue(false)));
-  const checkValidatePassword = () => (password.length < 2 ? dispatch(changePasswordFlagValue(true))
+  const checkValidatePassword = () => (password.length < 2
+    ? dispatch(changePasswordFlagValue(true))
     : dispatch(changePasswordFlagValue(false)));
-  const checkValidateRepeatPassword = () => (password.length < 2 ? dispatch(changeRepeatPasswordFlagValue(true))
-    : dispatch(changeRepeatPasswordFlagValue(false)));
+  const checkValidateRepeatPassword = () => dispatch(changeRepeatPasswordFlagValue(true));
 
   const clickCreateUser = (event: React.MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -122,10 +198,11 @@ const Register = () => {
           <input
             className={loginFlag ? `${styles.input} + " " + ${styles.notValid}` : styles.input}
             placeholder="Логин"
-            value={login}
+            value={email.value}
             id="regLogin"
-            onChange={useControlLogin}
-            onBlur={() => checkValidateLogin()}
+            onChange={(e) => email.onChange(e)}
+            onBlur={(e) => email.onBlur(e)}
+            name="log"
           />
         </label>
         <label className={styles.label} htmlFor="regPass">
@@ -139,22 +216,24 @@ const Register = () => {
             onChange={(event) => controlPassword(event)}
             placeholder="Пароль"
             id="regPass"
+            name="pass"
           />
         </label>
-        <label className={styles.label} htmlFor="repPass">
-          Повторите пароль
-          {repeatPasswordFlag && password !== repeatPassword
-                    && <span className={styles.spanError}>Недостаточное количество символов</span>}
-          <input
-            className={styles.input}
-            value={repeatPassword}
-            type="password"
-            onBlur={() => checkValidateRepeatPassword()}
-            onChange={(event) => controlRepeatPassword(event)}
-            placeholder="Пароль"
-            id="repPass"
-          />
-        </label>
+        {/* <label className={styles.label} htmlFor="repPass"> */}
+        {/*  Повторите пароль */}
+        {/*  {repeatPasswordFlag && repeatPassword !== password */}
+        {/*    && <span className={styles.spanError}>Пароли не совпадают</span>} */}
+        {/*  <input */}
+        {/*    className={styles.input} */}
+        {/*    value={repeatPassword} */}
+        {/*    type="password" */}
+        {/*    onBlur={() => checkValidateRepeatPassword()} */}
+        {/*    onChange={(event) => controlRepeatPassword(event)} */}
+        {/*    placeholder="Пароль" */}
+        {/*    id="repPass" */}
+        {/*    name="repPass" */}
+        {/*  /> */}
+        {/* </label> */}
         <input
           className={styles.btn}
           type="submit"

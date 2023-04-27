@@ -7,6 +7,7 @@ interface Params{
     login:string,
     password:string
 }
+
 let useroid = {} as IUser;
 export const createUser = createAsyncThunk('/register', async (params:Params) => {
   const { login, password } = params;

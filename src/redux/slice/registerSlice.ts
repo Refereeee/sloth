@@ -6,12 +6,9 @@ import getLocalStorageItems from './functions/getLocalStorageItems';
 // import isValidLog from './functions/isValidLog';
 
 interface CounterState {
-  login: string,
-  password: string,
-  repeatPassword: string,
-  loginFlag: boolean,
-  passwordFlag: boolean,
-  repeatPasswordFlag: boolean,
+  // loginFlag: boolean,
+  // passwordFlag: boolean,
+  // repeatPasswordFlag: boolean,
   buttonValue: boolean,
   items: any,
   registerFlag: boolean,
@@ -23,12 +20,9 @@ interface CounterState {
 const getLocalItems = getLocalStorageItems();
 
 const initialState: CounterState = {
-  login: '',
-  password: '',
-  repeatPassword: '',
-  loginFlag: false,
-  passwordFlag: false,
-  repeatPasswordFlag: false,
+  // loginFlag: false,
+  // passwordFlag: false,
+  // repeatPasswordFlag: false,
   buttonValue: true,
   items: getLocalItems,
   registerFlag: false,
@@ -42,24 +36,15 @@ export const registerSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    changeLoginValue: (state, action: PayloadAction<string>) => {
-      state.login = action.payload;
-    },
-    changePasswordValue: (state, action: PayloadAction<string>) => {
-      state.password = action.payload;
-    },
-    changeRepeatPasswordValue: (state, action: PayloadAction<string>) => {
-      state.repeatPassword = action.payload;
-    },
-    changeLoginFlagValue: (state, action: PayloadAction<boolean>) => {
-      state.loginFlag = action.payload;
-    },
-    changePasswordFlagValue: (state, action: PayloadAction<boolean>) => {
-      state.passwordFlag = action.payload;
-    },
-    changeRepeatPasswordFlagValue: (state, action: PayloadAction<boolean>) => {
-      state.repeatPasswordFlag = action.payload;
-    },
+    // changeLoginFlagValue: (state, action: PayloadAction<boolean>) => {
+    //   state.loginFlag = action.payload;
+    // },
+    // changePasswordFlagValue: (state, action: PayloadAction<boolean>) => {
+    //   state.passwordFlag = action.payload;
+    // },
+    // changeRepeatPasswordFlagValue: (state, action: PayloadAction<boolean>) => {
+    //   state.repeatPasswordFlag = action.payload;
+    // },
     changeButtonValue: (state, action: PayloadAction<boolean>) => {
       state.buttonValue = action.payload;
     },
@@ -83,12 +68,9 @@ export const registerSlice = createSlice({
 });
 
 export const {
-  changeLoginValue,
-  changeRepeatPasswordValue,
-  changePasswordValue,
-  changeLoginFlagValue,
-  changePasswordFlagValue,
-  changeRepeatPasswordFlagValue,
+  // changeLoginFlagValue,
+  // changePasswordFlagValue,
+  // changeRepeatPasswordFlagValue,
   changeButtonValue,
   // setLocalStorageItem,
   registerFlagToOff,

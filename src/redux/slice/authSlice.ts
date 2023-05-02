@@ -4,21 +4,22 @@ import { RootState } from '../store';
 import { IUser } from '../../models/IUser';
 
 interface Params{
-    login:string,
+    email:string,
     password:string
 }
 
 let useroid = {} as IUser;
 export const createUser = createAsyncThunk('/register', async (params:Params) => {
-  const { login, password } = params;
-  const { data } = await AuthService.registration(login, password);
+  const { email, password } = params;
+  const { data } = await AuthService.registration(email, password);
   localStorage.setItem('token', data.accessToken);
+  console.log(data);
   useroid = data.user;
 });
 
 export const loginUser = createAsyncThunk('/login', async (params:Params) => {
-  const { login, password } = params;
-  const { data } = await AuthService.login(login, password);
+  const { email, password } = params;
+  const { data } = await AuthService.login(email, password);
   localStorage.setItem('token', data.accessToken);
   useroid = data.user;
 });
@@ -56,11 +57,11 @@ export const authSlice = createSlice({
       state.imageFlag = true;
       state.user = useroid;
     });
-    builder.addCase(loginUser.fulfilled, (state) => {
-      state.isAuth = true;
-      state.imageFlag = true;
-      state.user = useroid;
-    });
+    // builder.addCase(loginUser.fulfilled, (state) => {
+    //   state.isAuth = true;
+    //   state.imageFlag = true;
+    //   state.user = useroid;
+    // });
     builder.addCase(refresh.fulfilled, (state) => {
       state.isAuth = true;
       state.imageFlag = true;

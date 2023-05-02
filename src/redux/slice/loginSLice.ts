@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../store';
 import getLocalStorageItems from './functions/getLocalStorageItems';
-import getCurrentUserFind, { getLoginImage, validLogin } from './functions/currentUser';
+import getCurrentUserFind, { getLoginImage } from './functions/currentUser';
 
 // export const fetchUserByImage = createAsyncThunk(
 //   'users/fetchByIdStatus',
@@ -15,10 +15,6 @@ import getCurrentUserFind, { getLoginImage, validLogin } from './functions/curre
 // );
 
 interface CounterState {
-    login: string,
-    password: string,
-    loginFlag: boolean,
-    passwordFlag: boolean,
     buttonValue: boolean,
     items: any,
     currentUserFind: any,
@@ -35,10 +31,6 @@ const getLocalUser = getCurrentUserFind();
 const getImageLocalStorage = getLoginImage();
 
 const initialState: CounterState = {
-  login: '',
-  password: '',
-  loginFlag: false,
-  passwordFlag: false,
   buttonValue: true,
   items: getLocalItems,
   currentUserFind: getLocalUser,
@@ -54,32 +46,8 @@ export const loginSlice = createSlice({
   name: 'login',
   initialState,
   reducers: {
-    changeLoginValue: (state, action: PayloadAction<string>) => {
-      state.login = action.payload;
-    },
-    changePasswordValue: (state, action: PayloadAction<string>) => {
-      state.password = action.payload;
-    },
-    changeLoginFlagValue: (state, action: PayloadAction<boolean>) => {
-      state.loginFlag = action.payload;
-    },
-    changePasswordFlagValue: (state, action: PayloadAction<boolean>) => {
-      state.passwordFlag = action.payload;
-    },
     changeButtonValue: (state, action: PayloadAction<boolean>) => {
       state.buttonValue = action.payload;
-    },
-    setLocalStorageItem: (state, action: PayloadAction<any>) => {
-      if (validLogin(state.items, action.payload)) {
-        state.loginSuccess = true;
-        state.currentUserFind = action.payload.split(' ').slice(0, 1);
-        localStorage.setItem('currentUser', state.currentUserFind);
-        state.headerImageFlagLogin = true;
-        state.login = '';
-        state.password = '';
-      } else {
-        state.loginFail = true;
-      }
     },
     changeImageFlagTrue: (state) => {
       state.headerImageFlagLogin = true;
@@ -92,10 +60,6 @@ export const loginSlice = createSlice({
     },
     setLoginSuccessToFalse: (state) => {
       state.loginSuccess = false;
-    },
-    clearInputFields: (state) => {
-      state.login = '';
-      state.password = '';
     },
     setLoginFailToggle: (state) => {
       state.loginFail = !state.loginFail;
@@ -123,16 +87,9 @@ export const loginSlice = createSlice({
 });
 
 export const {
-  changeLoginValue,
-  changePasswordValue,
-  changeLoginFlagValue,
-  changePasswordFlagValue,
   changeButtonValue,
-  setLocalStorageItem,
   changeImageFlagTrue,
-  changeImageFlagFalse,
   setLoginSuccessToFalse,
-  clearInputFields,
   changeBurgerOpenFlag,
   setLoginFailToggle,
   refreshItems,

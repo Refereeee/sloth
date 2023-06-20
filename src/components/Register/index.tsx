@@ -7,10 +7,8 @@ import styles from './Register.module.scss';
 import { useAppDispatch } from '../../redux/hooks';
 
 import {
-  noticeFlagToOff, registerFlagToOff,
-  selectReg,
+  noticeFlagToOff, selectReg,
 } from '../../redux/slice/registerSlice';
-import { refreshItems } from '../../redux/slice/loginSLice';
 import { authOptions, createUser } from '../../redux/slice/authSlice';
 import useInput from '../../hooks/useInput';
 
@@ -47,11 +45,11 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (registerFlag) {
+    if (isAuth) {
       setTimeout(() => {
-        dispatch(registerFlagToOff());
-        dispatch(refreshItems());
-        navigate('/login');
+        // dispatch(registerFlagToOff());
+        // dispatch(refreshItems());
+        navigate('/');
       }, 5000);
     }
     if (noticeFlag) {
@@ -72,7 +70,7 @@ const Register = () => {
         <h2 style={{ textAlign: 'center', color: 'black' }}>Регистрация</h2>
       </div>
       <div className={styles.wrapper}>
-        {registerFlag
+        {isAuth
                     && (
                     <div style={{ padding: '2rem', backgroundColor: 'green', borderRadius: '50%' }}>
                       регистрация
@@ -108,7 +106,7 @@ const Register = () => {
         />
         <div className={styles.forErrorsPassword}>
           {(password.isDirty && password.isEmpty) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Поле не может быть пустым</div>}
-          {(email.isDirty && password.minLengthError) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Малое количество символов</div>}
+          {(password.isDirty && password.minLengthError) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Малое количество символов</div>}
           {(password.isDirty && password.maxLengthError) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Поле не должно превышать 32 символа</div>}
         </div>
         <input

@@ -68,7 +68,7 @@ const Login = () => {
         <h2 style={{ textAlign: 'center', color: 'black' }}>Login</h2>
       </div>
       <div className={styles.wrapper}>
-        {loginSuccess && <div style={{ padding: '2rem', backgroundColor: 'green' }}>Авторизация успешна</div>}
+        {isAuth && <div style={{ padding: '2rem', backgroundColor: 'green' }}>Авторизация успешна</div>}
         {loginFail && <div style={{ padding: '2rem', backgroundColor: 'green' }}>Неправильный логин или пароль</div>}
         <div className={styles.forErrors}>
           {(email.isDirty && email.isEmpty) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Поле не может быть пустым</div>}
@@ -87,7 +87,7 @@ const Login = () => {
         />
         <div className={styles.forErrorsPassword}>
           {(password.isDirty && password.isEmpty) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Поле не может быть пустым</div>}
-          {(email.isDirty && password.minLengthError) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Малое количество символов</div>}
+          {(password.isDirty && password.minLengthError) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Малое количество символов</div>}
           {(password.isDirty && password.maxLengthError) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Поле не должно превышать 32 символа</div>}
         </div>
         <input

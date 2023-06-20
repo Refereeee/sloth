@@ -57,11 +57,11 @@ export const authSlice = createSlice({
       state.imageFlag = true;
       state.user = useroid;
     });
-    // builder.addCase(loginUser.fulfilled, (state) => {
-    //   state.isAuth = true;
-    //   state.imageFlag = true;
-    //   state.user = useroid;
-    // });
+    builder.addCase(loginUser.fulfilled, (state) => {
+      state.isAuth = true;
+      state.imageFlag = true;
+      state.user = useroid;
+    });
     builder.addCase(refresh.fulfilled, (state) => {
       state.isAuth = true;
       state.imageFlag = true;

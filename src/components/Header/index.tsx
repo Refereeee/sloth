@@ -19,10 +19,11 @@ import {
 import { objectForLinks } from '../../data/homeData';
 import image from '../../assets/header/user.jpg';
 import { authOptions, logout, refresh } from '../../redux/slice/authSlice';
+import Cart from '../Cart';
+import { cartToggleFlag, selectCart } from '../../redux/slice/cartSlice';
 
 const Header = () => {
   const dispatch = useAppDispatch();
-
   const {
     imageFlag,
   } = useSelector(authOptions);
@@ -32,6 +33,10 @@ const Header = () => {
     currentUserFind,
     burgerOpen,
   } = useSelector(selectLog);
+
+  const {
+    cartFlag,
+  } = useSelector(selectCart);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -48,14 +53,19 @@ const Header = () => {
     if (image) {
       dispatch(changeImageFlagTrue());
     }
-    if (burgerOpen) {
+    if (burgerOpen || cartFlag) {
       document.body.classList.add('overflowOff');
+      console.log(cartFlag);
     }
-    if (windowWidth >= 768 || !burgerOpen) {
+    if (windowWidth >= 768 && !burgerOpen && !cartFlag) {
       document.body.classList.remove('overflowOff');
       if (burgerOpen) onBurgerOpenFlag(false);
     }
-  }, [image, burgerOpen, windowWidth]);
+    // if (!cartFlag && ) {
+    //   document.body.classList.remove('overflowOff');
+    // }
+    console.log(cartFlag);
+  }, [image, burgerOpen, windowWidth, cartFlag]);
 
   useEffect(() => {
     function handleResize() {
@@ -126,12 +136,12 @@ const Header = () => {
 
         <div className={styles.tabs}>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <a className={styles.linkCart}>
+          <button className={styles.linkCart} onClick={() => dispatch(cartToggleFlag())}>
             <span className={styles.cart}>
               <BsCartFill style={{ color: 'white' }} size="2rem" />
               <span className={styles.cartSpan}>0</span>
             </span>
-          </a>
+          </button>
           {pathname !== '/login' && (!imageFlag)
                     && (
                     <Link to="login" className={styles.login}>
@@ -156,6 +166,8 @@ const Header = () => {
             )}
         </div>
       </div>
+      <div className={cartFlag ? styles.modalCartOn : styles.modalCart} />
+      <div className={cartFlag ? `${styles.cartWrapperOn} ${styles.cartWrapperTransitionOn}` : `${styles.cartWrapper} ${styles.cartWrapperTransition}`}><Cart /></div>
     </>
   );
 };

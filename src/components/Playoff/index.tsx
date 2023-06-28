@@ -1,8 +1,9 @@
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { useSelector } from 'react-redux';
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useEffect } from 'react';
 import { AiOutlineDown } from 'react-icons/ai';
+// import { v4 as uuidv4 } from 'uuid';
 import styles from './Playoff.module.scss';
 import Sidebar from '../Sidebar';
 import { useAppDispatch } from '../../redux/hooks';
@@ -17,6 +18,7 @@ import {
 } from '../../redux/slice/playoffSlice';
 import platformData from '../../data/playoffData';
 import sliceStringRange from '../../redux/slice/functions/funcforRangeHandler';
+// import { addItem } from '../../redux/slice/cartSlice';
 
 const Playoff = () => {
   const dispatch = useAppDispatch();
@@ -29,6 +31,9 @@ const Playoff = () => {
   } = useSelector(selectPlayoff);
 
   const priceValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(rangeValue * 7);
+
+  // eslint-disable-next-line no-unused-vars
+  // const uniqueId = uuidv4();
 
   const radioHandler = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(changePlatformValue(event.target.value));
@@ -45,6 +50,14 @@ const Playoff = () => {
   const toggleHowWorkFlag = () => {
     dispatch(changeHowWorkFlag());
   };
+
+  const formSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    return e.preventDefault();
+  };
+
+  useEffect(() => {
+    console.log(window.location.href);
+  }, []);
   return (
     <section className={styles.main}>
       <Sidebar />
@@ -116,7 +129,7 @@ const Playoff = () => {
             </div>
           </div>
           <div className={styles.formWrapper}>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={formSubmit}>
               <div className={styles.formImageBlock}>
                 <img src={playoffImg} alt="playoff" className={styles.formImage} />
                 <div className={styles.formImageGradient} />
@@ -237,6 +250,7 @@ const Playoff = () => {
                   <div className={styles.playoffPrice}>
                     <span className={styles.playoffPriceText}>{priceValue}</span>
                   </div>
+                  <div className={styles.playoffButtonToCartWrapper}><button className={styles.playoffButtonToCart}>Add To Cart</button></div>
                 </div>
               </div>
             </form>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { BsCartFill } from 'react-icons/bs';
 import { CgLogIn } from 'react-icons/cg';
 import { FaUserPlus } from 'react-icons/fa';
@@ -19,10 +19,12 @@ import {
 import { objectForLinks } from '../../data/homeData';
 import image from '../../assets/header/user.jpg';
 import { authOptions, logout, refresh } from '../../redux/slice/authSlice';
-import Cart from '../Cart';
-import { cartToggleFlag, selectCart } from '../../redux/slice/cartSlice';
+import { cartFlagToFalse, cartFlagToOpen, selectCart } from '../../redux/slice/cartSlice';
+import Cart from '../Cart/Cart';
 
 const Header = () => {
+  const cartBlock = useRef<HTMLDivElement| null>(null);
+  const linkCart = useRef<HTMLButtonElement| null>(null);
   const dispatch = useAppDispatch();
   const {
     imageFlag,
@@ -55,16 +57,11 @@ const Header = () => {
     }
     if (burgerOpen || cartFlag) {
       document.body.classList.add('overflowOff');
-      console.log(cartFlag);
     }
     if (windowWidth >= 768 && !burgerOpen && !cartFlag) {
       document.body.classList.remove('overflowOff');
       if (burgerOpen) onBurgerOpenFlag(false);
     }
-    // if (!cartFlag && ) {
-    //   document.body.classList.remove('overflowOff');
-    // }
-    console.log(cartFlag);
   }, [image, burgerOpen, windowWidth, cartFlag]);
 
   useEffect(() => {
@@ -73,7 +70,6 @@ const Header = () => {
     }
 
     window.addEventListener('resize', handleResize);
-    // handleResize();
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -82,6 +78,18 @@ const Header = () => {
   };
 
   const { pathname } = useLocation();
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (cartBlock.current && !cartBlock.current.contains(event.target as Node) && !linkCart.current?.contains(event.target as Node)) {
+        if (cartFlag) dispatch(cartFlagToFalse());
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [cartFlag]);
 
   return (
     <>
@@ -136,7 +144,7 @@ const Header = () => {
 
         <div className={styles.tabs}>
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-          <button className={styles.linkCart} onClick={() => dispatch(cartToggleFlag())}>
+          <button className="linkCart" onClick={() => (!cartFlag ? dispatch(cartFlagToOpen()) : dispatch(cartFlagToFalse()))} ref={linkCart}>
             <span className={styles.cart}>
               <BsCartFill style={{ color: 'white' }} size="2rem" />
               <span className={styles.cartSpan}>0</span>
@@ -145,14 +153,14 @@ const Header = () => {
           {pathname !== '/login' && (!imageFlag)
                     && (
                     <Link to="login" className={styles.login}>
-                      <h5 style={{ color: 'white' }}>Login</h5>
+                      <h5 style={{ color: 'white' }}>Sign in</h5>
                       <CgLogIn color="white" size="1.5rem" />
                     </Link>
                     )}
           {pathname !== '/register' && (!imageFlag)
                     && (
-                    <Link to="/register" className={styles.register}>
-                      <h5 style={{ color: 'white' }}>Register</h5>
+                    <Link to="/register" className={styles.registerHead}>
+                      <h5 style={{ color: 'white' }}>Sign up</h5>
                       <FaUserPlus color="white" size="1.5rem" />
                     </Link>
                     )}
@@ -167,7 +175,11 @@ const Header = () => {
         </div>
       </div>
       <div className={cartFlag ? styles.modalCartOn : styles.modalCart} />
-      <div className={cartFlag ? `${styles.cartWrapperOn} ${styles.cartWrapperTransitionOn}` : `${styles.cartWrapper} ${styles.cartWrapperTransition}`}><Cart /></div>
+      <div className={cartFlag ? `${styles.cartWrapperOn} ${styles.cartWrapperTransitionOn} ` : `${styles.cartWrapper} ${styles.cartWrapperTransitionOff}`}>
+        <div className={styles.rootCart} ref={cartBlock}>
+          <Cart />
+        </div>
+      </div>
     </>
   );
 };

@@ -1,26 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
+import ObjCartTypes from '../../types/cartTypes';
 
 interface CartState{
-  cartFlag:boolean
+  cartFlag:boolean,
+  items?: ObjCartTypes[],
 }
 
 const initialState:CartState = {
   cartFlag: false,
+  items: [],
 };
 
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    cartToggleFlag: (state) => {
-      state.cartFlag = !state.cartFlag;
+    cartFlagToFalse: (state) => {
+      state.cartFlag = false;
     },
+    cartFlagToOpen: (state) => {
+      state.cartFlag = true;
+    },
+    // addItem: (state, action) => {
+    //   state.items.push(action.payload);
+    // },
   },
 });
 
 export const {
-  cartToggleFlag,
+  cartFlagToFalse,
+  cartFlagToOpen,
+  // addItem,
 } = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart;

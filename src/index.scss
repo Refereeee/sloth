@@ -214,5 +214,24 @@ input[type=number] {
 }
 
 
+.linkCart{
+  color: rgb(255, 255, 255);
+  background: rgb(86, 79, 255);
+  border-color: rgb(86, 79, 255);
+  padding: 5px 8px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  overflow: hidden;
+}
+
+.linkCart:hover{
+  background-color: rgb(82, 62, 201);
+  border-color: rgb(82, 62, 201);
+}
+
 
 

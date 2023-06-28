@@ -24,6 +24,7 @@
     "swiper": "^8.4.7",
     "timers-browserify": "^2.0.12",
     "typescript": "^4.8.2",
+    "uuid": "^9.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

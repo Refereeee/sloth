@@ -11,7 +11,7 @@ import {
   selectLog,
 } from '../../redux/slice/loginSLice';
 import styles from './Header.module.scss';
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/logo.png';
 import { useAppDispatch } from '../../redux/hooks';
 import {
   BurgerIcon, CloseIcon, LittleIcon, ProfileIcon,

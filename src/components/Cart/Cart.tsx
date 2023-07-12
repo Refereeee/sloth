@@ -24,7 +24,7 @@ const Cart = () => {
           <span className={styles.infoDesc}>Don't wait, let's get shopping and find your next deal today!</span>
           <div className={styles.buttons}>
             <button className={styles.offCart} onClick={() => dispatch(cartFlagToFalse())}>Start shopping</button>
-            <Link to="/register" className={styles.register}>
+            <Link to="/register" className={styles.register} onClick={() => dispatch(cartFlagToFalse())}>
               <h5 style={{ color: 'white' }}>Sign up</h5>
               <FaUserPlus color="white" size="1.5rem" />
             </Link>

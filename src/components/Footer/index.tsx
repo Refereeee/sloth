@@ -8,7 +8,7 @@ const Footer = () => {
       <div className={styles.content}>
         <img src={logo} alt="logo" className={styles.logo} />
         <span className={styles.text}>
-          © Overgear 2018-2022. All rights reserved. Diagorou 4, Kermia Building, 6th floor, Nicosia, Cyprus. Reg. number: HE395043
+          © Ea FC boost 2023. All rights reserved.
         </span>
       </div>
     </div>

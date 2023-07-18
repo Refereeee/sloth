@@ -38,6 +38,7 @@ const Header = () => {
 
   const {
     cartFlag,
+    totalCount,
   } = useSelector(selectCart);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -147,7 +148,7 @@ const Header = () => {
           <button className="linkCart" onClick={() => (!cartFlag ? dispatch(cartFlagToOpen()) : dispatch(cartFlagToFalse()))} ref={linkCart}>
             <span className={styles.cart}>
               <BsCartFill style={{ color: 'white' }} size="2rem" />
-              <span className={styles.cartSpan}>0</span>
+              <span className={styles.cartSpan}>{totalCount}</span>
             </span>
           </button>
           {pathname !== '/login' && (!imageFlag)

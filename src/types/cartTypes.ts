@@ -1,9 +1,10 @@
 type ObjCartTypes = {
   id: number,
   price: string,
-  image: string,
+  image?: string,
   platform: string,
-  text: string,
+  streamBoolean?: boolean,
+  text?: string,
 }
 
 export default ObjCartTypes;

@@ -1,9 +1,10 @@
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import { useSelector } from 'react-redux';
-import React, { ChangeEvent, useEffect } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import { AiOutlineDown } from 'react-icons/ai';
-// import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
+import { useLocation } from 'react-router-dom';
 import styles from './Playoff.module.scss';
 import Sidebar from '../Sidebar';
 import { useAppDispatch } from '../../redux/hooks';
@@ -18,7 +19,7 @@ import {
 } from '../../redux/slice/playoffSlice';
 import platformData from '../../data/playoffData';
 import sliceStringRange from '../../redux/slice/functions/funcforRangeHandler';
-// import { addItem } from '../../redux/slice/cartSlice';
+import { addItem, selectCart } from '../../redux/slice/cartSlice';
 
 const Playoff = () => {
   const dispatch = useAppDispatch();
@@ -30,15 +31,36 @@ const Playoff = () => {
     rangeValue,
   } = useSelector(selectPlayoff);
 
-  const priceValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(rangeValue * 7);
+  const {
+    items,
+  } = useSelector(selectCart);
 
-  // eslint-disable-next-line no-unused-vars
-  // const uniqueId = uuidv4();
+  const locationName = useLocation().pathname.slice(1).split('-').map((letter) => letter[0].toUpperCase() + letter.slice(1)).join(' ');
+
+  const priceValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(rangeValue * 7);
+  const priceValueWithStream = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  }).format(rangeValue * 7 + 5);
+
+  const myuuid = uuidv4();
+  const [priceValueType, setPriceValueType] = useState(false);
+
+  const addPositionToCart = () => {
+    dispatch(addItem({
+      platform: platformValue,
+      streamBoolean: streamCheckboxValue,
+      price: priceValueType ? priceValueWithStream : priceValue,
+      image: playoffImg,
+      id: myuuid,
+      text: locationName,
+    }));
+  };
 
   const radioHandler = (event: ChangeEvent<HTMLInputElement>) => {
     dispatch(changePlatformValue(event.target.value));
   };
-  const rangeHandler = (value:string) => {
+  const rangeHandler = (value: string) => {
     dispatch(changeRangeValue(+(sliceStringRange(value))));
   };
   const checkBoxStream = () => {
@@ -51,13 +73,15 @@ const Playoff = () => {
     dispatch(changeHowWorkFlag());
   };
 
+  useEffect(() => {
+    // eslint-disable-next-line no-unused-expressions
+    streamCheckboxValue ? setPriceValueType(true) : setPriceValueType(false);
+  }, [items, streamCheckboxValue]);
+
   const formSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     return e.preventDefault();
   };
 
-  useEffect(() => {
-    console.log(window.location.href);
-  }, []);
   return (
     <section className={styles.main}>
       <Sidebar />
@@ -248,9 +272,17 @@ const Playoff = () => {
                     </div>
                   </div>
                   <div className={styles.playoffPrice}>
-                    <span className={styles.playoffPriceText}>{priceValue}</span>
+                    <span
+                      className={styles.playoffPriceText}
+                    >
+                      {priceValueType ? priceValueWithStream : priceValue}
+                    </span>
                   </div>
-                  <div className={styles.playoffButtonToCartWrapper}><button className={styles.playoffButtonToCart}>Add To Cart</button></div>
+                  <div className={styles.playoffButtonToCartWrapper}>
+                    <button className={styles.playoffButtonToCart} onClick={() => addPositionToCart()}>
+                      Add To Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             </form>

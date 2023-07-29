@@ -14,7 +14,10 @@ const Cart = () => {
   return (
     <>
       <div className={styles.headerWrapper}>
-        <span className={styles.headerText}>Shopping Cart</span>
+        <span className={styles.headerText}>
+          Shopping Cart
+          {items?.length ? `(${items.length} items)` : ''}
+        </span>
         <span className={styles.closeIcon} onClick={() => dispatch(cartFlagToFalse())}>
           <CartClose />
         </span>

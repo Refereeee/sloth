@@ -1,5 +1,5 @@
 type ObjCartTypes = {
-  id: number,
+  id: string,
   price: string,
   image?: string,
   platform: string,

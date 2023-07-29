@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
 import ObjCartTypes from '../../types/cartTypes';
 
@@ -28,6 +28,10 @@ export const cartSlice = createSlice({
       state.items!.push(action.payload);
       state.totalCount += 1;
     },
+    removeItem(state, action: PayloadAction<string>) {
+      state.items = state.items!.filter((el) => el.id !== action.payload);
+      state.totalCount -= 1;
+    },
   },
 });
 
@@ -35,6 +39,7 @@ export const {
   cartFlagToFalse,
   cartFlagToOpen,
   addItem,
+  removeItem,
 } = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart;

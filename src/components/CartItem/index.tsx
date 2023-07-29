@@ -3,10 +3,17 @@ import { BiTime } from 'react-icons/bi';
 import { GiTrashCan } from 'react-icons/gi';
 import ObjCartTypes from '../../types/cartTypes';
 import styles from './CartItem.module.scss';
+import { useAppDispatch } from '../../redux/hooks';
+import { removeItem } from '../../redux/slice/cartSlice';
 
 const CartItem:FC<ObjCartTypes> = ({
-  price, image, platform, streamBoolean, text,
+  price, image, platform, streamBoolean, text, id,
 }) => {
+  const dispatch = useAppDispatch();
+  const onClickRemoveItem = () => {
+    window.confirm('Are you sure you want to remove?');
+    dispatch(removeItem(id));
+  };
   return (
     <div className={styles.wrapper}>
       <div className={styles.cartItem}>
@@ -30,7 +37,7 @@ const CartItem:FC<ObjCartTypes> = ({
           </div>
           <div className={styles.price}>
             <span>{price}</span>
-            <span className={styles.remove}>
+            <span className={styles.remove} onClick={onClickRemoveItem}>
               <GiTrashCan size="1.2rem" />
               <span className={styles.removeText}>Remove</span>
             </span>

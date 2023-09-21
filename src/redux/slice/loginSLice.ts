@@ -24,6 +24,7 @@ interface CounterState {
     loginSuccess: boolean,
     loginFail: boolean,
     burgerOpen: boolean,
+    logModal: boolean,
 }
 
 const getLocalItems = getLocalStorageItems();
@@ -40,6 +41,7 @@ const initialState: CounterState = {
   loginSuccess: false,
   loginFail: false,
   burgerOpen: false,
+  logModal: false,
 };
 
 export const loginSlice = createSlice({
@@ -70,20 +72,13 @@ export const loginSlice = createSlice({
     refreshItems: (state) => {
       state.items = getLocalStorageItems();
     },
+    onLogModal: (state) => {
+      state.logModal = true;
+    },
+    offLogModal: (state) => {
+      state.logModal = false;
+    },
   },
-  // extraReducers: (builder) => {
-  //   // Add reducers for additional action types here, and handle loading state as needed
-  //   builder.addCase(fetchUserByImage.pending, (state) => {
-  //     state.loadingImgFlag = true;
-  //   });
-  //   builder.addCase(fetchUserByImage.fulfilled, (state, action) => {
-  //     state.loadingImgFlag = false;
-  //     if (!state.image) {
-  //       state.image = action.payload;
-  //     }
-  //     localStorage.setItem('loginImage', state.image);
-  //   });
-  // },
 });
 
 export const {
@@ -92,6 +87,8 @@ export const {
   setLoginSuccessToFalse,
   changeBurgerOpenFlag,
   setLoginFailToggle,
+  onLogModal,
+  offLogModal,
   refreshItems,
 } = loginSlice.actions;
 

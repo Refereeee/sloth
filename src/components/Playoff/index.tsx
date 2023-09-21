@@ -36,7 +36,6 @@ const Playoff = () => {
   } = useSelector(selectCart);
 
   const locationName = useLocation().pathname.slice(1).split('-').map((letter) => letter[0].toUpperCase() + letter.slice(1)).join(' ');
-
   const priceValue = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(rangeValue * 7);
   const priceValueWithStream = new Intl.NumberFormat('en-US', {
     style: 'currency',

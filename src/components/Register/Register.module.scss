@@ -1,5 +1,11 @@
 .formWrapper{
-    margin-top: 4rem;
+  border-radius: 6px;
+  background-color: rgb(255, 255, 255);
+  flex-direction: column;
+  display: flex;
+  min-width: 0px;
+  width: 480px;
+  padding: 40px;
 }
 
 .wrapper {

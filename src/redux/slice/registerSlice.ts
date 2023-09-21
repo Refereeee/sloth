@@ -9,6 +9,7 @@ interface CounterState {
   // loginFlag: boolean,
   // passwordFlag: boolean,
   // repeatPasswordFlag: boolean,
+  regModal: boolean,
   buttonValue: boolean,
   items: any,
   registerFlag: boolean,
@@ -23,6 +24,7 @@ const initialState: CounterState = {
   // loginFlag: false,
   // passwordFlag: false,
   // repeatPasswordFlag: false,
+  regModal: false,
   buttonValue: true,
   items: getLocalItems,
   registerFlag: false,
@@ -36,34 +38,21 @@ export const registerSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    // changeLoginFlagValue: (state, action: PayloadAction<boolean>) => {
-    //   state.loginFlag = action.payload;
-    // },
-    // changePasswordFlagValue: (state, action: PayloadAction<boolean>) => {
-    //   state.passwordFlag = action.payload;
-    // },
-    // changeRepeatPasswordFlagValue: (state, action: PayloadAction<boolean>) => {
-    //   state.repeatPasswordFlag = action.payload;
-    // },
     changeButtonValue: (state, action: PayloadAction<boolean>) => {
       state.buttonValue = action.payload;
     },
-    // setLocalStorageItem: (state, action: PayloadAction<any>) => {
-    //   if (isValidLog(state.items, action.payload)) {
-    //     state.items.push(action.payload);
-    //     localStorage.setItem('items', JSON.stringify(state.items));
-    //     state.registerFlag = true;
-    //   } else {
-    //     state.noticeFlag = true;
-    //   }
-    // },
     registerFlagToOff: (state) => {
       state.registerFlag = false;
     },
     noticeFlagToOff: (state) => {
       state.noticeFlag = false;
     },
-
+    onRegModal: (state) => {
+      state.regModal = true;
+    },
+    offRegModal: (state) => {
+      state.regModal = false;
+    },
   },
 });
 
@@ -75,6 +64,8 @@ export const {
   // setLocalStorageItem,
   registerFlagToOff,
   noticeFlagToOff,
+  onRegModal,
+  offRegModal,
 } = registerSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type

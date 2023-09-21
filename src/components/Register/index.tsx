@@ -12,7 +12,11 @@ import {
 import { authOptions, createUser } from '../../redux/slice/authSlice';
 import useInput from '../../hooks/useInput';
 
-const Register = () => {
+interface ChildProps {
+  forwardedRef: React.RefObject<HTMLFormElement>;
+}
+
+const Register: React.FC<ChildProps> = ({ forwardedRef }) => {
   const dispatch = useAppDispatch();
 
   const {
@@ -65,9 +69,9 @@ const Register = () => {
   }, [registerFlag, noticeFlag, headerImageFlagReg, isAuth]);
 
   return (
-    <form>
-      <div className={styles.formWrapper}>
-        <h2 style={{ textAlign: 'center', color: 'black' }}>Регистрация</h2>
+    <form className={styles.formWrapper} ref={forwardedRef}>
+      <div>
+        <h2 style={{ textAlign: 'center', color: 'black' }}>Register</h2>
       </div>
       <div className={styles.wrapper}>
         {isAuth

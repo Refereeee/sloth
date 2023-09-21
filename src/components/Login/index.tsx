@@ -12,7 +12,11 @@ import {
 import { authOptions, loginUser } from '../../redux/slice/authSlice';
 import useInput from '../../hooks/useInput';
 
-const Login = () => {
+interface ChildProps {
+  forwardRef: React.RefObject<HTMLFormElement>;
+}
+
+const Login: React.FC<ChildProps> = ({ forwardRef }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -63,8 +67,8 @@ const Login = () => {
   }, [headerImageFlagLogin, loginSuccess, pathname, loginFail, isAuth]);
 
   return (
-    <form>
-      <div className={styles.formWrapper}>
+    <form className={styles.formWrapper} ref={forwardRef}>
+      <div>
         <h2 style={{ textAlign: 'center', color: 'black' }}>Login</h2>
       </div>
       <div className={styles.wrapper}>

@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from 'react';
 import { BsCartFill } from 'react-icons/bs';
 import { CgLogIn } from 'react-icons/cg';
 import { FaUserPlus } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { FiLogOut } from 'react-icons/fi';
 import {
   changeBurgerOpenFlag,
-  changeImageFlagTrue,
+  changeImageFlagTrue, onLogModal,
   selectLog,
 } from '../../redux/slice/loginSLice';
 import styles from './Header.module.scss';
@@ -21,6 +21,7 @@ import image from '../../assets/header/user.jpg';
 import { authOptions, logout, refresh } from '../../redux/slice/authSlice';
 import { cartFlagToFalse, cartFlagToOpen, selectCart } from '../../redux/slice/cartSlice';
 import Cart from '../Cart/Cart';
+import { onRegModal } from '../../redux/slice/registerSlice';
 
 const Header = () => {
   const cartBlock = useRef<HTMLDivElement| null>(null);
@@ -78,8 +79,7 @@ const Header = () => {
     dispatch(logout());
   };
 
-  const { pathname } = useLocation();
-
+  // const { pathname } = useLocation();
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (cartBlock.current && !cartBlock.current.contains(event.target as Node) && !linkCart.current?.contains(event.target as Node)) {
@@ -151,20 +151,14 @@ const Header = () => {
               <span className={styles.cartSpan}>{totalCount}</span>
             </span>
           </button>
-          {pathname !== '/login' && (!imageFlag)
-                    && (
-                    <Link to="login" className={styles.login}>
-                      <h5 style={{ color: 'white' }}>Sign in</h5>
-                      <CgLogIn color="white" size="1.5rem" />
-                    </Link>
-                    )}
-          {pathname !== '/register' && (!imageFlag)
-                    && (
-                    <Link to="/register" className={styles.registerHead}>
-                      <h5 style={{ color: 'white' }}>Sign up</h5>
-                      <FaUserPlus color="white" size="1.5rem" />
-                    </Link>
-                    )}
+          <button className={styles.login} onClick={() => dispatch(onLogModal())}>
+            <h5 style={{ color: 'white' }}>Sign in</h5>
+            <CgLogIn color="white" size="1.5rem" />
+          </button>
+          <button className={styles.registerHead} onClick={() => dispatch(onRegModal())}>
+            <h5 style={{ color: 'white' }}>Sign up</h5>
+            <FaUserPlus color="white" size="1.5rem" />
+          </button>
           {loadingImgFlag ? <span>Загрузка...</span>
             : (imageFlag) && (
             <div style={{ position: 'relative' }}>

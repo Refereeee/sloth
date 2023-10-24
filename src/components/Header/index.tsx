@@ -21,7 +21,7 @@ import image from '../../assets/header/user.jpg';
 import { authOptions, logout, refresh } from '../../redux/slice/authSlice';
 import { cartFlagToFalse, cartFlagToOpen, selectCart } from '../../redux/slice/cartSlice';
 import Cart from '../Cart/Cart';
-import { onRegModal } from '../../redux/slice/registerSlice';
+import { onRegModal, selectReg } from '../../redux/slice/registerSlice';
 
 const Header = () => {
   const cartBlock = useRef<HTMLDivElement| null>(null);
@@ -35,7 +35,12 @@ const Header = () => {
     loadingImgFlag,
     currentUserFind,
     burgerOpen,
+    logModal,
   } = useSelector(selectLog);
+
+  const {
+    regModal,
+  } = useSelector(selectReg);
 
   const {
     cartFlag,
@@ -151,11 +156,11 @@ const Header = () => {
               <span className={styles.cartSpan}>{totalCount}</span>
             </span>
           </button>
-          <button className={styles.login} onClick={() => dispatch(onLogModal())}>
+          <button className={styles.login} onClick={() => dispatch(onLogModal())} disabled={!!logModal}>
             <h5 style={{ color: 'white' }}>Sign in</h5>
             <CgLogIn color="white" size="1.5rem" />
           </button>
-          <button className={styles.registerHead} onClick={() => dispatch(onRegModal())}>
+          <button className={styles.registerHead} onClick={() => dispatch(onRegModal())} disabled={!!regModal}>
             <h5 style={{ color: 'white' }}>Sign up</h5>
             <FaUserPlus color="white" size="1.5rem" />
           </button>

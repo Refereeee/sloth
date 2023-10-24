@@ -10,13 +10,13 @@ const Sidebar = () => {
       id: 1,
       img: <GiCagedBall />,
       linkName: 'Fut Champions PlayOffs',
-      linkTo: '/weekend',
+      linkTo: '/fut-champions-playoffs',
     },
     {
       id: 2,
       img: <GiThunderball />,
       linkName: 'Fut Champions Finals',
-      linkTo: '/finals',
+      linkTo: '/fut-champions-finals',
     },
     {
       id: 3,

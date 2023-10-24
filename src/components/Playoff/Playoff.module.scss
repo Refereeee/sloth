@@ -2,6 +2,7 @@
 .backgroundImg{
   background-image: linear-gradient(to right, rgba(124, 230, 100, 0.58), rgba(180, 21, 82, 0.48)), url(../../assets/home-background-3.jpg);
   width: 100%;
+  padding: 0 0 100px 0;
 }
 
 .main{
@@ -100,7 +101,8 @@
 }
 
 .formWrapper{
-  padding: 0 16px 0 0;
+  padding: 0 16px 0 70px;
+  margin: 0 0 0 70px;
 }
 
 .formAdditionOptionsParam{

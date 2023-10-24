@@ -4,6 +4,7 @@
   background-color: #0E0E11;
   grid-column-start: 1;
   grid-column-end: 3;
+  z-index: 100;
   @media only screen and (min-width: 768px) {
     display: flex;
   }

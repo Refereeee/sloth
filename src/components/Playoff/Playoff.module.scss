@@ -5,6 +5,8 @@
   padding: 0 0 100px 0;
 }
 
+
+
 .main{
   display: flex;
 }
@@ -16,8 +18,22 @@
   display: flex;
 }
 
+@media screen and (max-width: 768px) {
+  .wrapperContent{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+  }
+}
+
 .titleWrapper{
 
+}
+
+@media screen and (max-width: 768px) {
+  .textBlocks{
+    display: none;
+  }
 }
 
 .textBlock{
@@ -82,7 +98,7 @@
 }
 
 .requirementsTitle, .howTitle {
-  padding: 16px 16px 0 16px;
+  padding: 16px 16px 16px 16px;
   display: flex;
   justify-content: space-between;
 }
@@ -103,6 +119,13 @@
 .formWrapper{
   padding: 0 16px 0 70px;
   margin: 0 0 0 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .formWrapper{
+    padding: 0;
+    margin: 0;
+  }
 }
 
 .formAdditionOptionsParam{
@@ -362,6 +385,8 @@
     box-shadow: rgba(86, 79, 255, 0.5) 0px 6px 18px;
   }
 }
+
+
 
 
 

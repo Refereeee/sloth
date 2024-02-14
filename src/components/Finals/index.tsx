@@ -8,17 +8,17 @@ import { useLocation } from 'react-router-dom';
 import styles from './Finals.module.scss';
 import Sidebar from '../Sidebar';
 import { useAppDispatch } from '../../redux/hooks';
-import playoffImg from '../../assets/playoffs/fut-qualy.jpg';
+import playoffFinals from '../../assets/finals/fut-finals.jpg';
 import {
   changeHowWorkFlag,
   changePlatformValue,
   changeRangeValue,
   changeRequirementFlag,
   changeStreamValue,
-  selectPlayoff,
-} from '../../redux/slice/playoffSlice';
+  selectFinals,
+} from '../../redux/slice/finalsSlice';
 import platformData from '../../data/playoffData';
-import sliceStringRange from '../../redux/slice/functions/funcforRangeHandler';
+import { sliceStringRangeFinals } from '../../redux/slice/functions/funcforRangeHandler';
 import { addItem, selectCart } from '../../redux/slice/cartSlice';
 
 const Finals = () => {
@@ -29,7 +29,7 @@ const Finals = () => {
     platformValue,
     streamCheckboxValue,
     rangeValue,
-  } = useSelector(selectPlayoff);
+  } = useSelector(selectFinals);
 
   const {
     items,
@@ -50,7 +50,7 @@ const Finals = () => {
       platform: platformValue,
       streamBoolean: streamCheckboxValue,
       price: priceValueType ? priceValueWithStream : priceValue,
-      image: playoffImg,
+      image: playoffFinals,
       id: myuuid,
       text: locationName,
     }));
@@ -60,9 +60,10 @@ const Finals = () => {
     dispatch(changePlatformValue(event.target.value));
   };
   const rangeHandler = (value: string) => {
-    dispatch(changeRangeValue(+(sliceStringRange(value))));
+    dispatch(changeRangeValue(+(sliceStringRangeFinals(value))));
   };
   const checkBoxStream = () => {
+    console.log('123');
     dispatch(changeStreamValue());
   };
   const changeRequirementsValue = () => {
@@ -88,12 +89,13 @@ const Finals = () => {
         <div className={styles.wrapperContent}>
           <div className={styles.mainContent}>
             <div className={styles.titleWrapper}>
-              <h1 className={styles.title}>FUT CHAMPIONS PLAYOFFS BOOST</h1>
+              <h1 className={styles.title}>FUT Champions Finals Boost</h1>
             </div>
             <div className={styles.textBlocks}>
               <p className={styles.text}>
-                Buy FIFA 23 FUT Champions Playoffs and get as many wins as you want in this
-                mode, obtaining FUT Champions points and unlocking valuable rewards.
+                Buy Ea Sports FC FUT Champions Finals, obtain required number of wins, increase your Champions Finals rank and get a wide range of rewards.
+                FUT Champions Finals is the most difficult challenge the game can offer, a full test of your skill and abilities.
+                It is also one of the most profitable game modes in the game, and this is why we offer our FC 24 FUT Champions Finals carry service.
               </p>
               <p className={styles.text}>
                 FUT Champions as a gamemode is divided into two parts: Playoffs and Qualifiers,
@@ -177,7 +179,7 @@ const Finals = () => {
           <div className={styles.formWrapper}>
             <form className={styles.form} onSubmit={formSubmit}>
               <div className={styles.formImageBlock}>
-                <img src={playoffImg} alt="playoff" className={styles.formImage} />
+                <img src={playoffFinals} alt="finals" className={styles.formImage} />
                 <div className={styles.formImageGradient} />
               </div>
               <div className={styles.platformOptionsWrapper}>
@@ -294,7 +296,7 @@ const Finals = () => {
                             rangeHandler(String(nextValues));
                           }}
                           min={1}
-                          max={10}
+                          max={20}
                           value={rangeValue}
                           defaultValue={rangeValue}
                           step={1}

@@ -1,54 +1,12 @@
-import React, { useState } from 'react';
-import { SiFifa } from 'react-icons/si';
-import { GiCagedBall, GiThunderball } from 'react-icons/gi';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Sidebar.module.scss';
+import objectForLinks from '../../data/linksForSidebar';
 
 const Sidebar = () => {
-  const objectForLinks = [
-    {
-      id: 1,
-      img: <GiCagedBall />,
-      linkName: 'Fut Champions PlayOffs',
-      linkTo: '/fut-champions-playoffs',
-    },
-    {
-      id: 2,
-      img: <GiThunderball />,
-      linkName: 'Fut Champions Finals',
-      linkTo: '/fut-champions-finals',
-    },
-    {
-      id: 3,
-      img: <SiFifa />,
-      linkName: 'Division Rivals',
-      linkTo: '/divisions',
-    },
-    {
-      id: 4,
-      img: <GiThunderball />,
-      linkName: 'Tasks',
-      linkTo: '/tasks',
-    },
-
-    {
-      id: 5,
-      img: <GiThunderball />,
-      linkName: 'Draft',
-      linkTo: '/draft',
-    },
-    {
-      id: 6,
-      img: <GiThunderball />,
-      linkName: 'Squad Battles',
-      linkTo: '/squad',
-    },
-  ];
-
-  const [isActive, setActivate] = useState(false);
-
+  const location = useLocation();
   const clickActive = () => {
-    setActivate(true);
+    // dispatch(changeIsActive(true));
+    console.log('123');
   };
 
   return (
@@ -68,7 +26,7 @@ const Sidebar = () => {
               >
                 <NavLink
                   to={linkTo}
-                  className={isActive ? styles.weekend && styles.activate : styles.weekend}
+                  className={location.pathname === linkTo ? styles.activate : styles.weekend}
                 >
                   <span className={styles.changeColor}>{img}</span>
                   <span className={styles.changeColorSpan}>{linkName}</span>

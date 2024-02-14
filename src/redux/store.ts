@@ -5,6 +5,7 @@ import home from './slice/homeSlice';
 import playoff from './slice/playoffSlice';
 import auth from './slice/authSlice';
 import cart from './slice/cartSlice';
+import finals from './slice/finalsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
     playoff,
     auth,
     cart,
+    finals,
   },
 });
 

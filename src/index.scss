@@ -163,6 +163,12 @@ p {
   h4 {
     line-height: 1;
   }
+
+}
+@media screen and (max-width: 768px) {
+  .swiper-button-prev, .swiper-button-next {
+    display: none;
+  }
 }
 
 

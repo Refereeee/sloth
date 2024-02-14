@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { BsCartFill } from 'react-icons/bs';
+import { BsCartFill, BsFillCartFill } from 'react-icons/bs';
 import { CgLogIn } from 'react-icons/cg';
 import { FaUserPlus } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
@@ -139,7 +139,12 @@ const Header = () => {
           <BurgerIcon />
         </button>
         <div className={styles.mainIconSmall}><Link to="/"><LittleIcon /></Link></div>
-        <div className={styles.iconProfile}><ProfileIcon /></div>
+        <div className={styles.wrapperBurgerIcons}>
+          <div className={styles.cartBurger} onClick={() => (!cartFlag ? dispatch(cartFlagToOpen()) : dispatch(cartFlagToFalse()))}>
+            <BsFillCartFill size={24} />
+          </div>
+          <div className={styles.iconProfile}><ProfileIcon /></div>
+        </div>
       </div>
       <div className={styles.root}>
         <div className={styles.imgWrapper}>

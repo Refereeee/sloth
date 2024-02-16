@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import AuthService from '../../services/AuthService';
 import { RootState } from '../store';
 import { IUser } from '../../models/IUser';
@@ -37,12 +37,16 @@ export const logout = createAsyncThunk('/logout', async () => {
 
 interface GlobalAuth {
     isAuth:boolean,
-    imageFlag:boolean
+    imageFlag:boolean,
+    passwordVisible: boolean,
+    passwordType: boolean,
     user: IUser
 }
 const initialState:GlobalAuth = {
   isAuth: false,
   imageFlag: false,
+  passwordVisible: false,
+  passwordType: true,
   user: {} as IUser,
 };
 
@@ -50,7 +54,12 @@ const initialState:GlobalAuth = {
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    changeEyeValue: (state, action: PayloadAction<boolean>) => {
+      state.passwordVisible = action.payload;
+      state.passwordType = !state.passwordType;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(createUser.fulfilled, (state) => {
       state.isAuth = true;
@@ -74,6 +83,10 @@ export const authSlice = createSlice({
     });
   },
 });
+
+export const {
+  changeEyeValue,
+} = authSlice.actions;
 
 export const authOptions = (state: RootState) => state.auth;
 

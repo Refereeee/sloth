@@ -3,13 +3,15 @@ import React, {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { RiLockPasswordFill } from 'react-icons/ri';
+import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import styles from './Register.module.scss';
 import { useAppDispatch } from '../../redux/hooks';
 
 import {
   noticeFlagToOff, selectReg,
 } from '../../redux/slice/registerSlice';
-import { authOptions, createUser } from '../../redux/slice/authSlice';
+import { authOptions, changeEyeValue, createUser } from '../../redux/slice/authSlice';
 import useInput from '../../hooks/useInput';
 
 interface ChildProps {
@@ -18,6 +20,8 @@ interface ChildProps {
 
 const Register: React.FC<ChildProps> = ({ forwardedRef }) => {
   const dispatch = useAppDispatch();
+
+  const { passwordVisible, passwordType } = useSelector(authOptions);
 
   const {
     registerFlag,
@@ -113,20 +117,30 @@ const Register: React.FC<ChildProps> = ({ forwardedRef }) => {
           {(password.isDirty && password.minLengthError) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Малое количество символов</div>}
           {(password.isDirty && password.maxLengthError) && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Поле не должно превышать 32 символа</div>}
         </div>
+        <label htmlFor="pass" className={styles.labelLogin}>
+          <input
+            className={styles.input}
+            onBlur={(e) => password.onBlur(e)}
+            value={password.value}
+            type={passwordType ? 'password' : 'text'}
+            onChange={(e) => password.onChange(e)}
+            placeholder="Password"
+            id="regPass"
+            name="pass"
+          />
+          <div className={styles.icon}>
+            <RiLockPasswordFill style={{ fill: 'darkcyan' }} size="20px" />
+          </div>
+          <div className={styles.iconEye}>
+            {passwordVisible
+              ? <FaRegEyeSlash style={{ fill: 'darkcyan' }} size="20px" onClick={() => dispatch(changeEyeValue(false))} />
+              : <FaRegEye style={{ fill: 'darkcyan' }} size="20px" onClick={() => dispatch(changeEyeValue(true))} />}
+          </div>
+        </label>
         <input
-          className={styles.input}
-          onBlur={(e) => password.onBlur(e)}
-          value={password.value}
-          type="password"
-          onChange={(e) => password.onChange(e)}
-          placeholder="Пароль"
-          id="regPass"
-          name="pass"
-        />
-        <input
-          className={styles.btn}
+          className={!email.inputValid || !password.inputValid ? styles.btnDisabled : styles.btn}
           type="submit"
-          value="Регистрация"
+          value="Sign Up"
           disabled={!email.inputValid || !password.inputValid}
           onClick={clickCreateUser}
         />

@@ -6,8 +6,12 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { FaRegEye, FaRegEyeSlash } from 'react-icons/fa';
 import styles from './Login.module.scss';
 import { useAppDispatch } from '../../redux/hooks';
-import { selectLog, setLoginFailToggle, setLoginSuccessToFalse } from '../../redux/slice/loginSLice';
-import { authOptions, changeEyeValue, loginUser } from '../../redux/slice/authSlice';
+import {
+  offLogModal, selectLog, setLoginSuccessToFalse,
+} from '../../redux/slice/loginSLice';
+import {
+  authOptions, changeEyeValue, deleteLoginError, loginUser,
+} from '../../redux/slice/authSlice';
 import useInput from '../../hooks/useInput';
 
 interface ChildProps {
@@ -20,12 +24,13 @@ const Login: React.FC<ChildProps> = ({ forwardRef }) => {
 
   const { pathname } = useLocation();
 
-  const { isAuth, passwordVisible, passwordType } = useSelector(authOptions);
+  const {
+    isAuth, passwordVisible, passwordType, loginError,
+  } = useSelector(authOptions);
 
   const {
     headerImageFlagLogin,
     loginSuccess,
-    loginFail,
   } = useSelector(selectLog);
 
   const email = useInput('', {
@@ -52,17 +57,20 @@ const Login: React.FC<ChildProps> = ({ forwardRef }) => {
         dispatch(setLoginSuccessToFalse());
       }, 1000);
     }
-    if (loginFail) {
+    if (loginError) {
       setTimeout(() => {
-        dispatch(setLoginFailToggle());
-      }, 3000);
+        console.log(loginError);
+        dispatch(deleteLoginError());
+        console.log(loginError);
+      }, 2000);
     }
     if (isAuth) {
       setTimeout(() => {
+        dispatch(offLogModal());
         navigate('/');
       }, 500);
     }
-  }, [headerImageFlagLogin, loginSuccess, pathname, loginFail, isAuth]);
+  }, [headerImageFlagLogin, loginSuccess, pathname, loginError, isAuth]);
 
   return (
     <form className={styles.formWrapper} ref={forwardRef}>
@@ -71,7 +79,6 @@ const Login: React.FC<ChildProps> = ({ forwardRef }) => {
       </div>
       <div className={styles.wrapper}>
         {isAuth && <div style={{ padding: '2rem', backgroundColor: 'green' }}>Авторизация успешна</div>}
-        {loginFail && <div style={{ padding: '2rem', backgroundColor: 'green' }}>Неправильный логин или пароль</div>}
         <div className={styles.forErrors}>
           {(email.isDirty && email.isEmpty)
             && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Поле не может быть пустым</div>}
@@ -81,6 +88,7 @@ const Login: React.FC<ChildProps> = ({ forwardRef }) => {
             && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Поле не должно превышать 32 символа</div>}
           {(email.isDirty && email.emailError)
             && <div style={{ color: 'red', whiteSpace: 'nowrap' }}>Не валидный Email</div>}
+          {loginError && <div style={{ color: 'red', whiteSpace: 'nowrap', textAlign: 'center' }}>Incorrect login or password</div>}
         </div>
         <label htmlFor="log" className={styles.labelLogin}>
           <input

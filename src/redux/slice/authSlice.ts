@@ -36,17 +36,21 @@ export const logout = createAsyncThunk('/logout', async () => {
 });
 
 interface GlobalAuth {
-    isAuth:boolean,
-    imageFlag:boolean,
-    passwordVisible: boolean,
-    passwordType: boolean,
-    user: IUser
+  isAuth: boolean,
+  imageFlag: boolean,
+  passwordVisible: boolean,
+  passwordType: boolean,
+  loginError: boolean,
+  registerError: boolean,
+  user: IUser
 }
 const initialState:GlobalAuth = {
   isAuth: false,
   imageFlag: false,
   passwordVisible: false,
   passwordType: true,
+  loginError: false,
+  registerError: false,
   user: {} as IUser,
 };
 
@@ -59,6 +63,12 @@ export const authSlice = createSlice({
       state.passwordVisible = action.payload;
       state.passwordType = !state.passwordType;
     },
+    deleteLoginError: (state) => {
+      state.loginError = false;
+    },
+    deleteRegisterError: (state) => {
+      state.registerError = false;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(createUser.fulfilled, (state) => {
@@ -66,10 +76,16 @@ export const authSlice = createSlice({
       state.imageFlag = true;
       state.user = useroid;
     });
+    builder.addCase(createUser.rejected, (state) => {
+      state.registerError = true;
+    });
     builder.addCase(loginUser.fulfilled, (state) => {
       state.isAuth = true;
       state.imageFlag = true;
       state.user = useroid;
+    });
+    builder.addCase(loginUser.rejected, (state) => {
+      state.loginError = true;
     });
     builder.addCase(refresh.fulfilled, (state) => {
       state.isAuth = true;
@@ -86,6 +102,8 @@ export const authSlice = createSlice({
 
 export const {
   changeEyeValue,
+  deleteLoginError,
+  deleteRegisterError,
 } = authSlice.actions;
 
 export const authOptions = (state: RootState) => state.auth;

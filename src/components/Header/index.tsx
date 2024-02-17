@@ -47,6 +47,8 @@ const Header = () => {
     totalCount,
   } = useSelector(selectCart);
 
+  const { isAuth } = useSelector(authOptions);
+
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const onBurgerOpenFlag = (act: boolean) => {
@@ -161,14 +163,18 @@ const Header = () => {
               <span className={styles.cartSpan}>{totalCount}</span>
             </span>
           </button>
-          <button className={styles.login} onClick={() => dispatch(onLogModal())} disabled={!!logModal}>
-            <h5 style={{ color: 'white' }}>Sign in</h5>
-            <CgLogIn color="white" size="1.5rem" />
-          </button>
-          <button className={styles.registerHead} onClick={() => dispatch(onRegModal())} disabled={!!regModal}>
-            <h5 style={{ color: 'white' }}>Sign up</h5>
-            <FaUserPlus color="white" size="1.5rem" />
-          </button>
+          { !isAuth ? (
+            <div className={styles.authorize}>
+              <button className={styles.login} onClick={() => dispatch(onLogModal())} disabled={!!logModal}>
+                <h5 style={{ color: 'white' }}>Sign in</h5>
+                <CgLogIn color="white" size="1.5rem" />
+              </button>
+              <button className={styles.registerHead} onClick={() => dispatch(onRegModal())} disabled={!!regModal}>
+                <h5 style={{ color: 'white' }}>Sign up</h5>
+                <FaUserPlus color="white" size="1.5rem" />
+              </button>
+            </div>
+          ) : null}
           {loadingImgFlag ? <span>Загрузка...</span>
             : (imageFlag) && (
             <div style={{ position: 'relative' }}>

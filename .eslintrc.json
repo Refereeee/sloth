@@ -19,6 +19,7 @@
         "react",
         "@typescript-eslint"
     ],
+
     "rules": {
         "react/function-component-definition": [
             2,

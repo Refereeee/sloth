@@ -6,12 +6,14 @@ interface CartState{
   cartFlag:boolean,
   items?: ObjCartTypes[],
   totalCount: number,
+  subtotal: number,
 }
 
 const initialState:CartState = {
   cartFlag: false,
   items: [],
   totalCount: 0,
+  subtotal: 0,
 };
 
 export const cartSlice = createSlice({
@@ -27,6 +29,7 @@ export const cartSlice = createSlice({
     addItem: (state, action:any) => {
       state.items!.push(action.payload);
       state.totalCount += 1;
+      state.subtotal = state.items!.reduce((acc, { price }) => acc + parseInt(price.slice(1), 10), 0);
     },
     removeItem(state, action: PayloadAction<string>) {
       state.items = state.items!.filter((el) => el.id !== action.payload);

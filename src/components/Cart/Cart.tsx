@@ -10,7 +10,7 @@ import CartItem from '../CartItem';
 
 const Cart = () => {
   const dispatch = useAppDispatch();
-  const { items } = useSelector(selectCart);
+  const { items, subtotal } = useSelector(selectCart);
   return (
     <>
       <div className={styles.headerWrapper}>
@@ -24,26 +24,51 @@ const Cart = () => {
       </div>
 
       {
-            items?.length ? items.map((item) => <CartItem key={item.id} {...item} />)
-              : (
-                <div className={styles.main}>
-                  <div className={styles.info}>
-                    <div>
-                      <span className={styles.infoHead}>Your shopping cart is empty</span>
-                      {/* eslint-disable-next-line */}
-                  <span className={styles.infoDesc}>Don't wait, let's get shopping and find your next deal today!</span>
-                      <div className={styles.buttons}>
-                        <button className={styles.offCart} onClick={() => dispatch(cartFlagToFalse())}>Start shopping</button>
-                        <Link to="/register" className={styles.register} onClick={() => dispatch(cartFlagToFalse())}>
-                          <h5 style={{ color: 'white' }}>Sign up</h5>
-                          <FaUserPlus color="white" size="1.5rem" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
+        !items?.length ? (
+          <div className={styles.main}>
+            <div className={styles.info}>
+              <div>
+                <span className={styles.infoHead}>Your shopping cart is empty</span>
+                {/* eslint-disable-next-line */}
+                <span
+                  className={styles.infoDesc}
+                >
+                  {/* eslint-disable-next-line react/no-unescaped-entities */}
+                  Don't wait, let's get shopping and find your next deal today!
+                </span>
+                <div className={styles.buttons}>
+                  <button className={styles.offCart} onClick={() => dispatch(cartFlagToFalse())}>
+                    Start shopping
+                  </button>
+                  <Link to="/register" className={styles.register} onClick={() => dispatch(cartFlagToFalse())}>
+                    <h5 style={{ color: 'white' }}>Sign up</h5>
+                    <FaUserPlus color="white" size="1.5rem" />
+                  </Link>
                 </div>
-              )
-          }
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className={styles.cartsWrapper}>
+              {items.map((item) => (
+                <div className={styles.cartBox}>
+                  <CartItem key={item.id} {...item} />
+                </div>
+              ))}
+            </div>
+            <div className={styles.cartTotal}>
+              <div className={styles.subTotal}>
+                <span>{subtotal}</span>
+              </div>
+              <div>
+                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                <button />
+              </div>
+            </div>
+          </>
+        )
+      }
     </>
   );
 };

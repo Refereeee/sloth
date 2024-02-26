@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FaUserPlus } from 'react-icons/fa';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styles from '../Header/Header.module.scss';
 import { cartFlagToFalse, selectCart } from '../../redux/slice/cartSlice';
@@ -11,6 +11,32 @@ import CartItem from '../CartItem';
 const Cart = () => {
   const dispatch = useAppDispatch();
   const { items, subtotal } = useSelector(selectCart);
+  const cartsRef = useRef<HTMLDivElement>(null);
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const [bottomScrollPosition, setBottomScrollPosition] = useState(0);
+
+  const handleScroll = () => {
+    const position = cartsRef.current?.scrollTop; // Use optional chaining
+    if (cartsRef.current) {
+      const { scrollHeight, clientHeight, scrollTop } = cartsRef.current;
+      const bottom = scrollHeight - scrollTop - clientHeight;
+      setBottomScrollPosition(bottom);
+    }
+    if (position !== undefined) {
+      setScrollPosition(position);
+    }
+  };
+
+  useEffect(() => {
+    if (cartsRef.current) {
+      cartsRef.current.addEventListener('scroll', handleScroll);
+      return () => {
+        cartsRef.current?.removeEventListener('scroll', handleScroll); // Use optional chaining
+      };
+    }
+  }, []);
+
   return (
     <>
       <div className={styles.headerWrapper}>
@@ -29,7 +55,6 @@ const Cart = () => {
             <div className={styles.info}>
               <div>
                 <span className={styles.infoHead}>Your shopping cart is empty</span>
-                {/* eslint-disable-next-line */}
                 <span
                   className={styles.infoDesc}
                 >
@@ -51,14 +76,19 @@ const Cart = () => {
         ) : (
           <>
             <div className={styles.cartsWrapper}>
-              {items.map((item) => (
-                <div className={styles.cartBox}>
-                  <CartItem key={item.id} {...item} />
-                </div>
-              ))}
+              <div className={scrollPosition === 0 ? styles.shadowHidden : styles.shadowAbove} />
+              <div className={bottomScrollPosition === 0 ? styles.shadowHidden : styles.shadowBelow} />
+              <div className={styles.cartsItems} ref={cartsRef}>
+                {items.map((item) => (
+                  <div className={styles.cartBox}>
+                    <CartItem key={item.id} {...item} />
+                  </div>
+                ))}
+              </div>
             </div>
             <div className={styles.cartTotal}>
               <div className={styles.subTotal}>
+                <span>{scrollPosition}</span>
                 <span>{subtotal}</span>
               </div>
               <div>

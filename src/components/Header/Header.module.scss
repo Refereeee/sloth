@@ -103,8 +103,6 @@
 }
 
 
-
-
 .iconProfile {
   margin-right: 16px;
 
@@ -406,6 +404,71 @@
 }
 
 .cartsWrapper{
-  overflow: scroll;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+
+
+
+.cartsItems {
+  overflow: auto;
+  height: 100%;
+}
+
+.cartsItems::-webkit-scrollbar{
+  width: 4px;
+  border-radius: 100px;
+  background-color: rgba(5, 6, 34, 0.42);
+}
+
+.cartsItems::-webkit-scrollbar-thumb{
+  border-radius: 100px;
+  background-color: rgb(86, 79, 255);
+}
+
+.shadowAbove{
+  position: absolute;
+  left: 0px;
+  z-index: 1;
+  width: 100%;
+  box-shadow: rgba(8, 13, 38, 0.75) 0px 0px 40px 40px;
+  transition: opacity 0.3s ease 0s, height 0.1s ease 0s;
+  top: 0px;
+  opacity: 1;
+}
+
+.shadowBelow{
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1;
+  width: 100%;
+  box-shadow: rgba(8, 13, 38, 0.75) 0px 0px 40px 40px;
+  transition: opacity 0.3s ease 0s, height 0.1s ease 0s;
+}
+
+.shadowHidden{
+  top: 0px;
+  opacity: 0;
+}
+
+//.shadowVisible{
+//  top: 0px;
+//  opacity: 1;
+//}
+
+.subTotal{
+  border-top: 1px solid rgb(41, 48, 84);
+  padding: 12px 32px 0px;
+  display: flex;
+  justify-content: space-between;
+  color: rgb(219, 219, 233);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+  font-family: "TT Interphases", Arial, Helvetica, sans-serif;
+  white-space: normal;
+  text-decoration: unset;
 }
 

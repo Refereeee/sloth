@@ -65,6 +65,17 @@ body {
   color:var(--clr-white)
 }
 
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #564fff;
+  border: 1px solid hsla(0, 0%, 100%, .26);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 
 :active, :hover, :focus {

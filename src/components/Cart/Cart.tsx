@@ -13,11 +13,11 @@ const Cart = () => {
   const { items, subtotal } = useSelector(selectCart);
   const cartsRef = useRef<HTMLDivElement>(null);
 
-  const [scrollPosition, setScrollPosition] = useState(0);
-  const [bottomScrollPosition, setBottomScrollPosition] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState<number>(0);
+  const [bottomScrollPosition, setBottomScrollPosition] = useState<number>(0);
 
   const handleScroll = () => {
-    const position = cartsRef.current?.scrollTop; // Use optional chaining
+    const position = cartsRef.current?.scrollTop;
     if (cartsRef.current) {
       const { scrollHeight, clientHeight, scrollTop } = cartsRef.current;
       const bottom = scrollHeight - scrollTop - clientHeight;
@@ -32,10 +32,10 @@ const Cart = () => {
     if (cartsRef.current) {
       cartsRef.current.addEventListener('scroll', handleScroll);
       return () => {
-        cartsRef.current?.removeEventListener('scroll', handleScroll); // Use optional chaining
+        cartsRef.current?.removeEventListener('scroll', handleScroll);
       };
     }
-  }, []);
+  }, [cartsRef.current]);
 
   return (
     <>
@@ -88,12 +88,11 @@ const Cart = () => {
             </div>
             <div className={styles.cartTotal}>
               <div className={styles.subTotal}>
-                <span>{scrollPosition}</span>
-                <span>{subtotal}</span>
+                <span>Subtotal</span>
+                <span>{`$${subtotal}`}</span>
               </div>
-              <div>
-                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-                <button />
+              <div className={styles.buttonForPayWrapper}>
+                <button className={styles.buttonForPay}>Secure Checkout</button>
               </div>
             </div>
           </>

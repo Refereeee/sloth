@@ -73,7 +73,6 @@ const Playoff = () => {
   };
 
   useEffect(() => {
-    // eslint-disable-next-line no-unused-expressions
     streamCheckboxValue ? setPriceValueType(true) : setPriceValueType(false);
   }, [items, streamCheckboxValue]);
 

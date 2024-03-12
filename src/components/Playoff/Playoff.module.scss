@@ -17,15 +17,23 @@
   width: 100%;
   margin: 64px auto 0;
   display: flex;
-}
-
-@media screen and (max-width: 768px) {
-  .wrapperContent{
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  @media screen and (max-width: 768px) {
     display: flex;
     flex-direction: column;
     padding: 50px;
   }
 }
+
+.mainContent{
+  order:2
+}
+
+
 
 .titleWrapper{
 
@@ -120,6 +128,10 @@
 .formWrapper{
   padding: 0 16px 0 70px;
   margin: 0 0 0 70px;
+  @media screen and (min-width: 768px) and (max-width: 960px) {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -149,13 +161,23 @@
   border-top: 6px solid rgb(121, 50, 255);
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.03) 0px 3px 23px;
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    padding-left: 32px;
+    padding-right: 32px;
+    width: 100%;
+    flex: 1 0 auto;
+    position: relative;
+    background-color: rgb(8, 13, 38);
+  }
 }
 
 .formImageBlock{
   position: absolute;
   overflow: hidden;
   top: 0;
-  left: 0;
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    right: -67px;
+  }
 }
 
 .formImage{
@@ -163,6 +185,9 @@
   display: block;
   transform: translate(0px, -40px);
   background: var(--clr-black);
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    background: none;
+  }
 }
 
 .formImageGradient{
@@ -172,6 +197,9 @@
   left: 0;
   height: 80%;
   width: 100%;
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    background: linear-gradient(266.03deg, rgba(0, 0, 0, 0) 21.01%, rgba(8, 13, 38, 0.6) 71.08%, rgb(8, 13, 38) 85.08%);
+  }
 }
 
 
@@ -250,7 +278,11 @@
 
 .selectPlatforms{
   display: flex;
-  gap: 32px
+  gap: 32px;
+  @media screen and (min-width: 320px) and (max-width: 500px) {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
 }
 
 .platformBlock{
@@ -384,6 +416,9 @@
     background: linear-gradient(rgb(135, 130, 255) 0%, rgb(91, 84, 255) 100%);
     filter: brightness(110%);
     box-shadow: rgba(86, 79, 255, 0.5) 0px 6px 18px;
+  }
+  @media screen and (min-width: 320px) and (max-width: 500px) {
+    font-size: 10px;
   }
 }
 

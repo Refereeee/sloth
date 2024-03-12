@@ -10,8 +10,6 @@ const useInput = (initialValue:string, validations:IValidations) => {
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };
-
-  // eslint-disable-next-line no-unused-vars
   const onBlur = (event: FocusEvent<HTMLInputElement>) => {
     setDirty(true);
   };
